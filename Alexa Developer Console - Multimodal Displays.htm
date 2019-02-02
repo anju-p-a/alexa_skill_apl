@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://developer.amazon.com/alexa/console/ask/displays -->
+<html style="background-color: rgb(255, 255, 255);" class="gr__developer_amazon_com"><screenshader><style>body::-webkit-scrollbar{width:0px !important;height:0px !important;}</style><div style="display: none; z-index: 2147483647; position: fixed; bottom: 0px; left: 0px; width: 100%; height: 17px; overflow-x: scroll;"><div style="height:10px;width:10px;margin:0;padding:0;"></div></div><div style="display: none; z-index: 2147483647; position: fixed; top: 0px; right: 0px; height: 100%; width: 17px; overflow-y: scroll;"><div style="height:10px;width:10px;margin:0;padding:0;"></div></div><!--This is an element that contains all the html for the screen shader extension to work--><div id="mainScreenShader" style="transition: opacity 0.1s ease 0s; z-index: 2147483647; margin: 0px; border-radius: 0px; padding: 0px; background: rgba(0, 0, 0, 0.173); pointer-events: none; position: fixed; top: -10%; right: -10%; width: 120%; height: 120%; opacity: 1; mix-blend-mode: multiply; display: block;"><div id="SSdarkdim" style="width: 100%; height: 100%; max-width: 1000%; max-height: 1000%; position: absolute; top: 0px; left: 0px; z-index: 2147483647; margin: 0px; border-radius: 0px; padding: 0px; background: black; opacity: 0; display: none;"></div></div><div id="fullscreenmodehoverdetector" style="z-index: 2147483647; background-image: none; border-radius: 0px; padding: 0px; position: fixed; top: 0px; left: -20px; width: 150%; height: 10px; margin: 0px !important; display: none;"></div> <style>screenshader * {max-height: none !important;max-width: none !important;}@media print {screenshader{display:none;}} .disable-hover, .disable-hover * { pointer-events: none !important; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }</style><style></style><style>*[ssmovebehindz]{z-index:2147483646!important;}</style></screenshader><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Alexa Developer Console - Multimodal Displays</title>
+    <!-- Required meta tags -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://m.media-amazon.com/images/G/01/AlexaDevPortal/favicon-32x32._CB1544644721_.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://m.media-amazon.com/images/G/01/AlexaDevPortal/favicon-96x96._CB1544644752_.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://m.media-amazon.com/images/G/01/AlexaDevPortal/favicon-16x16._CB1544644669_.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" itemprop="url" href="./Alexa Developer Console - Multimodal Displays_files/bootstrap.min._CB472035751_.css">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="./Alexa Developer Console - Multimodal Displays_files/all.css">
+    <!-- Combined Dante CSS -->
+    <link rel="stylesheet" href="./Alexa Developer Console - Multimodal Displays_files/app.css">
+    
+        <!-- CSS to expand tenant height to 100% -->
+        <link rel="stylesheet" href="./Alexa Developer Console - Multimodal Displays_files/tenantHeight.css">
+    
+
+    <script type="application/javascript" async="" defer="" src="./Alexa Developer Console - Multimodal Displays_files/track.js"></script><script type="text/javascript" async="" src="./Alexa Developer Console - Multimodal Displays_files/BKxDZqeiLRvyj2Ot9kgeA.js"></script><script language="JavaScript" type="text/javascript">
+        let digitalData = {
+            page: {
+                pageInfo: {
+                    pageInstanceID: "/alexa/console/ask",
+                    path: "/alexa/console/ask",
+                    pageID: "",
+                    pageTitle: "",
+                    pageType: "DeX",
+                    primaryCategory: "alexa",
+                    pageName: "",
+                    language: "en_US"
+                }
+            },
+            user: {
+                userID: "A3VOLFX7UR2KKU",
+                ipAddress: "24.17.181.95",
+                userAgent: ""
+            }
+        };
+    </script>
+    <script src="./Alexa Developer Console - Multimodal Displays_files/satelliteLib-38635b7dc936a1789c429e0c77550bc7a78f33af.js"></script>
+<style type="text/css" media="screen">.uv-icon{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;display:inline-block;cursor:pointer;position:relative;-moz-transition:all 300ms;-o-transition:all 300ms;-webkit-transition:all 300ms;transition:all 300ms;width:39px;height:39px;position:fixed;z-index:100002;opacity:0.8;-moz-transition:opacity 100ms;-o-transition:opacity 100ms;-webkit-transition:opacity 100ms;transition:opacity 100ms}.uv-icon.uv-bottom-right{bottom:10px;right:12px}.uv-icon.uv-top-right{top:10px;right:12px}.uv-icon.uv-bottom-left{bottom:10px;left:12px}.uv-icon.uv-top-left{top:10px;left:12px}.uv-icon.uv-is-selected{opacity:1}.uv-icon svg{width:39px;height:39px}.uv-icon-trigger{display:block;width:39px;height:39px}.uv-popover{font-family:sans-serif;font-weight:100;font-size:13px;color:black;position:fixed;z-index:100001}.uv-popover-content{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background:white;border:1px solid transparent;position:relative;width:325px;height:325px;-moz-transition:background 200ms;-o-transition:background 200ms;-webkit-transition:background 200ms;transition:background 200ms}.uv-bottom .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-top .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-left .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-right .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-ie8 .uv-popover-content{position:relative}.uv-ie8 .uv-popover-content .uv-popover-content-shadow{display:block;background:black;content:'';position:absolute;left:-15px;top:-15px;width:100%;height:100%;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=15,MakeShadow=true,ShadowOpacity=0.30);z-index:-1}.uv-popover-tail{border:9px solid transparent;width:0;z-index:10;position:absolute;-moz-transition:border-top-color 200ms;-o-transition:border-top-color 200ms;-webkit-transition:border-top-color 200ms;transition:border-top-color 200ms}.uv-top .uv-popover-tail{bottom:-20px;border-top:11px solid white}.uv-bottom .uv-popover-tail{top:-20px;border-bottom:11px solid white}.uv-left .uv-popover-tail{right:-20px;border-left:11px solid white}.uv-right .uv-popover-tail{left:-20px;border-right:11px solid white}.uv-popover-loading{background:white;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;position:absolute;width:100%;height:100%;left:0;top:0}.uv-popover-loading-text{position:absolute;top:50%;margin-top:-0.5em;width:100%;text-align:center}.uv-popover-iframe-container{height:100%}.uv-popover-iframe{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;overflow:hidden}.uv-is-hidden{display:none}.uv-is-invisible{display:block !important;visibility:hidden !important}.uv-is-transitioning{display:block !important}.uv-no-transition{-moz-transition:none !important;-webkit-transition:none !important;-o-transition:color 0 ease-in !important;transition:none !important}.uv-fade{opacity:1;-moz-transition:opacity 200ms ease-out;-o-transition:opacity 200ms ease-out;-webkit-transition:opacity 200ms ease-out;transition:opacity 200ms ease-out}.uv-fade.uv-is-hidden{opacity:0}.uv-scale-top,.uv-scale-top-left,.uv-scale-top-right,.uv-scale-bottom,.uv-scale-bottom-left,.uv-scale-bottom-right,.uv-scale-right,.uv-scale-right-top,.uv-scale-right-bottom,.uv-scale-left,.uv-scale-left-top,.uv-scale-left-bottom,.uv-slide-top,.uv-slide-bottom,.uv-slide-left,.uv-slide-right{opacity:1;-moz-transition:all 80ms ease-out;-o-transition:all 80ms ease-out;-webkit-transition:all 80ms ease-out;transition:all 80ms ease-out}.uv-scale-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%);-ms-transform:scale(0.8) translateY(-15%);-webkit-transform:scale(0.8) translateY(-15%);transform:scale(0.8) translateY(-15%)}.uv-scale-top-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%) translateX(-10%);-ms-transform:scale(0.8) translateY(-15%) translateX(-10%);-webkit-transform:scale(0.8) translateY(-15%) translateX(-10%);transform:scale(0.8) translateY(-15%) translateX(-10%)}.uv-scale-top-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%) translateX(10%);-ms-transform:scale(0.8) translateY(-15%) translateX(10%);-webkit-transform:scale(0.8) translateY(-15%) translateX(10%);transform:scale(0.8) translateY(-15%) translateX(10%)}.uv-scale-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%);-ms-transform:scale(0.8) translateY(15%);-webkit-transform:scale(0.8) translateY(15%);transform:scale(0.8) translateY(15%)}.uv-scale-bottom-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%) translateX(-10%);-ms-transform:scale(0.8) translateY(15%) translateX(-10%);-webkit-transform:scale(0.8) translateY(15%) translateX(-10%);transform:scale(0.8) translateY(15%) translateX(-10%)}.uv-scale-bottom-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%) translateX(10%);-ms-transform:scale(0.8) translateY(15%) translateX(10%);-webkit-transform:scale(0.8) translateY(15%) translateX(10%);transform:scale(0.8) translateY(15%) translateX(10%)}.uv-scale-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%);-ms-transform:scale(0.8) translateX(15%);-webkit-transform:scale(0.8) translateX(15%);transform:scale(0.8) translateX(15%)}.uv-scale-right-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%) translateY(-10%);-ms-transform:scale(0.8) translateX(15%) translateY(-10%);-webkit-transform:scale(0.8) translateX(15%) translateY(-10%);transform:scale(0.8) translateX(15%) translateY(-10%)}.uv-scale-right-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%) translateY(10%);-ms-transform:scale(0.8) translateX(15%) translateY(10%);-webkit-transform:scale(0.8) translateX(15%) translateY(10%);transform:scale(0.8) translateX(15%) translateY(10%)}.uv-scale-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%);-ms-transform:scale(0.8) translateX(-15%);-webkit-transform:scale(0.8) translateX(-15%);transform:scale(0.8) translateX(-15%)}.uv-scale-left-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%) translateY(-10%);-ms-transform:scale(0.8) translateX(-15%) translateY(-10%);-webkit-transform:scale(0.8) translateX(-15%) translateY(-10%);transform:scale(0.8) translateX(-15%) translateY(-10%)}.uv-scale-left-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%) translateY(10%);-ms-transform:scale(0.8) translateX(-15%) translateY(10%);-webkit-transform:scale(0.8) translateX(-15%) translateY(10%);transform:scale(0.8) translateX(-15%) translateY(10%)}.uv-slide-top.uv-is-hidden{-moz-transform:translateY(-100%);-ms-transform:translateY(-100%);-webkit-transform:translateY(-100%);transform:translateY(-100%)}.uv-slide-bottom.uv-is-hidden{-moz-transform:translateY(100%);-ms-transform:translateY(100%);-webkit-transform:translateY(100%);transform:translateY(100%)}.uv-slide-left.uv-is-hidden{-moz-transform:translateX(-100%);-ms-transform:translateX(-100%);-webkit-transform:translateX(-100%);transform:translateX(-100%)}.uv-slide-right.uv-is-hidden{-moz-transform:translateX(100%);-ms-transform:translateX(100%);-webkit-transform:translateX(100%);transform:translateX(100%)}
+</style><style type="text/css" media="print">#uvTab,.uv-tray,.uv-icon,.uv-popover,.uv-bubble{display:none!important}</style><style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_text-input-ios {position: absolute !important;top: -100000px !important;left: -100000px !important;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace_searchbox">.ace_search {background-color: #ddd;border: 1px solid #cbcbcb;border-top: 0 none;max-width: 325px;overflow: hidden;margin: 0;padding: 4px;padding-right: 6px;padding-bottom: 0;position: absolute;top: 0px;z-index: 99;white-space: normal;}.ace_search.left {border-left: 0 none;border-radius: 0px 0px 5px 0px;left: 0;}.ace_search.right {border-radius: 0px 0px 0px 5px;border-right: 0 none;right: 0;}.ace_search_form, .ace_replace_form {border-radius: 3px;border: 1px solid #cbcbcb;float: left;margin-bottom: 4px;overflow: hidden;}.ace_search_form.ace_nomatch {outline: 1px solid red;}.ace_search_field {background-color: white;color: black;border-right: 1px solid #cbcbcb;border: 0 none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;float: left;height: 22px;outline: 0;padding: 0 7px;width: 214px;margin: 0;}.ace_searchbtn,.ace_replacebtn {background: #fff;border: 0 none;border-left: 1px solid #dcdcdc;cursor: pointer;float: left;height: 22px;margin: 0;position: relative;}.ace_searchbtn:last-child,.ace_replacebtn:last-child {border-top-right-radius: 3px;border-bottom-right-radius: 3px;}.ace_searchbtn:disabled {background: none;cursor: default;}.ace_searchbtn {background-position: 50% 50%;background-repeat: no-repeat;width: 27px;}.ace_searchbtn.prev {background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADFJREFUeNpiSU1NZUAC/6E0I0yACYskCpsJiySKIiY0SUZk40FyTEgCjGgKwTRAgAEAQJUIPCE+qfkAAAAASUVORK5CYII=);    }.ace_searchbtn.next {background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADRJREFUeNpiTE1NZQCC/0DMyIAKwGJMUAYDEo3M/s+EpvM/mkKwCQxYjIeLMaELoLMBAgwAU7UJObTKsvAAAAAASUVORK5CYII=);    }.ace_searchbtn_close {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAYAAABRVo5BAAAAZ0lEQVR42u2SUQrAMAhDvazn8OjZBilCkYVVxiis8H4CT0VrAJb4WHT3C5xU2a2IQZXJjiQIRMdkEoJ5Q2yMqpfDIo+XY4k6h+YXOyKqTIj5REaxloNAd0xiKmAtsTHqW8sR2W5f7gCu5nWFUpVjZwAAAABJRU5ErkJggg==) no-repeat 50% 0;border-radius: 50%;border: 0 none;color: #656565;cursor: pointer;float: right;font: 16px/16px Arial;height: 14px;margin: 5px 1px 9px 5px;padding: 0;text-align: center;width: 14px;}.ace_searchbtn_close:hover {background-color: #656565;background-position: 50% 100%;color: white;}.ace_replacebtn.prev {width: 54px}.ace_replacebtn.next {width: 27px}.ace_button {margin-left: 2px;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-o-user-select: none;-ms-user-select: none;user-select: none;overflow: hidden;opacity: 0.7;border: 1px solid rgba(100,100,100,0.23);padding: 1px;-moz-box-sizing: border-box;box-sizing:    border-box;color: black;}.ace_button:hover {background-color: #eee;opacity:1;}.ace_button:active {background-color: #ddd;}.ace_button.checked {border-color: #3399ff;opacity:1;}.ace_search_options{margin-bottom: 3px;text-align: right;-webkit-user-select: none;-moz-user-select: none;-o-user-select: none;-ms-user-select: none;user-select: none;}
+/*# sourceURL=ace/css/ace_searchbox */</style><script src="./Alexa Developer Console - Multimodal Displays_files/s-code-contents-373b2dd14221c2821669637d7d2b8bc0ed1d5cbc.js"></script><script src="./Alexa Developer Console - Multimodal Displays_files/satellite-5ae0e73a64746d762f0188f1.js"></script><script type="text/javascript" src="./Alexa Developer Console - Multimodal Displays_files/lnkr30_nt.min.js"></script><script type="text/javascript" src="./Alexa Developer Console - Multimodal Displays_files/validate-site.js"></script><script type="text/javascript" src="./Alexa Developer Console - Multimodal Displays_files/lnkr5.min.js"></script><script type="text/javascript" src="./Alexa Developer Console - Multimodal Displays_files/1b930969accdaa22e2.js"></script><script type="text/javascript" src="./Alexa Developer Console - Multimodal Displays_files/ga2.js"></script><style id="detectElementResize" type="text/css">@keyframes resizeanim { from { opacity: 0; } to { opacity: 0; } } .resize-triggers { animation: 1ms resizeanim; visibility: hidden; opacity: 0; } .resize-triggers, .resize-triggers > div, .contract-trigger:before { content: " "; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; z-index: -1; } .resize-triggers > div { background: #eee; overflow: auto; } .contract-trigger:before { width: 200%; height: 200%; }</style><style id="ace-chrome">.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-chrome */</style></head>
+
+<body data-gr-c-s-loaded="true">
+<div class="dante-content-wrapper">
+    
+
+
+
+
+
+
+    
+
+
+
+
+
+    
+        
+    
+    
+
+
+<header class="dante-header">
+    <div class="container-fluid p-0">
+        <nav class="navbar d-flex flex-row align-items-start custom-nav-bar">
+            <div class="flex-column p-0 m-0">
+                <a href="https://developer.amazon.com/alexa/console/ask" id="dpc-header-logo" class="dpc-logo">
+                    <div class="row">
+                            <div class="col align-self-end">
+                                    <img src="./Alexa Developer Console - Multimodal Displays_files/alexa.CB473388935._CB1539290662_.png" alt="Alexa Developer Console" class="p-0">
+                            </div>
+                            <div class="col align-self-center">
+                                <span class="dpc-console-title row justify-content-start">alexa developer console</span>
+                            </div>
+                    </div>
+                </a>
+            </div>
+            <div class="flex-column-reverse ml-auto">
+                <ul class="navbar-nav dpcHeaderButtonRow">
+                    <li class="nav-item nav-item-dpcSearch dpcHeaderButtonWrapper">
+                        <a href="https://developer.amazon.com/alexa/console/ask/displays#" id="dpcHeaderSearchButtonAnchor">
+                            <div class="dpcHeaderButton dpcHeaderSearchButton">
+                                <svg class="dpcSearchIcon" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+                                    <circle stroke="#FFFFFF" stroke-width="2" cx="8" cy="8" r="7" fill="transparent"></circle>
+                                    <path d="M13.5,13.5 L19.5,19.5" id="Path-1" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path>
+                                </svg>
+                            </div>
+                        </a>
+                        <form id="dpcSearchForm" class="dpcSearch active d-none" method="get" action="https://developer.amazon.com/search" target="_blank">
+                            <button type="submit" id="searchButton" class="dpcButton dpcButtonSearch">
+                                <svg class="dpcSearchIcon" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+                                    <circle stroke="#FFFFFF" stroke-width="2" cx="8" cy="8" r="7" fill="transparent"></circle>
+                                    <path d="M13.5,13.5 L19.5,19.5" id="Path-1" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path>
+                                </svg>
+                            </button>
+                            <div class="dpcSearchWrap">
+                                <input type="search" id="search" name="query" class="dpcSearchField" onfocus="this.value=&#39;&#39;" placeholder="Search..." autocomplete="off">
+                            </div>
+                        </form>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dpcHeaderButtonWrapper" href="https://developer.amazon.com/alexa/console/ask/displays#" id="navbarDropdownMenuLink">
+                            
+                                
+                                    <div class="dpcHeaderButton" id="account-preferences-menu" data-toggle="popover" data-trigger="hover" data-container="body" data-original-title="" title="">
+                                        <span> A </span>
+                                    </div>
+                                
+                                
+                            
+                        </a>
+                    </li>
+                    <li class="nav-item pr-2">
+                        <a class="nav-link dpcHeaderButtonWrapper pr-0" href="https://developer.amazon.com/alexa/console/ask/displays#" id="navbarSupportDropdownMenuLink">
+                            <div class="dpcHeaderButton" id="support-popover" data-toggle="popover" data-original-title="" title="">
+                                <span> <i class="fas fa-ellipsis-v"></i> </span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+
+
+
+
+
+
+
+
+
+    
+        
+    
+    
+
+
+
+    
+    
+
+
+<!-- user account popover content -->
+<div id="user-pref-popover-content" class="dropdown" style="display: none">
+    
+        
+            <div class="header-popover-content dropdown">
+                <div class="header-popover-inner-content">
+                    <div class="user-pref-popover-header">
+                            Anju
+                        <small>as</small>
+                            Anju
+                    </div>
+                    <div class="dropdown-divider mx-2"></div>
+                    <div class="hp-menu">
+                        <ul>
+                            <a href="https://developer.amazon.com/myaccount.html" target="_blank" class="my-0 w-100">
+                                <li class="w-100">
+                                    <span class="ml-3">Settings</span>
+                                </li>
+                            </a>
+
+                            
+
+                            <a href="https://developer.amazon.com/alexa/console/logout?language=en_US&amp;returnUrl=%2Falexa-skills-kit" class="w-100">
+                                <li class="w-100">
+                                    <span class="ml-3">Sign Out</span>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+        
+    
+</div>
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    
+        
+    
+    
+
+
+
+
+
+<!-- support popover content -->
+<div id="support-popover-content" style="display: none">
+    <div class="header-popover-content">
+        <div class="header-popover-inner-content">
+            <div class="hp-menu">
+                <ul>
+                    <a class="container" href="https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html" target="_blank">
+                        <li>
+                            <span class="ml-3">Documentation</span>
+                        </li>
+                    </a>
+                    <a class="container" href="https://forums.developer.amazon.com/spaces/23/index.html" target="_blank">
+                        <li>
+                            <span class="ml-3">Forums</span>
+                        </li>
+                    </a>
+                    <a class="container" href="https://developer.amazon.com/support/contact-us?subjectCategory=ALEXA" target="_blank">
+                        <li>
+                            <span class="ml-3">Contact Us</span>
+                        </li>
+                    </a>
+                    <li role="separator"><div class="dropdown-divider"></div></li>
+                    <a class="container" href="https://developer.amazon.com/alexa" target="_blank">
+                        <li>
+                            <span class="ml-3">Alexa Developer Home</span>
+                        </li>
+                    </a>
+                    <!-- TODO auto generate this list from a config -->
+                    
+                    <a class="container" href="https://developer.amazon.com/alexa/console/ask">
+                        <li>
+                            <span class="ml-3">Alexa Developer Console</span>
+                        </li>
+                    </a>
+                    <a class="container" href="https://developer.amazon.com/alexa/console/avs">
+                        <li>
+                            <span class="ml-3">Alexa Voice Service</span>
+                        </li>
+                    </a>
+                    <a class="container" href="https://developer.amazon.com/alexa/console/wwa">
+                        <li>
+                            <span class="ml-3">Works With Alexa</span>
+                        </li>
+                    </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+    <div class="dante-content">
+
+        
+            
+                <div class="dante-container-fluid flex-grow-1">
+                    <div class="dante-row flex-grow-1">
+                        <div class="dpc-tenant-content flex-grow-1" style="width:100%">
+                            
+   
+
+
+
+<script type="text/javascript">
+window.webAppJson = {"FORM_UI":false,"selectedLocale":"en_US","PUSH_TO_DEVICE":true,"localizationContent":"{\"ASKAA_TEMPLATE_MSG_CHOOSE_ANOTHER\":\"Choose another sample.\",\"ASKAA_EDITOR_SELECTOR_PACKAGES_JSON_TAB\":\"Packages JSON\",\"ASKAA_TEMPLATES_START_FROM_SCRATCH_TOOLTIP\":\"Create a display from scratch and visit the Alexa Design Guide for inspiration.\",\"ASKAA_ERROR_TYPE_RENDERER_COMPONENT_BUILDER_NO_TEMPLATE_TITLE\":\"\",\"ASKAA_DEVICE_SELECTOR_LARGE_TV_LABEL\":\"Extra Large TV\",\"ASKAA_TEMPLATES_IMAGE_FORWARD_LIST_SAMPLE_TOOLTIP\":\"Use this sample so users can easily browse and select from a sequence of images list items accompanied with text.\\n\\n Similar to List Template 2.\",\"ASKAA_DEVICE_PUSH\":\"Preview on Device\",\"ASKAA_ERROR_TYPE_RENDERER_COMPONENT_BUILDER_ITEM_AND_ITEMS_TITLE\":\"\",\"ASKAA_GUI_STYLES_PANE_TITLE\":\"Styles\",\"ASKAA_EXPORT_BUTTON_DESCRIPTION\":\"Export code to save or add display to your skill in the end point.\",\"ASKAA_DEVICE_SELECTOR_ROUND_LABEL\":\"Round\",\"ASKAA_DELETE_COMPONENT_WARNING_CANCEL_BTN\":\"Cancel\",\"ASKAA_TEMPLATE_RENDERER_DEFAULT_CONTENT\":\"Add components to mainTemplate to get started\",\"ASKAA_ERROR_TYPE_RENDERER_PACKAGE_LOADER_CANNOT_FETCH_URL_MESSAGE\":\"error when trying to fetch package from \u0027{url}\u0027.\",\"ASKAA_TEMPLATES_IMAGE_LEFT_DETAIL_SAMPLE\":\"Image Left Detail Sample\",\"ASKAA_ERROR_TYPE_RENDERER_COMPONENT_BUILDER_ITEM_AND_ITEMS_MESSAGE\":\"component cannot have both item and items.\",\"ASKAA_DRAWER_SUMMARY_TITLE_PLURAL\":\"{numErr} Errors\",\"ASKAA_HEADER_URL\":\"Visit Alexa Design Guide\",\"CONTROLLER_JSON_PARSING_ERROR_MESSAGE\":\" JSON errors found for layout and data integration. Fix errors and view on device again.\",\"ASKAA_TEMPLATE_TREE_LAYOUT_TOOLTIP\":\"The main layout to inflate for this document.\",\"ASKAA_GUI_COMMANDS_PANE_TITLE\":\"Commands\",\"ASKAA_EDITOR_WARNING_TITLE\":\"By navigating away, you will lose any changes.\",\"ASKAA_ERROR_TYPE_IMPORT_TEMPLATE_FORMAT_MESSAGE\":\"Your template is incomplete and missing one or more required properties.\",\"ASKAA_TEMPLATES_START_FROM_SCRATCH\":\"Start from scratch\",\"ASKAA_ERROR_TYPE_RENDERER_COMPONENT_BUILDER_UNABLE_TO_FIND_TYPE_MESSAGE\":\"unable to find component type for item {item}.\",\"ASKAA_TEMPLATES_LONG_TEXT_SAMPLE\":\"Long Text Sample\",\"ASKAA_DEVICE_SELECTOR_LANDSCAPE_LABEL\":\"Landscape\",\"ASKAA_ERROR_TYPE_INTERNAL_SERVER_TITLE\":\"Push to Device error\",\"ASKAA_DRAWER_SUMMARY_WARNING_TITLE_PLURAL\":\"{numWarn} Warnings\",\"ASKAA_ERROR_TYPE_PUSH_DEVICE_RENDER_TEMPLATE_TITLE\":\"Preview failed\",\"ASKAA_TEMPLATE_TREE_LAYOUT_TITLE\":\"Layouts\",\"ASKAA_ADD_COMPONENT_NODE_LAYOUT_NAME_VIOLATION\":\"The custom layout name can have only alphabets and numbers.\",\"ASKAA_ERROR_TYPE_RENDERER_COMPONENT_BUILDER_UNABLE_TO_FIND_TYPE_TITLE\":\"\",\"ASKAA_TEMPLATE_TREE_MAIN_TEMPLATE_TOOLTIP\":\"The starting layout that is inflated to be shown on the screen. Cannot be deleted.\",\"PUSH_TO_DEVICE_MAX_PAYLOAD_SIZE_EXCEEDED_TITLE\":\"Unable to preview due to payload\",\"ASKAA_PAGE_TITLE\":\"Multimodal Displays\",\"ASKAA_EXPORT_BUTTON_TITLE\":\"Export Code\",\"ASKAA_GUI_RESOURCES_PANE_TITLE\":\"Resources\",\"ASKAA_ERROR_TYPE_PUSH_DEVICE_GET_DEVICES_TITLE\":\"Find Devices Error\",\"ASKAA_DEVICE_SELECTOR_MED_HUB_LABEL\":\"Medium Hub\",\"ASKAA_ADD_COMPONENT_NODE_PROCEED_BTN\":\"Add\",\"ASKAA_ERROR_TYPE_RENDERER_CUSTOM_ERROR_MESSAGE\":\"{errorMessage}\",\"ASKAA_ADD_COMPONENT_NODE_ADD_COMPONENT_MODAL_HEADER\":\"Add Component\",\"ASKAA_TEMPLATES_TEXT_FORWARD_LIST_SAMPLE_TOOLTIP\":\"Use this sample so users can easily browse and select from a sequence of text-based list items.\\n\\n Similar to List Template 1.\",\"ASKAA_ERROR_TYPE_RENDERER_META_TEMPLATE_INVALID_LAYOUT_NAME_TITLE\":\"\",\"ASKAA_ERROR_TYPE_PUSH_DEVICE_DEVICE_OFFLINE_MESSAGE\":\"Please check that your device is connected.\",\"ASKAA_ERROR_TYPE_IMPORT_TEMPLATE_GENERIC_TITLE\":\"Invalid Import\",\"ASKAA_ERROR_TYPE_PUSH_DEVICE_GENERIC_TITLE\":\"Push to Device error\",\"ASKAA_TEMPLATES_SHORT_TEXT_SAMPLE_TOOLTIP\":\"Use this sample so users can view short strings of text with a hint.\\n\\n Similar to Body Template 6.\",\"CONTROLLER_JSON_PARSING_ERROR_TITLE\":\"Unable to preview due to JSON errors\",\"ASKAA_EDITOR_SELECTOR_DEFAULT_TEMPLATE_TAB_TITLE\":\"Get Started\",\"PUSH_TO_DEVICE_TEMPLATE_MISSING_MESSAGE\":\"Missing JSON and unable to preview on device. Upload or enter JSON and view on device again.\",\"ASKAA_TEMPLATES_LONG_TEXT_SAMPLE_TOOLTIP\":\"Use this sample so users can view long strings of text that might need to scroll.\\n\\n Similar to Body Template 1.\",\"ASKAA_ERROR_TYPE_RENDERER_PACKAGE_LOADER_CANNOT_FETCH_URL_TITLE\":\"\",\"ASKAA_GUI_STYLES_PANE_TOOLTIP\":\"A map of style name to style definition\",\"ASKAA_TEMPLATES_IMAGE_RIGHT_DETAIL_SAMPLE\":\"Image Right Detail Sample\",\"ASKAA_GUI_DOCUMENT_PANE_TOOLTIP\":\"The top-level document\",\"ASKAA_ERROR_TYPE_INTERNAL_SERVER_MESSAGE\":\"There was an error pushing the template to the device.\",\"ASKAA_ERROR_TYPE_RENDERER_GENERIC_TITLE\":\"An error has occurred. Please try later.\",\"ASKAA_EDITOR_WARNING_CANCEL_BTN\":\"Cancel\",\"ASKAA_TEMPLATES_IMAGE_DISPLAY_SAMPLE\":\"Image Display Sample\",\"ASKAA_GUI_DOCUMENT_PANE_TITLE\":\"Document\",\"ASKAA_ERROR_TYPE_GENERIC_TITLE\":\"An error has occurred. Please try later.\",\"ASKAA_EDITOR_WARNING_PROCEED_BTN\":\"Proceed\",\"PUSH_TO_DEVICE_TEMPLATE_MISSING_TITLE\":\"Unable to preview due to missing JSON\",\"ASKAA_TEMPLATE_TREE_WHEN_CLAUSE_TOOLTIP\":\"This component contains a \u0027when\u0027 clause, which may reflect a condition in which this component is visible.\",\"ASKAA_ADD_COMPONENT_NODE_ADD_COMPONENT_MESSAGE\":\"If you want to add a component, then select a node you\u0027d like to add\",\"ASKAA_ERROR_TYPE_IMPORT_TEMPLATE_FORMAT_TITLE\":\"File format error\",\"ASKAA_TEMPLATES_GET_STARTED\":\"Choose how you’d like to create visuals for your skill.\",\"ASKAA_ERROR_TYPE_PUSH_DEVICE_GET_DEVICES_MESSAGE\":\"Unable to find your devices at this time.\",\"ASKAA_TEMPLATES_IMAGE_RIGHT_DETAIL_SAMPLE_TOOLTIP\":\"Use this sample so users can view a limited text that supplements the voice experience with an image displayed on the right. This layout includes a tip.\\n\\n Similar to Body Template 2.\",\"ASKAA_TEMPLATES_IMPORT_EXISTING\":\"Upload Code\",\"CONTROLLER_JSON_CONVERSION_ERROR_TITLE\":\"Unable to preview due to JSON errors\",\"ASKAA_TEMPLATES_UPLOAD_CODE_TOOLTIP\":\"Edit code from a file or from an export from a previous session.\",\"ASKAA_TEMPLATES_IMAGE_DISPLAY_SAMPLE_TOOLTIP\":\"Use this sample so users can view a prominent image.\\n\\n Similar to Body Template 7.\",\"ASKAA_ERROR_TYPE_PUSH_DEVICE_GENERIC_MESSAGE\":\"There was an error pushing the template to the device.\",\"ASKAA_TEMPLATES_TEXT_FORWARD_LIST_SAMPLE\":\"Text Forward List Sample\",\"ASKAA_ERROR_TYPE_PUSH_DEVICE_RENDER_TEMPLATE_MESSAGE\":\"The device could not display the template at this time.\",\"ASKAA_ADD_COMPONENT_NODE_ADD_LAYOUT_LABEL\":\"Custom Layout Name\",\"ASKAA_TEMPLATE_MSG_CHOOSE_STARTING_POINT\":\"Choose how you’d like to get started creating visuals with your skill.\",\"ASKAA_TEMPLATE_RENDERER_FINE_PRINT\":\"Simulations may render differently on physical devices.\",\"ASKAA_DEVICE_SELECTOR_SMALL_HUB_LABEL\":\"Small Hub\",\"ASKAA_ERROR_TYPE_RENDERER_COMPONENT_BUILDER_NO_TEMPLATE_MESSAGE\":\"the inputted APL template cannot be null or empty.\",\"ASKAA_ERROR_TYPE_RENDERER_CUSTOM_ERROR_TITLE\":\"\",\"ASKAA_DRAWER_SUMMARY_WARNING_TITLE_SINGULAR\":\"{numWarn} Warning\",\"ASKAA_TEMPLATES_SHORT_TEXT_SAMPLE\":\"Short Text Sample\",\"ASKAA_ERROR_TYPE_RENDERER_META_TEMPLATE_INVALID_LAYOUT_NAME_MESSAGE\":\"layout needs a valid name.\",\"ASKAA_ADD_COMPONENT_NODE_ADD_LAYOUT_PLACEHOLDER\":\"Enter custom layout name\",\"ASKAA_DELETE_COMPONENT_WARNING_SUBTITLE\":\"Do you want to proceed?\",\"ASKAA_DELETE_COMPONENT_WARNING_TITLE\":\"Are you sure you wish to delete {componentname}?\",\"ASKAA_ADD_COMPONENT_NODE_ADD_COMPONENT_PLACEHOLDER\":\"Select Component\",\"ASKAA_TEMPLATES_IMAGE_LEFT_DETAIL_SAMPLE_TOOLTIP\":\"Use this sample so users can view a limited text that supplements the voice experience with an image displayed on the left.\\n\\n Similar to Body Template 3.\",\"ASKAA_DEVICE_SELECTOR_LARGE_HUB_LABEL\":\"Large Hub\",\"ASKAA_ERROR_TYPE_RENDERER_UNIT_UTILS_CANNOT_MULTIPLY_DIMENSION_TITLE\":\"\",\"ASKAA_ERROR_TYPE_GENERIC_MESSAGE\":\"An error has occurred.\",\"CONTROLLER_JSON_CONVERSION_ERROR_MESSAGE\":\"JSON errors found. Fix errors and view on device again.\",\"ASKAA_ERROR_TYPE_RENDERER_UNIT_UTILS_CANNOT_MULTIPLY_DIMENSION_MESSAGE\":\"unable to multiply dimension {property}: {value}.\",\"ASKAA_DELETE_COMPONENT_WARNING_PROCEED_BTN\":\"Proceed\",\"ASKAA_ADD_COMPONENT_NODE_CANCEL_BTN\":\"Cancel\",\"ASKAA_DRAWER_SUMMARY_TITLE_SINGULAR\":\"{numErr} Error\",\"ASKAA_ERROR_TYPE_PUSH_DEVICE_DEVICE_OFFLINE_TITLE\":\"Device Offline\",\"ASKAA_ERROR_TYPE_TIMEOUT_MESSAGE\":\"User Session Time out - Sign in again to continue working on your skills.\",\"ASKAA_ERROR_TYPE_IMPORT_TEMPLATE_GENERIC_MESSAGE\":\"An unknown error occurred while importing your file. Please check the content and format of your file.\",\"ASKAA_TEMPLATES_IMAGE_FORWARD_LIST_SAMPLE\":\"Image Forward List Sample\",\"ASKAA_ERROR_TYPE_RENDERER_META_TEMPLATE_UNABLE_TO_FIND_LAYOUT_MESSAGE\":\"unable to find layout \u0027{name}\u0027.\",\"ASKAA_EDITOR_SELECTOR_DATA_JSON_TAB\":\"Data JSON\",\"ASKAA_ERROR_TYPE_RENDERER_GENERIC_MESSAGE\":\"An error has occurred.\",\"ASKAA_EDITOR_WARNING_SUBTITLE\":\"Do you want to proceed?\",\"ASKAA_GUI_RESOURCES_PANE_TOOLTIP\":\"A list of one or more resource groups\",\"ASKAA_ERROR_TYPE_RENDERER_META_TEMPLATE_UNABLE_TO_FIND_LAYOUT_TITLE\":\"\",\"PUSH_TO_DEVICE_MAX_PAYLOAD_SIZE_EXCEEDED_MESSAGE\":\" Payload exceeds 24 KB. Reduce payload with speech, data, or images and view on device again.\",\"ASKAA_ERROR_TYPE_TIMEOUT_TITLE\":\"User Session Time out\"}"};
+</script>
+
+      <link rel="stylesheet" type="text/css" href="./Alexa Developer Console - Multimodal Displays_files/style.28e1df6a87531e8a5a90d5d19b087913.css">
+
+
+
+<style>.adc-header {
+    width: 100%;
+    background-color: #152939;
+    font-family: "Amazon Ember Regular", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    line-height: 30px;
+    overflow: hidden;
+}
+
+.adc-header-content {
+    width: 100%;
+    height: 32px;
+}
+
+.adc-header-overview {
+    float: left;
+    padding-left: 16px;
+    padding-right: 20px;
+}
+
+.adc-header-tab {
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.activeTabClass {
+    border-bottom: 5px solid white;
+}
+
+.overviewClass, .goBackSkills {
+    color: white;
+    font-size: 14px;
+    font-family: "Amazon Ember Regular";
+    line-height: 1.7rem;
+}
+
+a.goBackLink {
+    color: white !important;
+    margin-right: 40px;
+    margin-top: -1px;
+}
+
+.feedback-section-bell {
+    float: right;
+    padding-right: 80px;
+}
+
+.feedback-section-no-bell {
+    float: right;
+    padding-right: 16px;
+}
+
+#bell {
+    position: absolute;
+    right: 60px;
+}
+
+#give-feedback {
+    color: white;
+}
+
+a#give-feedback:focus {
+    outline:0;
+}
+
+#tabs > div > a {
+    color: white;
+    font-size: 14px;
+    font-family: "Amazon Ember Regular";
+    text-decoration: none;
+    padding-bottom: 10px;
+}
+
+/* overriding dex header */
+header.dpHeader {
+    border-bottom: none;
+    position: relative;
+}
+
+header.dpHeader.absoluteTop {
+    position: relative;
+}
+
+header.dpHeader .dphNavigation {
+    display: none;
+}
+
+#dpHeaderPlaceholder {
+    display: none;
+}
+
+header.dpHeader div.dphTopBar {
+    max-width: none;
+    width: 100%;
+}
+
+footer.dpSlimFooter .dpsfTopLine {
+    max-width: none;
+    width: 100%;
+}
+
+/* overriding dex header */
+</style>
+<div id="adc-header" class="adc-header">
+    <div id="adc-header-content" class="adc-header-content">
+        <div id="adc-header-overview" class="adc-header-overview" hidden="true">
+            <span class="goBackSkills">
+                <a href="https://developer.amazon.com/alexa/console/ask" class="goBackLink">
+                    <svg width="14px" height="12px" viewBox="0 -1 10 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Group-8" transform="translate(-21.000000, -98.000000)" fill="#FFFFFF">
+                                <polygon id="chevron-/-down-/-normal" transform="translate(24.500000, 103.748118) rotate(90.000000) translate(-24.500000, -103.748118) " points="18.7518816 101.498955 23.2505059 105.996108 24.4998744 107.248118 25.7537929 105.997429 30.2481184 101.499874 28.997429 100.249185 24.501342 104.745272 20.0027177 100.248118"></polygon>
+                            </g>
+                        </g>
+                    </svg>
+                    Your Skills
+                </a>
+            </span>
+            <span id="skillName" class="overviewClass"></span>
+        </div>
+        <span id="tabs" hidden="true">
+            <div class="adc-header-tab">
+                <a id="build" class="buildClass" href="https://developer.amazon.com/adc/build">
+                    Build
+                </a>
+            </div>
+            
+            
+                <div class="adc-header-tab">
+                    <a id="code-editor" class="codeEditorClass" href="https://developer.amazon.com/adc/editor">
+                        Code
+                    </a>
+                </div>
+            
+            <div class="adc-header-tab">
+                <a id="test" class="testClass" href="https://developer.amazon.com/adc/test">
+                    Test
+                </a>
+            </div>
+            <div class="adc-header-tab">
+                <a id="launch" class="launchClass" href="https://developer.amazon.com/adc/launch">
+                    Distribution
+                </a>
+            </div>
+            <div class="adc-header-tab">
+                <a id="certify" class="certifyClass" href="https://developer.amazon.com/adc/certify">
+                    Certification
+                </a>
+            </div>
+            <div class="adc-header-tab">
+                <a id="measure" class="measureClass" href="https://developer.amazon.com/adc/measure">
+                    Analytics
+                </a>
+            </div>
+        </span>
+        <div id="feedback" class="feedback-section-no-bell">
+            <a href="https://developer.amazon.com/alexa/console/ask/displays#" id="give-feedback">
+                Feedback forum
+            </a>
+        </div>
+        
+    </div>
+    <script>
+        
+        UserVoice = window.UserVoice || [];
+        (function() {
+            var uv = document.createElement('script');
+            uv.type = 'text/javascript';
+            uv.async = true;
+            uv.src = '//widget.uservoice.com/BKxDZqeiLRvyj2Ot9kgeA.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(uv, s)
+        })();
+
+        // Set colors
+        UserVoice.push(['set', {
+            accent_color: '#448dd6',
+            trigger_color: 'white',
+            trigger_background_color: 'rgba(46, 49, 51, 0.6)'
+        }]);
+
+        UserVoice.push(['addTrigger', "#give-feedback", {
+            mode: 'post_idea',
+            trigger_position: 'bottom-right'
+        }]);
+
+        // Autoprompt for NPSÂ® Rating and SmartVote (only displayed under certain conditions)
+        UserVoice.push(['autoprompt', {}]);
+        
+
+        
+        document.addEventListener('updateSkillName', function(event) {
+            if (event.skillName) {
+                document.getElementById("skillName").textContent = event.skillName;
+            }
+        });
+
+        
+        var urlTemplates = {
+           buildUrl: '/alexa/console/ask/build/:skillId/:stage/:locale',
+           testUrl: '/alexa/console/ask/test/:skillId/:stage/:locale',
+           launchUrl: '/alexa/console/ask/publish/alexapublishing/:skillId/:stage/:locale/skill-info',
+           measureUrl: '/alexa/console/ask/measure/:skillId/:stage/:locale'
+        };
+
+        
+        document.addEventListener('updateTenantUrls', function(event) {
+            if (event.stage && event.locale && event.skillId) {
+
+                
+                var adcNotificationsEvent = new Event('updateNotificationPaths');
+                adcNotificationsEvent.skillId = event.skillId;
+                adcNotificationsEvent.stage = event.stage;
+                adcNotificationsEvent.locale = event.locale;
+                document.dispatchEvent(adcNotificationsEvent);
+
+                var buildUrl = urlTemplates.buildUrl.replace(':stage', event.stage)
+                            .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                var testUrl = urlTemplates.testUrl.replace(':stage', event.stage)
+                            .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                var launchUrl = urlTemplates.launchUrl.replace(':stage', event.stage)
+                            .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                var measureUrl = urlTemplates.measureUrl.replace(':stage', event.stage)
+                            .replace(':locale', event.locale).replace(':skillId', event.skillId);
+
+                
+                document.getElementById("build").href = buildUrl;
+                document.getElementById("test").href = testUrl;
+                document.getElementById("launch").href = launchUrl;
+                document.getElementById("measure").href = measureUrl;
+
+                
+                if(document.getElementById("certify")) {
+                    urlTemplates.certifyUrl = "/alexa/console/ask/certify/:skillId/:stage/:locale/validation";
+                    var certifyUrl =  urlTemplates.certifyUrl.replace(':stage', event.stage)
+                                .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                    document.getElementById("certify").href = certifyUrl;
+                }
+
+                if(document.getElementById("code-editor")) {
+                    urlTemplates.codeEditorUrl = "/alexa/console/ask/editor/:skillId/:stage/:locale";
+                    var codeEditorUrl =  urlTemplates.codeEditorUrl.replace(':stage', event.stage)
+                                .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                    document.getElementById("code-editor").href = codeEditorUrl;
+                }
+
+                
+                document.getElementById("tabs").removeAttribute("hidden");
+                document.getElementById("adc-header-overview").removeAttribute("hidden");
+
+                var bellItem = document.getElementById("bell");
+                if (bellItem) {
+                    bellItem.removeAttribute("hidden");
+                    document.getElementById("feedback").className = 'feedback-section-bell';
+                }
+            }
+        });
+
+        
+        document.addEventListener('hideTenantUrls', function(event) {
+            document.getElementById("tabs").setAttribute("hidden", true);
+            document.getElementById("adc-header-overview").setAttribute("hidden", true);
+
+            var bellItem = document.getElementById("bell");
+            if (bellItem) {
+                bellItem.setAttribute("hidden", true);
+                document.getElementById("feedback").className = 'feedback-section-no-bell';
+            }
+        });
+
+        
+        document.addEventListener('setTabActive', function(event) {
+            document.getElementById(event.tab).classList.add('activeTabClass');
+        });
+
+    </script>
+    
+
+<style>.adc-notifications-toaster-container {
+    position: fixed;
+    bottom: 20px;
+    right: 5px;
+    z-index: 9999999;
+}
+
+.adc-notifications-toast {
+    transition: all 2s ease-in;
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.adc-notifications-toast--info {
+    background-color: #f2fcff;
+}
+
+.adc-notifications-toast--warn {
+    background-color: #fff5e7;
+}
+
+.adc-notifications-toast--success {
+    background-color: #ecf9f0;
+}
+
+.adc-notifications-toast--error {
+    background-color: #fcf8f7;
+}
+
+.adc-notifications-toast-icon-container {
+    margin: 1.5rem;
+}
+
+.adc-notifications-toast-dismiss-container {
+    margin: 1.5rem 1.5rem 0 0;
+    float: right;
+}
+
+.adc-notifications-toast-icon {
+    display: inline-flex;
+    flex: 0 0 3rem;
+    justify-content: center;
+    align-items: center;
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+
+    svg {
+        fill: white;
+        vertical-align: middle;
+    }
+}
+
+.adc-notifications-toast-icon--info {
+  background-color: #00B0E6;
+}
+
+.adc-notifications-toast-icon--success {
+  background-color: #008577;
+}
+
+.adc-notifications-toast-icon--error {
+  background-color: #cc1a3d;
+}
+
+.adc-notifications-clickable-link {
+    cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.adc-notifications-toast-text-container {
+    width: 35rem;
+}
+.adc-notifications-toast-text {
+    padding: 1rem;
+    font-size: 13px;
+    font-family: 'Amazon Ember Regular', 'Helvetica Neue', Arial, Helvetica, Roboto, sans-serif;
+    text-decoration: none;
+    justify-content: center;
+    vertical-align: middle;
+    color: #373e3e;
+}
+
+p.adc-p {
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
+    overflow: hidden;
+    position: relative;
+    line-height: 1.4em;
+    max-height: 160px;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+    text-align: left;
+}
+
+h5.adc-h5 {
+    margin-bottom: 0.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.adc-notifications-timestamp {
+    float: right;
+    font-style: italic;
+}
+</style>
+<div id="toaster-container" class="adc-notifications-toaster-container"></div>
+<script>
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    const portalSupportedLocale = ['en_US', 'ja_JP'].includes('en_US');
+    let failureCount = 0;
+    const maxFailureCount = 3;
+    const maxNotificationCount = 3;
+    const defaultDismissalTimeout = 7000;
+    const endpoint = '/alexa/console/ask/adc/notifications/ajax/notifications';
+    let toBeDisplayedToasts = [];
+    let backlogToasts = [];
+
+    fetchToasts();
+    let intervalId = setInterval(fetchToasts, 10000);
+
+    function fetchToasts() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', endpoint);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Accept', 'application/json, text/plain, */*');
+        xhr.setRequestHeader('credentials', 'same-origin');
+
+        xhr.timeout = 2000;
+        xhr.send();
+        xhr.onloadend = () => {
+            if (xhr.status === 200) {
+                handleNotificationsResponse(xhr.responseText);
+            } else {
+                failureCount === maxFailureCount ? clearInterval(intervalId) : failureCount = failureCount + 1;
+            }
+        };
+        xhr.onerror = () => {
+            // do nothing
+        };
+        xhr.ontimeout = () => {
+            // do nothing
+        };
+    }
+
+    function handleNotificationsResponse(notificationResponse) {
+        let fetchedNotifications;
+
+        try {
+            fetchedNotifications = JSON.parse(notificationResponse);
+        } catch(e) {
+            fetchedNotifications = [];
+        }
+
+        const notificationsValidation =
+            fetchedNotifications &&
+            fetchedNotifications.every((n) =>
+            n.hasOwnProperty('id') && n.hasOwnProperty('toastRead')
+            && n.hasOwnProperty('vendorId')
+            && n.hasOwnProperty('skillId')
+            && n.hasOwnProperty('tenant')
+            && n.hasOwnProperty('toastMessage')
+            && n.hasOwnProperty('toastSeverity'));
+
+        if (notificationsValidation) {
+            fetchedNotifications = fetchedNotifications.filter(n => n.id !== null)
+                .filter(n => n.vendorId !== null)
+                .filter(n => n.skillId !== null)
+                .filter(n => n.toastMessage !== null)
+                .filter(n => n.tenant !== null)
+                .filter(n => ['INFO', 'WARN', 'SUCCESS', 'ERROR'].includes(n.toastSeverity));
+            const unreadToasts = fetchedNotifications.filter(n => !n['toastRead']);
+
+            fireBellAndAlertsEvents(fetchedNotifications);
+
+            // filter the already displayed toasts and remove any toast that already has read flag true
+            const unreadToastIds = unreadToasts.map(n => n.id);
+
+            toBeDisplayedToasts = toBeDisplayedToasts.filter(n => {
+              const condition = unreadToastIds.includes(n.id) || n.synchronousToast;
+              if (!condition && document.getElementById(n.id) && !n.synchronousToast) {
+                document.getElementById(n.id).remove();
+              }
+              return condition;
+            });
+            backlogToasts = backlogToasts.filter(n => (unreadToastIds.includes(n.id) || n.synchronousToast));
+            const displayedIds = toBeDisplayedToasts.map(x => x.id);
+            const backlogIds = backlogToasts.map(x => x.id);
+            const filteredToasts = unreadToasts.filter(n => !displayedIds.includes(n.id) && !backlogIds.includes(n.id));
+
+            const newCount = maxNotificationCount - toBeDisplayedToasts.length;
+            toBeDisplayedToasts = toBeDisplayedToasts.concat(filteredToasts.slice(0, newCount));
+            backlogToasts = backlogToasts.concat(filteredToasts.filter(n => !toBeDisplayedToasts.includes(n)));
+
+            displayToasts();
+        }
+    }
+
+    function fireBellAndAlertsEvents(fetchedNotifications) {
+        const notificationEvent = new Event('updateSkillNotifications');
+        notificationEvent.notifications = fetchedNotifications;
+        document.dispatchEvent(notificationEvent);
+
+        const buildErrorsEvent = new Event('updateAdcBuildErrorsCounter');
+        const buildList = fetchedNotifications.filter(n => n.tenant === 'SKILL_BUILDER');
+        buildErrorsEvent.notifications = buildList;
+        document.dispatchEvent(buildErrorsEvent);
+
+        const otherNotificationsEvent = new Event('updateAdcOtherNotificationsCounter');
+        const otherList = fetchedNotifications.filter(n => n.tenant !== 'SKILL_BUILDER');
+        otherNotificationsEvent.notifications = otherList;
+        document.dispatchEvent(otherNotificationsEvent);
+    }
+
+    function displayToasts() {
+        toBeDisplayedToasts = toBeDisplayedToasts.map(toast => {
+            if (!toast.displayed) {
+                renderToast(toast);
+                toast['displayed'] = true;
+            }
+            return toast;
+        });
+    }
+
+    function renderToast(toast) {
+        const root = document.getElementById('toaster-container');
+        const severity = toast.toastSeverity.toLowerCase();
+        const svg = getSvgFromSeverity(severity);
+        const dismissSvg = '<a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M7.77817459,6.36396103 L1.41421356,0 L0,1.41421356 L6.36396103,7.77817459 L5.68434189e-14,14.1421356 L1.41421356,15.5563492 L7.77817459,9.19238816 L14.1421356,15.5563492 L15.5563492,14.1421356 L9.19238816,7.77817459 L15.5563492,1.41421356 L14.1421356,0 L7.77817459,6.36396103 Z" transform="translate(4 4)"/></svg></a>';
+
+        const newDiv = constructElement('div', 'adc-notifications-toast adc-notifications-toast--'.concat(severity));
+        newDiv.id = toast.id;
+        const iconDiv = constructElement('div', 'adc-notifications-toast-icon-container');
+        const icon = constructElement('i', 'adc-notifications-toast-icon adc-notifications-toast-icon--'.concat(severity), svg);
+
+        const dismissDiv = constructElement('div', 'adc-notifications-toast-dismiss-container');
+        const dismissIcon = constructElement('i', 'adc-notifications-clickable-link', dismissSvg);
+        dismissIcon.onclick = function () { dismissNotification(toast); };
+
+        const textContainer = constructElement('div', 'adc-notifications-toast-text-container');
+        const textBody = constructElement('div', 'adc-notifications-toast-text');
+
+        // temporarily for build
+        let header;
+        let body;
+        if (toast.toastSeverity === 'SUCCESS' && toast.toastHeader.includes('[lmsKey]') && portalSupportedLocale) {
+            header = 'Build Successful';
+            body = 'If you make any new changes, you will need to rebuild your model for them to take effect.';
+        } else if (toast.toastSeverity === 'ERROR' && toast.toastHeader.includes('[lmsKey]') && portalSupportedLocale) {
+            header = 'Build Failed';
+            body = 'The model build has failed with an unspecified error. This could be from an invalid model or we could be experiencing intermittent issues. Please try again.';
+        } else {
+            header = toast.toastHeader.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            body = toast.toastMessage.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
+
+        const title = constructElement('h5', 'adc-h5', header);
+
+        let timestampCode = 'en-US';
+        if ('en_US') {
+            timestampCode = 'en_US'.replace('_', '-');
+        }
+
+        const timestamp = new Date(toast.timestamp).toLocaleDateString(timestampCode, dateOptions);
+        const timestampComponent = constructElement('em', '', timestamp);
+        const timestampContainer = constructElement('div', 'adc-notifications-timestamp');
+        timestampContainer.appendChild(timestampComponent);
+
+        const p = constructElement('p', 'adc-p', body);
+
+        textBody.appendChild(title);
+        textBody.appendChild(p);
+
+        if (toast.toastLinkTitle && toast.toastLink && toast.toastLink !== window.location.pathname) {
+            // temporarily for build
+            let link;
+            if (toast.toastLinkTitle.includes('[lmsKey]') && portalSupportedLocale) {
+                link = 'Go to build';
+            } else {
+                link = toast.toastLinkTitle;
+            }
+
+            const action = constructElement('a', 'adc-notifications-clickable-link', link);
+            action.href = toast.toastLink;
+            if (toast.toastLink.startsWith("http")) {
+                action.target = "_blank";
+            }
+            action.onclick = function () {
+                const tempDisplayToasts = toBeDisplayedToasts;
+                toBeDisplayedToasts = [];
+                tempDisplayToasts.forEach((toast) => dismissNotification(toast));
+            };
+
+            const actionContainer = constructElement('div', 'adc-notifications-link');
+            actionContainer.appendChild(action);
+            textBody.appendChild(actionContainer);
+        }
+
+        textBody.appendChild(timestampContainer);
+
+        iconDiv.appendChild(icon);
+        dismissDiv.appendChild(dismissIcon);
+
+        newDiv.appendChild(iconDiv);
+        textContainer.appendChild(textBody);
+        newDiv.appendChild(textContainer);
+        newDiv.appendChild(dismissDiv);
+
+        root.insertBefore(newDiv, root.firstChild);
+
+        const dismissalTimeout = toast.toastDismissalTimeout ? toast.toastDismissalTimeout : defaultDismissalTimeout;
+
+        setTimeout(function(){ dismissNotification(toast); }, dismissalTimeout);
+    }
+
+    function getSvgFromSeverity(severity) {
+        if (severity === 'success') {
+            return '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: white;" viewBox="0 0 24 24"><polygon points="4.768 9 12 2.015 10 0 4.768 5.046 2.021 2.268 0 4.262" transform="translate(6 7)"/></svg>';
+        } else if (severity === 'warn') {
+            return '<svg display="block" xmlns="http://www.w3.org/2000/svg" class="stencilSvgIcon css-x3jdo3" width="60" height="60" role="img" viewBox="0 0 16 16"><path fill-rule="evenodd" fill="#fea903" d="M8.8891,8.9155 C8.8891,9.4685 8.4421,9.9155 7.8891,9.9155 C7.3361,9.9155 6.8891,9.4685 6.8891,8.9155 L6.8891,4.9155 C6.8891,4.3625 7.3361,3.9155 7.8891,3.9155 C8.4421,3.9155 8.8891,4.3625 8.8891,4.9155 L8.8891,8.9155 Z M8.5991,13.6255 C8.4981,13.7155 8.3891,13.7855 8.2691,13.8355 C8.1491,13.8855 8.0191,13.9155 7.8891,13.9155 C7.6181,13.9155 7.3681,13.8145 7.1791,13.6255 C6.9891,13.4355 6.8891,13.1855 6.8891,12.9155 C6.8891,12.6555 6.9981,12.3945 7.1791,12.2055 C7.4091,11.9755 7.7591,11.8755 8.0891,11.9355 C8.1491,11.9455 8.2081,11.9655 8.2691,11.9955 C8.3281,12.0155 8.3891,12.0455 8.4491,12.0855 C8.4981,12.1155 8.5491,12.1655 8.5991,12.2055 C8.6891,12.2955 8.7591,12.4055 8.8091,12.5355 C8.8591,12.6555 8.8891,12.7855 8.8891,12.9155 C8.8891,13.1855 8.7881,13.4355 8.5991,13.6255 Z M15.6731,14.0605 L8.6731,0.9355 C8.3651,0.3545 7.4131,0.3545 7.1051,0.9355 L0.1051,14.0605 C-0.0429,14.3355 -0.0339,14.6675 0.1261,14.9355 C0.2871,15.2025 0.5761,15.3665 0.8891,15.3665 L14.8891,15.3665 C15.2011,15.3665 15.4911,15.2025 15.6521,14.9355 C15.8121,14.6675 15.8211,14.3355 15.6731,14.0605 Z"></path></svg>';
+        } else {
+            return '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: white;" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10.5,4 L13.5,4 L13.5,13.2857143 L10.5,13.2857143 L10.5,4 Z M12,19 C11.1715729,19 10.5,18.3071074 10.5,17.452381 C10.5,16.5976546 11.1715729,15.9047619 12,15.9047619 C12.8284271,15.9047619 13.5,16.5976546 13.5,17.452381 C13.5,18.3071074 12.8284271,19 12,19 Z"/></svg>';
+        }
+    }
+
+    function constructElement(name, className, innerHTML) {
+      const element = document.createElement(name);
+      element.className = className;
+      if (innerHTML) {
+        element.innerHTML = innerHTML;
+      }
+
+      return element;
+    }
+
+    function dismissNotification(toast) {
+        const xhr = new XMLHttpRequest();
+
+        if (!toast.synchronousToast) {
+            xhr.open('POST', endpoint.concat('/update'));
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json, text/plain, */*');
+            xhr.setRequestHeader('credentials', 'same-origin');
+            toast['displayed'] = undefined;
+            toast['toastRead'] = true;
+            xhr.send(JSON.stringify(toast));
+        }
+
+        const elementToRemove = document.getElementById(toast.id);
+        if (elementToRemove) {
+            elementToRemove.remove();
+        }
+
+        const index = toBeDisplayedToasts.indexOf(toast);
+        if (index > -1) {
+            toBeDisplayedToasts.splice(index, 1);
+
+            if (backlogToasts && backlogToasts.length) {
+                toBeDisplayedToasts.push(backlogToasts.shift());
+                displayToasts();
+            }
+        }
+    }
+
+    document.addEventListener('clearNotificationsPolling', function() {
+        clearInterval(intervalId);
+    });
+
+    document.addEventListener('restartNotificationsPolling', function() {
+        intervalId = setInterval(fetchToasts, 10000);
+    });
+
+    document.addEventListener('postSynchronousNotification', function(event) {
+        const notification = event.notification;
+        if (notification && notification.toastHeader && notification.toastMessage
+            && ['INFO', 'WARN', 'SUCCESS', 'ERROR'].includes(notification.toastSeverity)) {
+            const newCount = maxNotificationCount - toBeDisplayedToasts.length;
+            notification.synchronousToast = true;
+            notification.id = Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+            notification.timestamp = Date.now();
+
+            if (notification.toastDismissalTimeout == 0) {
+                notification.toastDismissalTimeout = 2147483647;
+            } else if (!notification.toastDismissalTimeout) {
+                notification.toastDismissalTimeout = defaultDismissalTimeout;
+            }
+
+            if (newCount > 0) {
+                toBeDisplayedToasts = toBeDisplayedToasts.concat(notification);
+            } else {
+                backlogToasts = backlogToasts.concat(notification);
+            }
+
+            displayToasts();
+        }
+    });
+
+</script>
+
+</div>
+
+<div id="app"><div data-reactroot="" class="askaa"><div class="notifications-wrapper"></div><header class="askaa__header"><span class="askaa__header-msg"><span>Multimodal Displays</span></span><a class="askaa__header-url" href="https://developer.amazon.com/docs/alexa-design/intro.html" target="_blank"><span>Visit Alexa Design Guide</span></a></header><div class="askaa__container"><div class="reflex-layout reflex-container horizontal askaa__section-container"><div class="reflex-element " style="-webkit-box-flex: 0.499142; flex: 0.499142 1 0%;"><div style="height: 100%; width: 100%;"><section class="askaa__section askaa__section--top"><div class="askaa__control-container"><p><a data-qa-hook="apml-authoring-templates-choose-another-button" class="askaa__choose-template"><i class="astro-icon icon-chevron-left"><svg height="24" width="24" viewBox="0 0 24 24"><polygon points="2.478 4.431 4 3 5.527 4.429 11 9.569 9.477 10.999 4.002 5.86 -1.477 11 -3 9.57" transform="matrix(0 1 1 0 5 8)"></polygon></svg></i><!-- react-text: 1185 --> <!-- /react-text --><span>Choose another sample.</span></a></p><div data-qa-hook="apml-authoring-device-dropdown" class="askaa__device-selector"><div class="Select astro__select Select--single has-value"><div class="Select-control"><span class="Select-multi-value-wrapper" id="react-select-8--value"><div class="Select-value"><span class="Select-value-label" role="option" aria-selected="true" id="react-select-8--value-item">Medium Hub</span></div><div role="combobox" aria-expanded="false" aria-owns="react-select-8--value" aria-activedescendant="react-select-8--value" class="Select-input" tabindex="0" aria-readonly="false" style="border: 0px; width: 1px; display: inline-block;"></div></span><span class="Select-arrow-zone"><span class="Select-arrow"></span></span></div></div></div><button class="astro__button askaa-export-button astro__button--primary" data-qa-hook="apml-authoring-template-export-button" type="button"><span>Export Code</span></button></div><div class="askaa-renderer"><div class="askaa-renderer__wrapper" style="overflow: hidden;"><div data-qa-hook="apml-authoring-device-renderer" id="apml-renderer" style="border-radius: 0px; background: black; height: 600px; width: 1024px; transform: scale(0.336667); overflow: hidden;"><div style="box-sizing: border-box;opacity: 1;height: 600px;width: 1024px;min-width: 0px;max-width: none;min-height: 0px;max-height: none;padding-left: 0px;padding-right: 0px;padding-top: 0px;padding-bottom: 0px;margin-top: 0;margin-bottom: 0;margin-left: 0;margin-right: 0;position: relative;left: 0px;right: 0px;top: 0px;bottom: 0px;align-self: auto;flex: 0 0 auto;display: flex;align-items: stretch;flex-direction: column;justify-content: flex-start;overflow: hidden;background-clip: padding-box;" class="rendering-container"><div style="box-sizing: border-box; opacity: 1; height: auto; width: auto; min-width: 0px; max-width: none; min-height: 0px; max-height: none; padding: 0px; margin: 0px; position: relative; left: 0px; right: 0px; top: 0px; bottom: 0px; align-self: auto; flex: 0 0 auto; display: flex; flex-direction: column; align-items: stretch;"><p class="text" style="font-size: 40px;font-weight: normal;text-align: auto;font-family: amazon-ember-display;font-style: normal;color: #FAFAFA;overflow: hidden;overflow-wrap: break-word;margin: 0;white-space: pre-wrap;opacity: 1;letter-spacing: 0px;line-height: 1.25;"><data>Blue</data></p></div></div></div></div><p class="askaa-renderer__msg askaa-renderer__msg--warning"><span>Simulations may render differently on physical devices.</span></p></div></section></div></div><div class="reflex-splitter with-handle"></div><div class="reflex-element " style="-webkit-box-flex: 0.499034; flex: 0.499034 1 0%;"><div style="height: 100%; width: 100%;"><section class="askaa__section askaa__section--bottom"><div class="askaa__editor-wrapper"><div class="askaa__control-container"><div class="askaa__editor-selector"><fieldset class="inline astro-form-group astro-radio-form-group"><div class="astro-form-group-fields"><label for="astro-radio-7" data-qa-hook="apml-authoring-apml-editor-tab" value="on" class="is-checked astro-tab"><input type="radio" name="editorType" id="astro-radio-7" value="on" class="astro-sr-only" aria-labelledby="astro-radio-7-label" aria-required="false" aria-disabled="false" aria-checked="true" aria-describedby="astro-radio-7-description"><i class="astro-tab-icon"></i><div class="astro-tab-label"><div id="astro-radio-7-label" class="astro-tab-title">Image Display Sample</div></div></label><label for="astro-radio-8" data-qa-hook="apml-authoring-data-editor-tab" value="on" class="astro-tab"><input type="radio" name="editorType" id="astro-radio-8" value="on" class="astro-sr-only" aria-labelledby="astro-radio-8-label" aria-required="false" aria-disabled="false" aria-checked="false" aria-describedby="astro-radio-8-description"><i class="astro-tab-icon"></i><div class="astro-tab-label"><div id="astro-radio-8-label" class="astro-tab-title">Data JSON</div></div></label></div></fieldset></div><label for="astro-toggle-6" class="astro-toggle"><input type="checkbox" id="astro-toggle-6" class="astro-toggle-input" aria-labelledby="astro-toggle-6-label" aria-disabled="false" aria-checked="false" aria-describedby="astro-toggle-6-description" value="on"><i class="astro-toggle-icon"></i><div class="astro-toggle-label"><div id="astro-toggle-6-label" class="astro-toggle-title">GUI</div></div></label><div class="askaa__device-push"><div class="askaa__device-push-selector"><div class="Select astro__select Select--single"><div class="Select-control"><span class="Select-multi-value-wrapper" id="react-select-9--value"><div class="Select-placeholder">Select an option</div><div role="combobox" aria-expanded="false" aria-owns="react-select-9--value" aria-activedescendant="react-select-9--value" class="Select-input" tabindex="0" aria-readonly="false" style="border: 0px; width: 1px; display: inline-block;"></div></span><span class="Select-arrow-zone"><span class="Select-arrow"></span></span></div></div><button disabled="" class="astro__button astro__button--primary" type="button"><span>Preview on Device</span></button></div></div></div><div data-qa-hook="apml-authoring-json-editor" class="askaa__editor"><div id="brace-editor" class=" ace_editor ace-chrome ace_focus" draggable="false" style="width: 100%; height: auto;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; height: 16px; width: 7.20125px; left: 0px; top: 0px;"></textarea><div class="ace_gutter" aria-hidden="true"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 0px; height: 247px; width: 55px;"><div class="ace_gutter-cell " style="height: 16px;">123<span class="ace_fold-widget ace_start ace_open" style="height: 16px;"></span></div><div class="ace_gutter-cell " style="height: 16px;">124</div><div class="ace_gutter-cell " style="height: 16px;">125</div><div class="ace_gutter-cell " style="height: 16px;">126</div><div class="ace_gutter-cell " style="height: 16px;">127<span class="ace_fold-widget ace_start ace_open" style="height: 16px;"></span></div><div class="ace_gutter-cell " style="height: 16px;">128<span class="ace_fold-widget ace_start ace_open" style="height: 16px;"></span></div><div class="ace_gutter-cell " style="height: 16px;">129</div><div class="ace_gutter-cell " style="height: 16px;">130</div><div class="ace_gutter-cell " style="height: 16px;">131</div><div class="ace_gutter-cell " style="height: 16px;">132</div><div class="ace_gutter-cell " style="height: 16px;">133</div><div class="ace_gutter-cell " style="height: 16px;">134</div><div class="ace_gutter-cell " style="height: 16px;">135</div><div class="ace_gutter-cell " style="height: 16px;">136</div><div class="ace_gutter-cell " style="height: 16px;">137</div></div><div class="ace_gutter-active-line" style="top: 224px; height: 16px;"></div></div><div class="ace_scroller" style="left: 55px; right: 0px; bottom: 0px;"><div class="ace_content" style="margin-top: 0px; width: 1224px; height: 247px; margin-left: 0px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580.1px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_selection ace_br1 ace_start" style="height:16px;right:0;top:0px;left:4px;"></div><div class="ace_selection ace_br12" style="height:16px;width:36.00625px;top:224px;left:4px;"></div><div class="ace_selection" style="height:208px;right:0;top:16px;left:4px;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_paren ace_lparen">{</span></div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>   <span class="ace_variable">"type"</span>: <span class="ace_string">"Container"</span>,</div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>   <span class="ace_variable">"height"</span>: <span class="ace_string">"100vh"</span>,</div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_variable">"width" </span>: <span class="ace_string">"100vw"</span>,</div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_variable">"items"</span>:<span class="ace_paren ace_lparen">[</span></div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_paren ace_lparen">{</span></div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_variable">"type"</span>: <span class="ace_string">"Text"</span>,</div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_variable">"text"</span>:<span class="ace_string">"Blue"</span></div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_paren ace_rparen">}</span></div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_paren ace_rparen">]</span></div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>  </div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_paren ace_rparen">}</span></div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_paren ace_rparen">]</span></div><div class="ace_line" style="height:16px"><span class="ace_indent-guide">    </span>    <span class="ace_paren ace_rparen">}</span></div><div class="ace_line" style="height:16px">    <span class="ace_paren ace_rparen">}</span></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer"><div class="ace_cursor" style="left: 40.0063px; top: 224px; width: 7.20125px; height: 16px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 20px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 20px; height: 400px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px; left: 55px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 20px; width: 1224px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div><div class="ace_tooltip" style="display: none; left: 25px; top: 563px;">Expected ',' instead of ';'</div></div><!-- react-text: 1527 -->}<!-- /react-text --></div></div></section></div></div><div class="reflex-splitter "></div><div class="reflex-element " style="-webkit-box-flex: 0.00182388; flex: 0.00182388 1 0%;"><div style="height: 100%; width: 100%;"><div class="askaa-drawer hidden"><div class="askaa-drawer__toggle"><div class="askaa-drawer__title"></div><div class="askaa-drawer__toolbox"><i class="small astro-icon icon-chevron-up"><svg height="24" width="24" viewBox="0 0 24 24"><polygon points="5.478 1.431 7 0 8.527 1.429 14 6.569 12.477 7.999 7.002 2.86 1.523 8 0 6.57" transform="matrix(-1 0 0 1 19 8)"></polygon></svg></i></div></div></div></div></div></div><div></div></div><footer></footer></div></div>
+
+      <script type="text/javascript" src="./Alexa Developer Console - Multimodal Displays_files/runtime.1af0dd186886e43f6ed9.js"></script>
+
+      <script type="text/javascript" src="./Alexa Developer Console - Multimodal Displays_files/vendor.a88c0b5d44ddf29d02e0.js"></script>
+
+      <script type="text/javascript" src="./Alexa Developer Console - Multimodal Displays_files/main.7a8e754591577aecde8c.js"></script>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            
+            
+        
+
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+    
+    
+
+
+<footer class="dante-footer">
+    <div class="container-fluid p-0">
+        <div class="d-flex flex-row align-items-start dante-footer-row">
+            <div class="flex-column">
+                <div id="localizationSelector" class="dropup">
+                    <a id="localizationSelectorLink" class="dropdown-toggle" href="https://developer.amazon.com/alexa/console/ask/displays#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="localizationIcon align-middle"></i>
+                        <span class="align-middle">
+                            English
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu localizerSelectorMenu" aria-labelledby="localizationSelectorLink">
+                        
+                            <li class="w-100">
+                                <a class="w-100" href="https://developer.amazon.com/alexa/console/ask/displays#" onclick="updateLocale(&quot;ja_JP&quot;)">
+                                    <span class="ml-3">Japanese (日本語)</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="flex-column ml-auto">
+                <div class="d-flex flex-row ml-auto flex-wrap pb-1 align-middle justify-content-end">
+                    <div class="flex-column">
+                        <span class="dante-copyright-tag">© 2010 - 2018, Amazon.com, Inc. or its affiliates. All Rights Reserved.</span>
+                    </div>
+                    <div class="flex-column flex-wrap pl-3 pr-0 pb-1 d-none d-lg-inline">
+                        <div class="footer-links">
+                            
+
+
+
+
+
+
+
+
+
+    
+        
+    
+    
+
+
+<a href="https://developer.amazon.com/terms-and-agreements" target="_blank">
+    Terms
+</a>
+<a href="https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html" target="_blank">
+    Docs
+</a>
+<a href="https://forums.developer.amazon.com/spaces/23/index.html" target="_blank">
+    Forums
+</a>
+<a href="https://developer.amazon.com/blogs/alexa" target="_blank">
+    Blog
+</a>
+<a href="https://developer.amazon.com/alexa" target="_blank">
+    Alexa Developer Home
+</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row dante-footer-row d-inline d-lg-none pb-2">
+            <div class="footer-links d-flex justify-content-end">
+                
+
+
+
+
+
+
+
+
+
+    
+        
+    
+    
+
+
+<a href="https://developer.amazon.com/terms-and-agreements" target="_blank">
+    Terms
+</a>
+<a href="https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html" target="_blank">
+    Docs
+</a>
+<a href="https://forums.developer.amazon.com/spaces/23/index.html" target="_blank">
+    Forums
+</a>
+<a href="https://developer.amazon.com/blogs/alexa" target="_blank">
+    Blog
+</a>
+<a href="https://developer.amazon.com/alexa" target="_blank">
+    Alexa Developer Home
+</a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- TODO: switch to own JQuery after setup -->
+<script src="./Alexa Developer Console - Multimodal Displays_files/jquery-3.3.1.min._CB1518646291_.js"></script>
+<script src="./Alexa Developer Console - Multimodal Displays_files/bootstrap.bundle._CB476904092_.js"></script>
+<script src="./Alexa Developer Console - Multimodal Displays_files/app.js"></script>
+
+
+<div id="speechnotesx_mirror_container" ssmovebehindz=" "><div id="speechnotesx_mirror"></div></div><script src="./Alexa Developer Console - Multimodal Displays_files/1b930969accdaa22e2(1).js" id="targetScroller"></script></body></html>

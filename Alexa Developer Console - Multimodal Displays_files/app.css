@@ -1,0 +1,671 @@
+/*!
+ * Bootstrap v4.0.0 (https://getbootstrap.com)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+.alert.dpc-alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: block;
+}
+.alert.dpc-alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.alert.dpc-alert .alert-link {
+  font-weight: bold;
+}
+.alert.dpc-alert > p,
+.alert.dpc-alert > ul {
+  margin-bottom: 0;
+}
+.alert.dpc-alert > p + p {
+  margin-top: 5px;
+}
+
+.alert-dismissible.dpc-alert-dismissible {
+  padding-right: 35px;
+}
+.alert-dismissible.dpc-alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+
+.alert-warning.dpc-alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}
+.alert-warning.dpc-alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+.alert-warning.dpc-alert-warning .alert-link {
+  color: #66512c;
+}
+
+footer.dante-footer {
+  background: #131A23;
+  background-size: cover;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 10000;
+  min-height: 30px;
+  font-weight: 300;
+  font-size: 13px;
+}
+footer.dante-footer .footer-links {
+  width: 100%;
+  align-items: right;
+  float: right;
+}
+footer.dante-footer .footer-links a {
+  color: #fff;
+  padding: 0 5px 0 5px;
+  white-space: nowrap;
+  line-height: 10px;
+  font-size: 13px;
+}
+footer.dante-footer .footer-links a:hover {
+  text-decoration: none;
+}
+footer.dante-footer .dante-footer-row {
+  align-items: center;
+  min-height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+}
+footer.dante-footer .dante-copyright-tag {
+  color: #6c757d;
+}
+footer.dante-footer #localizationSelector {
+  display: inline-block;
+  margin-right: -4px;
+  position: relative;
+  color: #fff;
+  font-size: 14px;
+  min-width: 90px;
+  padding-right: 5px;
+  white-space: nowrap;
+}
+footer.dante-footer #localizationSelector .localizationIcon {
+  background-image: url(https://m.media-amazon.com/images/G/01/mobile-apps/dex/icons/Slim-Footer-Icons.png);
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  background-position: -5px 0;
+  margin-right: 5px;
+}
+footer.dante-footer #localizationSelector .dropdown-menu {
+  padding: 5px 0 10px 0;
+  min-width: 100px;
+  line-height: 21px;
+  bottom: inherit;
+}
+footer.dante-footer #localizationSelector .dropdown-toggle::after {
+  display: none;
+}
+footer.dante-footer #localizationSelector .localizerSelectorMenu {
+  background-color: #32475f;
+  width: 180px;
+  margin: 0;
+  border-radius: 0;
+}
+footer.dante-footer #localizationSelector .localizerSelectorMenu li {
+  background-color: #32475f;
+  padding: 5px 0 5px 0;
+  line-height: 21px;
+}
+footer.dante-footer #localizationSelector .localizerSelectorMenu li:hover {
+  background-color: #152a3a;
+}
+footer.dante-footer #localizationSelector .localizerSelectorMenu a {
+  padding: 0 10px 0 0;
+  line-height: 21px;
+}
+footer.dante-footer #localizationSelector .localizerSelectorMenu a:hover {
+  background-color: #152a3a;
+}
+footer.dante-footer #localizationSelector a {
+  color: #fff;
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+header.dante-header {
+  position: relative;
+  background: #162A38;
+  background-size: cover;
+  padding: 0px 10px 0px 10px;
+  width: 100%;
+  z-index: 10000;
+  height: 40px;
+  font-family: "Amazon Ember Light", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+  color: #ffffff;
+  max-width: 100%;
+  min-width: 415px;
+}
+header.dante-header .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+header.dante-header .row:before {
+  display: block;
+}
+header.dante-header .dpc-logo {
+  display: inline-block;
+  margin-top: 5px;
+  line-height: inherit;
+  white-space: nowrap;
+}
+header.dante-header .dpc-logo img {
+  height: 26px;
+}
+header.dante-header .dpc-console-title {
+  font-size: 18px;
+  color: #F1F2F3;
+  width: 244px;
+  letter-spacing: 1px;
+  margin-top: 3px;
+  text-decoration: none;
+}
+header.dante-header input {
+  color: #000;
+}
+header.dante-header a {
+  font-size: 14px;
+  color: #000;
+}
+header.dante-header .custom-nav-bar {
+  height: 40px;
+  padding: 0;
+}
+header.dante-header .custom-nav-bar.nav-link {
+  padding-top: 3px;
+  padding-bottom: 5px;
+}
+header.dante-header .navbar-nav > .nav-item {
+  margin-top: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+header.dante-header .navbar-nav > .nav-item.nav-item-dpcSearch {
+  padding-left: 8px;
+}
+header.dante-header .dpcHeaderButtonRow {
+  flex-direction: row;
+}
+header.dante-header .dpcHeaderButtonWrapper {
+  height: 40px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+}
+header.dante-header .dpcHeaderButtonWrapper .dpcHeaderButton {
+  color: #FFF;
+  stroke: #FFF;
+  background-color: #31455E;
+  border: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 16px;
+  padding: 6px;
+  line-height: 18px;
+  text-align: center;
+  transition: background-color .4s;
+  will-change: background-color;
+  box-sizing: border-box;
+}
+header.dante-header .dpcHeaderButtonWrapper .dpcHeaderButton:hover {
+  color: #00Caff;
+}
+header.dante-header .dpcHeaderButtonWrapper .dpcHeaderButton.dpcHeaderSearchButton {
+  float: right;
+  transition: width .4s,margin-left .4s,background-color .4s,stroke .4s,border-radius .4s;
+  z-index: 1;
+  position: relative;
+  margin-left: -15px;
+  outline: 0;
+  padding: 5px;
+}
+header.dante-header .dpcHeaderButtonHover {
+  color: #00Caff !important;
+}
+header.dante-header p {
+  font-weight: 300;
+  margin-top: 7px;
+}
+header.dante-header img {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+@media (min-width: 768px) {
+  header.dante-header {
+    padding: 0px 10px 0px 10px;
+  }
+}
+header .dpcSearchIcon {
+  height: 14px;
+  margin-top: 3px;
+}
+header .dpcSearch {
+  margin-left: 19px;
+  min-width: 31px;
+  max-width: 100%;
+  transition: width 0.4s;
+  will-change: width;
+  box-sizing: content-box;
+  margin-top: -16px;
+}
+header .dpcSearch .dpcSearchWrap {
+  overflow: hidden;
+  background-color: white;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 0;
+  padding-left: 0;
+  transition: max-width 0s 0.4s, padding-left 0s 0.4s;
+}
+header .dpcSearch .dpcSearchWrap .dpcSearchField {
+  width: 260px;
+  height: 34px;
+  font-size: 14px;
+  box-shadow: 0 0 0;
+  border: 0;
+  padding-left: 5px;
+  padding-right: 0;
+}
+@media (max-width: 690px) {
+  header .dpcSearch .dpcSearchWrap .dpcSearchField {
+    width: 200px;
+  }
+}
+@media (max-width: 620px) {
+  header .dpcSearch .dpcSearchWrap .dpcSearchField {
+    width: 260px;
+  }
+}
+header .dpcSearch.active {
+  margin: -2px 0 0 0;
+  border: 1px solid #AAB7B8;
+  width: 100%;
+  height: 34px;
+  box-sizing: border-box;
+}
+header .dpcSearch.active .dpcSearchWrap {
+  padding-left: 0;
+  max-width: 100%;
+  transition: max-width 0s, padding-left 0s;
+  height: 32px;
+}
+header .dpcSearch.active .dpcButtonSearch {
+  float: right;
+  width: 34px;
+  background-color: #31455E;
+  stroke: #FFF;
+  margin-left: 0;
+  height: 32px;
+  color: white;
+  padding-top: 5px;
+  border: 0;
+}
+@media screen and (max-width: 992px) {
+  header .dpcSearch {
+    display: inline-block;
+    z-index: -1;
+    margin-left: 0;
+  }
+}
+
+.popover.dpc-header-popover {
+  padding: 0;
+  margin-top: 5px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 15000;
+  left: 0;
+  font-family: "Amazon Ember Regular", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+.popover.dpc-header-popover .arrow {
+  height: 5px;
+  width: 10px;
+  top: -6px;
+}
+.popover.dpc-header-popover .arrow::before, .popover.dpc-header-popover .arrow::after {
+  border-width: 0 0.5rem 0.5rem 0.5rem;
+}
+.popover.dpc-header-popover .popover-body {
+  padding: 0;
+}
+.popover.dpc-header-popover .popover-body a {
+  display: inline-flex;
+}
+
+.popover.dpc-header-popover .header-popover-content {
+  display: block;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: left;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  width: 200px;
+  line-height: 18px;
+}
+.popover.dpc-header-popover .header-popover-content a {
+  text-decoration: none;
+}
+.popover.dpc-header-popover .header-popover-content a:hover {
+  background-color: #e5e5e5;
+}
+.popover.dpc-header-popover .header-popover-content .dropdown-divider {
+  border-color: #131A23;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content {
+  padding: 0;
+  width: 200px;
+  margin: 5px 0 5px 0;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .user-pref-popover-header {
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  padding: 0px 0px;
+  text-align: center;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .user-pref-popover-header small {
+  color: #888;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0px 0px;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu .container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu .container:before {
+  display: inherit;
+  content: none;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu .vendorSelection {
+  width: 100%;
+  margin: 0;
+  padding: 0 5px 0 5px;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu .vendorSelection .vendorSelectionCol {
+  margin: 0;
+  padding: 5px 0 5px 0;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu li {
+  margin-top: 3px;
+  margin-bottom: 4px;
+  line-height: 18px;
+  padding: 3px 5px 3px 5px;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu li:before {
+  display: list-item;
+  content: none;
+}
+.popover.dpc-header-popover .header-popover-content .header-popover-inner-content > .hp-menu .vendor-submenu {
+  top: 80px;
+  width: 200px;
+  left: -200px;
+  z-index: 100;
+}
+.popover.dpc-header-popover .header-popover-content a, .popover.dpc-header-popover .header-popover-content a[href], .popover.dpc-header-popover .header-popover-content a[href]:visited {
+  font-size: 14px;
+  color: #000;
+}
+.popover.dpc-header-popover .header-popover-content a:hover {
+  background-color: #e5e5e5;
+}
+.popover.dpc-header-popover .header-popover-content a:hover li:hover {
+  background-color: #e5e5e5;
+}
+.popover.dpc-header-popover .header-popover-content > .popover-header {
+  font-size: 12px;
+  white-space: normal;
+}
+.popover.dpc-header-popover .header-popover-content .dropdown-toggle::after {
+  display: none;
+}
+.popover.dpc-header-popover .header-popover-content .dropleft {
+  position: relative;
+}
+.popover.dpc-header-popover .header-popover-content .dropleft:hover > .dropdown-menu {
+  display: block;
+  top: 0;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+#search::placeholder {
+  color: #6C7778;
+  font-size: 14px;
+  font-family: "Amazon Ember Light", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.dante-content-wrapper {
+  min-height: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  width: 100%;
+}
+
+.dante-content {
+  background: white;
+  min-height: calc(100vh - 70px);
+  max-width: 100vw;
+}
+
+.dante-container-fluid {
+  width: 100%;
+  height: 100%;
+}
+
+.dante-row {
+  height: 100%;
+}
+
+#tenant-content .skill-list-page {
+  max-width: calc(100VW - 85px);
+  margin: 35px 35px 0px;
+}
+#tenant-content .language-settings-page__table a:not([href]):not([tabindex]) {
+  color: #00Caff;
+  text-decoration: none;
+}
+#tenant-content .language-settings-page__table a:not([href]):not([tabindex]):hover, #tenant-content .language-settings-page__table a:not([href]):not([tabindex]):focus {
+  color: #00Caff;
+  text-decoration: none;
+}
+
+.daterangepicker {
+  font-family: "Amazon Ember Light", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+.daterangepicker th {
+  font-size: 14px;
+}
+.daterangepicker td {
+  font-size: 14px;
+}
+
+.dpc-tenant-test-form {
+  margin: 20px;
+  width: 1000px;
+}
+
+.dpc-tenant-test-form-content {
+  margin-left: 10px;
+}
+.dpc-tenant-test-form-content form {
+  display: block;
+  width: 50%;
+}
+.dpc-tenant-test-form-content form ::placeholder {
+  opacity: 0.35;
+}
+.dpc-tenant-test-form-content .form-group {
+  margin-bottom: 10px;
+}
+.dpc-tenant-test-form-content .form-check {
+  margin-bottom: 10px;
+}
+.dpc-tenant-test-form-content .form-check-input {
+  margin-top: 4px;
+  margin-right: 0;
+}
+.dpc-tenant-test-form-content .col-form-label {
+  padding: 0;
+}
+.dpc-tenant-test-form-content .btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+@font-face {
+  font-family: 'Amazon Ember Light';
+  src: local("Amazon Ember Light"), local("AmazonEmberLight"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_lt-019e0ec3f9b521056e66e31fdcbc8323e5cd1938._V299195751_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_lt-bc9ed0fce860a46f3cb061034280c23400e6e8b6._V299195751_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Light';
+  font-weight: 700;
+  src: local("Amazon Ember Light"), local("AmazonEmberLight-Bold"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-46b91bda68161c14e554a779643ef4957431987b._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-b605252f87b8b3df5ae206596dac0938fc5888bc._V2_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Light';
+  font-style: italic;
+  src: local("Amazon Ember Light"), local("AmazonEmberLight-Italic"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_ltit-96be47a559388a2b219577124589435c09a361fe._V299195751_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_ltit-b561f11b5c8be92ac17f6b713dd9d4b6e2f00c8d._V299195751_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Light';
+  font-style: italic;
+  font-weight: 700;
+  src: local("Amazon Ember Light"), local("AmazonEmberLight-BoldItalic"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_ltit-96be47a559388a2b219577124589435c09a361fe._V299195751_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_ltit-b561f11b5c8be92ac17f6b713dd9d4b6e2f00c8d._V299195751_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Regular';
+  src: local("Amazon Ember Regular"), local("AmazonEmberRegular"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rg-fd81bacb6a659a8c8c95828226b74594ab985060._V299195749_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rg-0acf3bc8b64d470d8888d84741a19533394654c6._V299195749_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Regular';
+  font-weight: 700;
+  src: local("Amazon Ember Regular"), local("AmazonEmberRegular-Bold"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-46b91bda68161c14e554a779643ef4957431987b._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-b605252f87b8b3df5ae206596dac0938fc5888bc._V2_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Regular';
+  font-style: italic;
+  src: local("Amazon Ember Regular"), local("AmazonEmberRegular-Italic"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rgit-af980fe9c64fc17ece72cba4e3e7fdf54babeea6._V299195748_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rgit-4fae4842b3446774d86579b9b024858a848644e8._V299195748_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Regular';
+  font-style: italic;
+  font-weight: 700;
+  src: local("Amazon Ember Regular"), local("AmazonEmberRegular-BoldItalic"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-80ff7aba37dd1ff5a6b90233a19e3a780a96dc2f._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-57598ce426a612be5a1d15eee08252668fca5e7a._V2_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Medium';
+  src: local("Amazon Ember Medium"), local("AmazonEmberMedium"), url("https://m.media-amazon.com/images/G/01/amazonservices/fonts/amazonember_md_base-webfont._V525237381_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/amazonservices/fonts/amazonember_md_base-webfont._V525237386_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Medium';
+  font-weight: 700;
+  src: local("Amazon Ember Medium"), local("AmazonEmberMedium-Bold"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-46b91bda68161c14e554a779643ef4957431987b._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-b605252f87b8b3df5ae206596dac0938fc5888bc._V2_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Medium';
+  font-style: italic;
+  src: local("Amazon Ember Medium"), local("AmazonEmberMedium-Italic"), url("https://m.media-amazon.com/images/G/01/agdm/fonts/amazonember/amazonember_mdit-webfont._V522331917_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/agdm/fonts/amazonember/amazonember_mdit-webfont._V522331917_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Medium';
+  font-style: italic;
+  font-weight: 700;
+  src: local("Amazon Ember Medium"), local("AmazonEmberMedium-BoldItalic"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-80ff7aba37dd1ff5a6b90233a19e3a780a96dc2f._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-57598ce426a612be5a1d15eee08252668fca5e7a._V2_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Heavy';
+  src: local("Amazon Ember Heavy"), local("AmazonEmberHeavy"), url("https://m.media-amazon.com/images/G/01/acs/fonts/amazonember_he-webfont._V278446113_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/acs/fonts/amazonember_he-webfont._V278446115_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Heavy';
+  font-weight: 700;
+  src: local("Amazon Ember Heavy"), local("AmazonEmberHeavy-Bold"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-46b91bda68161c14e554a779643ef4957431987b._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-b605252f87b8b3df5ae206596dac0938fc5888bc._V2_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Heavy';
+  font-style: italic;
+  src: local("Amazon Ember Heavy"), local("AmazonEmberHeavy-Italic"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-80ff7aba37dd1ff5a6b90233a19e3a780a96dc2f._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-57598ce426a612be5a1d15eee08252668fca5e7a._V2_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Heavy';
+  font-style: italic;
+  font-weight: 700;
+  src: local("Amazon Ember Heavy"), local("AmazonEmberHeavy-BoldItalic"), url("https://m.media-amazon.com/images/G/01/agdm/fonts/amazonember/amazonember_heit-webfont._V522331917_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/agdm/fonts/amazonember/amazonember_heit-webfont._V522331917_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Thin';
+  src: local("Amazon Ember Thin"), local("AmazonEmberThin"), url("https://m.media-amazon.com/images/G/01/mobile-apps/devportal2/content/alexa/prize/20160810/fonts/AmazonEmber/amazonember-thin-webfont._V282715032_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/mobile-apps/devportal2/content/alexa/prize/20160810/fonts/AmazonEmber/amazonember-thin-webfont._V282715033_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Thin';
+  font-weight: 700;
+  src: local("Amazon Ember Thin"), local("AmazonEmberThin-Bold"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-46b91bda68161c14e554a779643ef4957431987b._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-b605252f87b8b3df5ae206596dac0938fc5888bc._V2_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Thin';
+  font-style: italic;
+  src: local("Amazon Ember Thin"), local("AmazonEmberThin-Italic"), url("https://m.media-amazon.com/images/G/01/mobile-apps/devportal2/content/alexa/prize/20160810/fonts/AmazonEmber/amazonember-thinit-webfont._V282715033_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/mobile-apps/devportal2/content/alexa/prize/20160810/fonts/AmazonEmber/amazonember-thinit-webfont._V282715032_.woff") format("woff");
+}
+@font-face {
+  font-family: 'Amazon Ember Thin';
+  font-style: italic;
+  font-weight: 700;
+  src: local("Amazon Ember Thin"), local("AmazonEmberThin-BoldItalic"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-80ff7aba37dd1ff5a6b90233a19e3a780a96dc2f._V2_.woff2") format("woff2"), url("https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-57598ce426a612be5a1d15eee08252668fca5e7a._V2_.woff") format("woff");
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+button:focus {
+  outline: none;
+  background: red;
+}
+
+/*# sourceMappingURL=app.css.map */

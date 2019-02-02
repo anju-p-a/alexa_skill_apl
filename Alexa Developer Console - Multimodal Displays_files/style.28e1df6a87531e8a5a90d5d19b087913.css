@@ -1,0 +1,4057 @@
+/*
+  * Container style
+  */
+ .ps {
+   /* custom override. Absolute inside flexbox floats on top */
+   position: relative;
+ 
+   overflow: hidden !important;
+   overflow-anchor: none;
+   -ms-overflow-style: none;
+   touch-action: auto;
+   -ms-touch-action: auto;
+ }
+ 
+ /*
+  * Scrollbar rail styles
+  */
+ .ps__rail-x {
+   display: none;
+   opacity: 0;
+   transition: background-color .2s linear, opacity .2s linear;
+   -webkit-transition: background-color .2s linear, opacity .2s linear;
+   height: 15px;
+ 
+   /* custom override. Aligns scrollbar to bottom */
+   margin-top: auto;
+ 
+   /* there must be 'bottom' or 'top' for ps__rail-x */
+   bottom: 0px;
+   /* please don't change 'position' */
+   position: absolute;
+ }
+ 
+ .ps__rail-y {
+   display: none;
+   opacity: 0;
+   transition: background-color .2s linear, opacity .2s linear;
+   -webkit-transition: background-color .2s linear, opacity .2s linear;
+   width: 15px;
+   /* there must be 'right' or 'left' for ps__rail-y */
+   right: 0;
+ 
+   /* custom override. Aligns scrollbar to the right */
+   margin-left: auto;
+ 
+   /* please don't change 'position' */
+   position: absolute;
+ }
+ 
+ .ps--active-x > .ps__rail-x, .ps--active-y > .ps__rail-y {
+   display: block;
+   background-color: transparent;
+ }
+ 
+ .ps:hover > .ps__rail-x, .ps:hover > .ps__rail-y, .ps--focus > .ps__rail-x, .ps--focus > .ps__rail-y, .ps--scrolling-x > .ps__rail-x, .ps--scrolling-y > .ps__rail-y {
+   opacity: 0.6;
+ }
+ 
+ .ps .ps__rail-x:hover, .ps .ps__rail-y:hover, .ps .ps__rail-x:focus, .ps .ps__rail-y:focus, .ps .ps__rail-x.ps--clicking, .ps .ps__rail-y.ps--clicking {
+   background-color: #eee;
+   opacity: 0.9;
+ }
+ 
+ /*
+  * Scrollbar thumb styles
+  */
+ .ps__thumb-x {
+   background-color: #222;
+   border-radius: 6px;
+   transition: background-color .2s linear, height .2s ease-in-out;
+   -webkit-transition: background-color .2s linear, height .2s ease-in-out;
+   height: 6px;
+   /* there must be 'bottom' for ps__thumb-x */
+   bottom: 2px;
+   /* please don't change 'position' */
+   position: absolute;
+ }
+ 
+ .ps__thumb-y {
+   background-color: #222;
+   border-radius: 6px;
+   transition: background-color .2s linear, width .2s ease-in-out;
+   -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+   width: 6px;
+   /* there must be 'right' for ps__thumb-y */
+   right: 2px;
+   /* please don't change 'position' */
+   position: absolute;
+ }
+ 
+ .ps__rail-x:hover > .ps__thumb-x, .ps__rail-x:focus > .ps__thumb-x, .ps__rail-x.ps--clicking .ps__thumb-x {
+   background-color: #222;
+   height: 11px;
+ }
+ 
+ .ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y {
+   background-color: #222;
+   width: 11px;
+ }
+ 
+ /* MS supports */
+ @supports (-ms-overflow-style: none) {
+   .ps {
+     overflow: auto !important;
+   }
+ }
+ 
+ @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+   .ps {
+     overflow: auto !important;
+   }
+ }/* Functional styling with overrides;
+ * These styles are required for noUiSlider to function.
+ */
+.noUi-target, .noUi-target * {
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-target {
+  position: relative;
+  direction: ltr;
+}
+.noUi-base, .noUi-connects {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+/* Wrapper for all connect elements.
+ */
+.noUi-connects {
+  overflow: hidden;
+  z-index: 0;
+}
+.noUi-connect, .noUi-origin {
+  will-change: transform;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -ms-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+/* Offset direction
+ */
+html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
+  left: auto;
+  right: 0;
+}
+/* Give origins 0 height/width so they don't interfere with clicking the
+ * connect elements.
+ */
+.noUi-vertical .noUi-origin {
+  width: 0;
+}
+.noUi-horizontal .noUi-origin {
+  height: 0;
+}
+.noUi-handle {
+  position: absolute;
+}
+.noUi-state-tap .noUi-connect, .noUi-state-tap .noUi-origin {
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
+}
+.noUi-state-drag * {
+  cursor: inherit !important;
+}
+/* Slider size and handle placement;
+ */
+.noUi-horizontal {
+  height: 2px;
+}
+.noUi-horizontal .noUi-handle {
+  width: 64px;
+  height: 64px;
+  top: -32px;
+}
+
+html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
+  right: -32px;
+  left: auto;
+}
+/* Styling;
+ * Giving the connect element a border radius causes issues with using transform: scale
+ */
+.noUi-target {
+  background: #d9d9d9;
+  border-radius: 3px;
+}
+.noUi-connects {
+  border-radius: 3px;
+}
+.noUi-connect {
+  background: #1172b7;
+}
+/* Handles and cursors;
+ */
+.noUi-draggable {
+  cursor: ew-resize;
+}
+.noUi-vertical .noUi-draggable {
+  cursor: ns-resize;
+}
+.noUi-handle {
+  border-radius: 50%;
+  background: transparent;
+  cursor: default;
+}
+.noUi-active {
+  background: rgba(190, 190, 190, 0.5);
+}
+
+.noUi-handle:focus {
+  outline: none
+}
+
+.noUi-slider-thumb {
+  display: block;
+  position: 'absolute';
+  height: 14px;
+  width: 14px;
+  background: black;
+  border-radius: 50%;
+  left: 26px;
+  top: 26px;
+}
+
+/* Base;
+ *
+ */
+.noUi-pips, .noUi-pips * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-pips {
+  position: absolute;
+  color: #999;
+}
+/* Values;
+ *
+ */
+.noUi-value {
+  position: absolute;
+  white-space: nowrap;
+  text-align: center;
+}
+.noUi-value-sub {
+  color: #ccc;
+  font-size: 10px;
+}
+/* Markings;
+ *
+ */
+.noUi-marker {
+  position: absolute;
+  background: #CCC;
+}
+.noUi-marker-sub {
+  background: #AAA;
+}
+.noUi-marker-large {
+  background: #AAA;
+}
+/* Horizontal layout;
+ *
+ */
+.noUi-pips-horizontal {
+  padding: 10px 0;
+  height: 80px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+.noUi-value-horizontal {
+  -webkit-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
+}
+.noUi-marker-horizontal.noUi-marker {
+  margin-left: -1px;
+  width: 2px;
+  height: 5px;
+}
+.noUi-marker-horizontal.noUi-marker-sub {
+  height: 10px;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+  height: 15px;
+}
+
+.noUi-tooltip {
+  display: block;
+  position: absolute;
+  border: 1px solid #D9D9D9;
+  border-radius: 3px;
+  background: #fff;
+  color: #000;
+  padding: 5px;
+  text-align: center;
+  white-space: nowrap;
+}
+.noUi-horizontal .noUi-tooltip {
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  left: 50%;
+  bottom: 120%;
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Rg.ttf');
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Lt.ttf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Lt.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Lt.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Rg.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Md.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Md.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Bd.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_Bd.ttf');
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/AmazonEmberDisplay_He.ttf');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-LightItalic.ttf');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-LightItalic.ttf');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-LightItalic.ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-RegularItalic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-MediumItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-MediumItalic.ttf');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-BoldItalic.ttf');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-BoldItalic.ttf');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'amazon-ember-display';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Amazon-Ember-BoldItalic.ttf');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Regular.ttf');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Bold.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Italic.ttf');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bookerly';
+    src: url('https://d1gkjrhppbyzyh.cloudfront.net/Bookerly-BoldItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+/* Root spacing measure, treat this as our 'inch'.*/
+/* Default margin and padding.*/
+/* Colors*/
+/* TODO*/
+/* add semantic color variables*/
+/* ----*/
+/* $color-primary: $color-blue;*/
+/* $color-secondary: $color-gray-light;*/
+/* $color-tertiary: transparent;*/
+/* buttons*/
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+/* Font sizes*/
+/* Teeny text, used for tiny labels.*/
+/* Small copy, .askui-small-text, etc.*/
+/* Typical copy, <p> and similar.*/
+/* Large-ish copy, <h6> and similar.*/
+/* Large copy, <h5> and similar.*/
+/* Larger copy, <h4> and similar.*/
+/* The largest copy, <h3> and similar.*/
+/* Huge text, like <h2> and similar.*/
+/* Enormous text, like <h1> an similar.*/
+/* Really big text, for Heroes and the like.*/
+/* Line heights*/
+/* Font Families*/
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa .reflex-layout > .reflex-element {
+
+    z-index: 99;/* ensure z-index above Ace Editor */
+}
+
+.askaa .reflex-layout.vertical > .reflex-splitter {
+
+    border: none;
+
+    background: none;
+
+    height: calc(100% - 1px);
+
+    width: 2px;
+
+    position: relative;
+
+    margin-right: -1px;
+
+    top: 1px;
+
+    margin-left: -1px
+}
+
+.askaa .reflex-layout.vertical > .reflex-splitter.active, .askaa .reflex-layout.vertical > .reflex-splitter:hover {
+
+    border: none;
+
+    background: none
+}
+
+.askaa .reflex-layout.vertical > .reflex-splitter.with-handle::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: calc(50% - 12px);
+
+    right: -2px;
+
+    width: 6px;
+
+    height: 26px;
+
+    border: 1px solid rgba(218,218,218,1);
+
+    background: rgba(242,242,242,1)
+}
+
+.askaa .reflex-layout.vertical > .reflex-splitter.with-handle::after {
+
+    content: '';
+
+    top: calc(50% - 8px);
+
+    border-left: 2px dotted rgba(158, 158, 158, 1);
+
+    position: absolute;
+
+    height: 18px
+}
+
+.askaa .reflex-layout.horizontal > .reflex-splitter {
+
+    border: none;
+
+    background: none;
+
+    height: 1px;
+
+    position: relative;
+
+    margin-top: -1px;
+
+    margin-bottom: -1px
+}
+
+.askaa .reflex-layout.horizontal > .reflex-splitter.active, .askaa .reflex-layout.horizontal > .reflex-splitter:hover {
+
+    border: none;
+
+    background: none
+}
+
+.askaa .reflex-layout.horizontal > .reflex-splitter.with-handle::before {
+
+    content: '';
+
+    position: absolute;
+
+    left: calc(50% - 12px);
+
+    top: -2px;
+
+    height: 6px;
+
+    width: 26px;
+
+    border: 1px solid rgba(218,218,218,1);
+
+    background: rgba(242,242,242,1)
+}
+
+.askaa .reflex-layout.horizontal > .reflex-splitter.with-handle::after {
+
+    content: '';
+
+    left: calc(50% - 8px);
+
+    border-top: 2px dotted rgba(158, 158, 158, 1);
+
+    position: absolute;
+
+    width: 18px
+}
+
+.askaa-gui {
+
+    display: flex;
+
+    flex: 1
+}
+
+.askaa-gui__section {
+
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%
+}
+
+.askaa-gui__section--center {
+
+    border-bottom: 1px solid rgba(218,218,218,1)
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+/* Root spacing measure, treat this as our 'inch'.*/
+/* Default margin and padding.*/
+/* Colors*/
+/* TODO*/
+/* add semantic color variables*/
+/* ----*/
+/* $color-primary: $color-blue;*/
+/* $color-secondary: $color-gray-light;*/
+/* $color-tertiary: transparent;*/
+/* buttons*/
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+/* Font sizes*/
+/* Teeny text, used for tiny labels.*/
+/* Small copy, .askui-small-text, etc.*/
+/* Typical copy, <p> and similar.*/
+/* Large-ish copy, <h6> and similar.*/
+/* Large copy, <h5> and similar.*/
+/* Larger copy, <h4> and similar.*/
+/* The largest copy, <h3> and similar.*/
+/* Huge text, like <h2> and similar.*/
+/* Enormous text, like <h1> an similar.*/
+/* Really big text, for Heroes and the like.*/
+/* Line heights*/
+/* Font Families*/
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa-template-tree .rst__tree .astro-tooltip-wrapper {
+
+    display: block;
+
+    height: 100%;
+}
+
+.askaa-template-tree .ReactVirtualized__Grid__innerScrollContainer {
+
+    margin: .5rem 0 0;
+}
+
+.askaa-template-tree .rst {
+}
+
+.askaa-template-tree .rst__rowContents {
+
+    padding: 0 10px 0 0;
+
+    min-width: 77px;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+.askaa-template-tree .rst__rowLabel {
+
+    flex: 1;
+
+    padding: 0;
+
+    height: 100%;
+}
+
+.askaa-template-tree .rst__rowTitle {
+
+    display: flex;
+
+    height: 100%;
+
+    flex: 1;
+
+    font-weight: normal;
+
+    font-size: 1rem;
+
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif;
+}
+
+.askaa-template-tree .rst__row {
+
+    outline: 1px solid rgba(218,218,218,1);
+}
+
+.askaa-template-tree .rst__row--active {
+
+    outline-width: 2px;
+
+    outline-color: #00C4FF;
+}
+
+.askaa-template-tree .rst__row--active .askaa__node-corner {
+}
+
+.askaa-template-tree .rst__row--active .askaa__node-corner::after {
+
+    border-width: 10px;
+}
+
+.askaa-template-tree .rst__row--warning {
+
+    outline-color: #CC0C39;
+}
+
+.askaa-template-tree .rst__rowWrapper {
+
+    padding: 0 0 .5rem;
+}
+
+.askaa-template-tree .rst__expandButton, .askaa-template-tree .rst__collapseButton {
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    background: none;
+
+    transform: none;
+
+    top: 10% !important;
+}
+
+.askaa-template-tree .rst__moveHandle {
+
+    display: flex;
+
+    background: none;
+
+    align-items: center;
+
+    box-shadow: none;
+
+    border: none;
+
+    width: 20px;
+}
+
+.askaa-template-tree .rst__moveHandle::before {
+
+    content: '';
+
+    display: flex;
+
+    width: 15px;
+
+    height: 1px;
+
+    border-radius: 100%;
+
+    background: rgba(218,218,218,1);
+
+    margin: -8px 0 0 .5rem;
+
+    box-shadow: 0 4px 0px 0px rgba(218,218,218,1), 0 8px 0px 0px rgba(218,218,218,1);
+}
+
+.askaa-template-tree .rst__lineFullVertical, .askaa-template-tree .rst__lineHalfVerticalTop, .askaa-template-tree .rst__lineHalfVerticalBottom, .askaa-template-tree .rst__lineHalfHorizontalRight {
+}
+
+.askaa-template-tree .rst__lineFullVertical::before, .askaa-template-tree .rst__lineFullVertical::after, .askaa-template-tree .rst__lineHalfVerticalTop::before, .askaa-template-tree .rst__lineHalfVerticalTop::after, .askaa-template-tree .rst__lineHalfVerticalBottom::before, .askaa-template-tree .rst__lineHalfVerticalBottom::after, .askaa-template-tree .rst__lineHalfHorizontalRight::before, .askaa-template-tree .rst__lineHalfHorizontalRight::after {
+
+    visibility: hidden;
+}
+
+.askaa__component-node {
+
+    display: flex;
+
+    flex: 1;
+
+    align-items: center;
+
+    padding: 0 .5rem;
+
+    cursor: pointer;
+}
+
+input.askaa__component-node {
+
+    font-size: 1rem;
+
+    padding: 0 .5rem !important;
+
+    height: inherit !important;
+
+    border: none;
+}
+
+.askaa__node-corner {
+
+    background-color: transparent;
+
+    border: none;
+
+    font-size: 25px;
+}
+
+.askaa__node-corner>span {
+
+    font-size: 9px;
+
+    color: white;
+
+    position: absolute;
+
+    right: 1px;
+
+    z-index: 1;
+
+    top: 1px;
+}
+
+.askaa__node-corner::before, .askaa__node-corner::after {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    border-color: transparent;
+
+    border-style: solid;
+}
+
+.askaa__node-corner::after {
+
+    border-width: 10px;
+}
+
+.askaa__node-corner--when::after {
+
+    border-right-color: rgba(218,218,218,1);
+
+    border-top-color: rgba(218,218,218,1);
+}
+
+.askaa__node-corner--main::after {
+
+    border-right-color: rgba(252,238,47,1);
+
+    border-top-color: rgba(252,238,47,1);
+}
+/**
+ * Extra class applied to VirtualScroll through className prop
+ */
+.rst__virtualScrollOverride {
+  overflow: auto !important;
+}
+.rst__virtualScrollOverride * {
+  box-sizing: border-box;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer {
+  overflow: visible !important;
+}
+
+.rst__rtl .ReactVirtualized__Grid__innerScrollContainer {
+  direction: rtl;
+}
+
+.ReactVirtualized__Grid {
+  outline: none;
+}
+
+.rst__rowWrapper {
+  padding: 10px 10px 10px 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.rst__rtl.rst__rowWrapper {
+  padding: 10px 0 10px 10px;
+}
+
+.rst__row {
+  height: 100%;
+  white-space: nowrap;
+  display: flex;
+}
+.rst__row > * {
+  box-sizing: border-box;
+}
+
+/**
+ * The outline of where the element will go if dropped, displayed while dragging
+ */
+.rst__rowLandingPad, .rst__rowCancelPad {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.rst__rowLandingPad > *, .rst__rowCancelPad > * {
+  opacity: 0 !important;
+}
+.rst__rowLandingPad::before, .rst__rowCancelPad::before {
+  background-color: lightblue;
+  border: 3px dashed white;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/**
+ * Alternate appearance of the landing pad when the dragged location is invalid
+ */
+.rst__rowCancelPad::before {
+  background-color: #e6a8ad;
+}
+
+/**
+ * Nodes matching the search conditions are highlighted
+ */
+.rst__rowSearchMatch {
+  outline: solid 3px #0080ff;
+}
+
+/**
+ * The node that matches the search conditions and is currently focused
+ */
+.rst__rowSearchFocus {
+  outline: solid 3px #fc6421;
+}
+
+.rst__rowContents, .rst__rowLabel, .rst__rowToolbar, .rst__moveHandle, .rst__toolbarButton {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.rst__rowContents {
+  position: relative;
+  height: 100%;
+  border: solid #bbb 1px;
+  border-left: none;
+  box-shadow: 0 2px 2px -2px;
+  padding: 0 5px 0 10px;
+  border-radius: 2px;
+  min-width: 230px;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.rst__rtl.rst__rowContents {
+  border-right: none;
+  border-left: solid #bbb 1px;
+  padding: 0 10px 0 5px;
+}
+
+.rst__rowContentsDragDisabled {
+  border-left: solid #bbb 1px;
+}
+
+.rst__rtl.rst__rowContentsDragDisabled {
+  border-right: solid #bbb 1px;
+  border-left: solid #bbb 1px;
+}
+
+.rst__rowLabel {
+  flex: 0 1 auto;
+  padding-right: 20px;
+}
+.rst__rtl.rst__rowLabel {
+  padding-left: 20px;
+  padding-right: inherit;
+}
+
+.rst__rowToolbar {
+  flex: 0 1 auto;
+  display: flex;
+}
+
+.rst__moveHandle, .rst__loadingHandle {
+  height: 100%;
+  width: 44px;
+  background: #d9d9d9
+    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiI+PGcgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIuOSIgPjxwYXRoIGQ9Ik0xNCAxNS43aDE0LjQiLz48cGF0aCBkPSJNMTQgMjEuNGgxNC40Ii8+PHBhdGggZD0iTTE0IDI3LjFoMTQuNCIvPjwvZz4KPC9zdmc+')
+    no-repeat center;
+  border: solid #aaa 1px;
+  box-shadow: 0 2px 2px -2px;
+  cursor: move;
+  border-radius: 1px;
+  z-index: 1;
+}
+
+.rst__loadingHandle {
+  cursor: default;
+  background: #d9d9d9;
+}
+
+@keyframes pointFade {
+  0%, 19.999%, 100% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+}
+
+.rst__loadingCircle {
+  width: 80%;
+  height: 80%;
+  margin: 10%;
+  position: relative;
+}
+
+.rst__loadingCirclePoint {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.rst__rtl.rst__loadingCirclePoint {
+  right: 0;
+  left: initial;
+}
+
+.rst__loadingCirclePoint::before {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 11%;
+  height: 30%;
+  background-color: #fff;
+  border-radius: 30%;
+  animation: pointFade 800ms infinite ease-in-out both;
+}
+.rst__loadingCirclePoint:nth-of-type(1) {
+  transform: rotate(0deg);
+}
+.rst__loadingCirclePoint:nth-of-type(7) {
+  transform: rotate(180deg);
+}
+.rst__loadingCirclePoint:nth-of-type(1)::before, .rst__loadingCirclePoint:nth-of-type(7)::before {
+  animation-delay: -800ms;
+}
+.rst__loadingCirclePoint:nth-of-type(2) {
+  transform: rotate(30deg);
+}
+.rst__loadingCirclePoint:nth-of-type(8) {
+  transform: rotate(210deg);
+}
+.rst__loadingCirclePoint:nth-of-type(2)::before, .rst__loadingCirclePoint:nth-of-type(8)::before {
+  animation-delay: -666ms;
+}
+.rst__loadingCirclePoint:nth-of-type(3) {
+  transform: rotate(60deg);
+}
+.rst__loadingCirclePoint:nth-of-type(9) {
+  transform: rotate(240deg);
+}
+.rst__loadingCirclePoint:nth-of-type(3)::before, .rst__loadingCirclePoint:nth-of-type(9)::before {
+  animation-delay: -533ms;
+}
+.rst__loadingCirclePoint:nth-of-type(4) {
+  transform: rotate(90deg);
+}
+.rst__loadingCirclePoint:nth-of-type(10) {
+  transform: rotate(270deg);
+}
+.rst__loadingCirclePoint:nth-of-type(4)::before, .rst__loadingCirclePoint:nth-of-type(10)::before {
+  animation-delay: -400ms;
+}
+.rst__loadingCirclePoint:nth-of-type(5) {
+  transform: rotate(120deg);
+}
+.rst__loadingCirclePoint:nth-of-type(11) {
+  transform: rotate(300deg);
+}
+.rst__loadingCirclePoint:nth-of-type(5)::before, .rst__loadingCirclePoint:nth-of-type(11)::before {
+  animation-delay: -266ms;
+}
+.rst__loadingCirclePoint:nth-of-type(6) {
+  transform: rotate(150deg);
+}
+.rst__loadingCirclePoint:nth-of-type(12) {
+  transform: rotate(330deg);
+}
+.rst__loadingCirclePoint:nth-of-type(6)::before, .rst__loadingCirclePoint:nth-of-type(12)::before {
+  animation-delay: -133ms;
+}
+.rst__loadingCirclePoint:nth-of-type(7) {
+  transform: rotate(180deg);
+}
+.rst__loadingCirclePoint:nth-of-type(13) {
+  transform: rotate(360deg);
+}
+.rst__loadingCirclePoint:nth-of-type(7)::before, .rst__loadingCirclePoint:nth-of-type(13)::before {
+  animation-delay: 0ms;
+}
+
+.rst__rowTitle {
+  font-weight: bold;
+}
+
+.rst__rowTitleWithSubtitle {
+  font-size: 85%;
+  display: block;
+  height: 0.8rem;
+}
+
+.rst__rowSubtitle {
+  font-size: 70%;
+  line-height: 1;
+}
+
+.rst__collapseButton, .rst__expandButton {
+  appearance: none;
+  border: none;
+  position: absolute;
+  border-radius: 100%;
+  box-shadow: 0 0 0 1px #000;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.rst__rtl.rst__collapseButton, .rst__rtl.rst__expandButton {
+  transform: translate(50%, -50%);
+}
+.rst__collapseButton:focus, .rst__expandButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #000, 0 0 1px 3px #83bef9;
+}
+.rst__collapseButton:hover:not(:active), .rst__expandButton:hover:not(:active) {
+  background-size: 24px;
+  height: 20px;
+  width: 20px;
+}
+
+.rst__collapseButton {
+  background: #fff
+    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48L2c+Cjwvc3ZnPg==')
+    no-repeat center;
+}
+
+.rst__expandButton {
+  background: #fff
+    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjgiIGZpbGw9IiNGRkYiLz48ZyBzdHJva2U9IiM5ODk4OTgiIHN0cm9rZS13aWR0aD0iMS45IiA+PHBhdGggZD0iTTQuNSA5aDkiLz48cGF0aCBkPSJNOSA0LjV2OSIvPjwvZz4KPC9zdmc+')
+    no-repeat center;
+}
+
+/**
+ * Line for under a node with children
+ */
+.rst__lineChildren {
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+}
+.rst__lineChildren::after {
+  content: '';
+  position: absolute;
+  background-color: black;
+  width: 1px;
+  left: 50%;
+  bottom: 0;
+  height: 10px;
+}
+
+.rst__rtl.rst__lineChildren::after {
+  right: 50%;
+  left: initial;
+}
+
+.rst__placeholder {
+  position: relative;
+  height: 68px;
+  max-width: 300px;
+  padding: 10px;
+}
+.rst__placeholder, .rst__placeholder > * {
+  box-sizing: border-box;
+}
+.rst__placeholder::before {
+  border: 3px dashed #d9d9d9;
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  z-index: -1;
+}
+
+/**
+ * The outline of where the element will go if dropped, displayed while dragging
+ */
+.rst__placeholderLandingPad, .rst__placeholderCancelPad {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.rst__placeholderLandingPad *, .rst__placeholderCancelPad * {
+  opacity: 0 !important;
+}
+.rst__placeholderLandingPad::before, .rst__placeholderCancelPad::before {
+  background-color: lightblue;
+  border-color: white;
+}
+
+/**
+ * Alternate appearance of the landing pad when the dragged location is invalid
+ */
+.rst__placeholderCancelPad::before {
+  background-color: #e6a8ad;
+}
+
+.rst__node {
+  min-width: 100%;
+  white-space: nowrap;
+  position: relative;
+  text-align: left;
+}
+
+.rst__node.rst__rtl {
+  text-align: right;
+}
+
+.rst__nodeContent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+/* ==========================================================================
+   Scaffold
+
+    Line-overlaid blocks used for showing the tree structure
+   ========================================================================== */
+.rst__lineBlock, .rst__absoluteLineBlock {
+  height: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.rst__absoluteLineBlock {
+  position: absolute;
+  top: 0;
+}
+
+.rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after {
+  position: absolute;
+  content: '';
+  background-color: black;
+}
+
+/**
+ * +-----+
+ * |     |
+ * |  +--+
+ * |     |
+ * +-----+
+ */
+.rst__lineHalfHorizontalRight::before {
+  height: 1px;
+  top: 50%;
+  right: 0;
+  width: 50%;
+}
+
+.rst__rtl.rst__lineHalfHorizontalRight::before {
+  left: 0;
+  right: initial;
+}
+
+/**
+ * +--+--+
+ * |  |  |
+ * |  |  |
+ * |  |  |
+ * +--+--+
+ */
+.rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after {
+  width: 1px;
+  left: 50%;
+  top: 0;
+  height: 100%;
+}
+
+/**
+ * +--+--+
+ * |  |  |
+ * |  |  |
+ * |  |  |
+ * +--+--+
+ */
+.rst__rtl.rst__lineFullVertical::after, .rst__rtl.rst__lineHalfVerticalTop::after, .rst__rtl.rst__lineHalfVerticalBottom::after {
+  right: 50%;
+  left: initial;
+}
+
+/**
+ * +-----+
+ * |  |  |
+ * |  +  |
+ * |     |
+ * +-----+
+ */
+.rst__lineHalfVerticalTop::after {
+  height: 50%;
+}
+
+/**
+ * +-----+
+ * |     |
+ * |  +  |
+ * |  |  |
+ * +-----+
+ */
+.rst__lineHalfVerticalBottom::after {
+  top: auto;
+  bottom: 0;
+  height: 50%;
+}
+
+/* Highlight line for pointing to dragged row destination
+   ========================================================================== */
+/**
+ * +--+--+
+ * |  |  |
+ * |  |  |
+ * |  |  |
+ * +--+--+
+ */
+.rst__highlightLineVertical {
+  z-index: 3;
+}
+.rst__highlightLineVertical::before {
+  position: absolute;
+  content: '';
+  background-color: #36c2f6;
+  width: 8px;
+  margin-left: -4px;
+  left: 50%;
+  top: 0;
+  height: 100%;
+}
+
+.rst__rtl.rst__highlightLineVertical::before {
+  margin-left: initial;
+  margin-right: -4px;
+  left: initial;
+  right: 50%;
+}
+
+@keyframes arrow-pulse {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  30% {
+    transform: translate(0, 300%);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(0, 700%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 1000%);
+    opacity: 0;
+  }
+}
+.rst__highlightLineVertical::after {
+  content: '';
+  position: absolute;
+  height: 0;
+  margin-left: -4px;
+  left: 50%;
+  top: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid white;
+  animation: arrow-pulse 1s infinite linear both;
+}
+
+.rst__rtl.rst__highlightLineVertical::after {
+  margin-left: initial;
+  margin-right: -4px;
+  right: 50%;
+  left: initial;
+}
+
+/**
+ * +-----+
+ * |     |
+ * |  +--+
+ * |  |  |
+ * +--+--+
+ */
+.rst__highlightTopLeftCorner::before {
+  z-index: 3;
+  content: '';
+  position: absolute;
+  border-top: solid 8px #36c2f6;
+  border-left: solid 8px #36c2f6;
+  box-sizing: border-box;
+  height: calc(50% + 4px);
+  top: 50%;
+  margin-top: -4px;
+  right: 0;
+  width: calc(50% + 4px);
+}
+
+.rst__rtl.rst__highlightTopLeftCorner::before {
+  border-right: solid 8px #36c2f6;
+  border-left: none;
+  left: 0;
+  right: initial;
+}
+
+/**
+ * +--+--+
+ * |  |  |
+ * |  |  |
+ * |  +->|
+ * +-----+
+ */
+.rst__highlightBottomLeftCorner {
+  z-index: 3;
+}
+.rst__highlightBottomLeftCorner::before {
+  content: '';
+  position: absolute;
+  border-bottom: solid 8px #36c2f6;
+  border-left: solid 8px #36c2f6;
+  box-sizing: border-box;
+  height: calc(100% + 4px);
+  top: 0;
+  right: 12px;
+  width: calc(50% - 8px);
+}
+
+.rst__rtl.rst__highlightBottomLeftCorner::before {
+  border-right: solid 8px #36c2f6;
+  border-left: none;
+  left: 12px;
+  right: initial;
+}
+
+.rst__highlightBottomLeftCorner::after {
+  content: '';
+  position: absolute;
+  height: 0;
+  right: 0;
+  top: 100%;
+  margin-top: -12px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid #36c2f6;
+}
+
+.rst__rtl.rst__highlightBottomLeftCorner::after {
+  left: 0;
+  right: initial;
+  border-right: 12px solid #36c2f6;
+  border-left: none;
+}
+
+/* Collection default theme */
+
+.ReactVirtualized__Collection {
+}
+
+.ReactVirtualized__Collection__innerScrollContainer {
+}
+
+/* Grid default theme */
+
+.ReactVirtualized__Grid {
+}
+
+.ReactVirtualized__Grid__innerScrollContainer {
+}
+
+/* Table default theme */
+
+.ReactVirtualized__Table {
+}
+
+.ReactVirtualized__Table__Grid {
+}
+
+.ReactVirtualized__Table__headerRow {
+  font-weight: 700;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.ReactVirtualized__Table__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ReactVirtualized__Table__headerTruncatedText {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ReactVirtualized__Table__headerColumn, .ReactVirtualized__Table__rowColumn {
+  margin-right: 10px;
+  min-width: 0px;
+}
+.ReactVirtualized__Table__rowColumn {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ReactVirtualized__Table__headerColumn:first-of-type, .ReactVirtualized__Table__rowColumn:first-of-type {
+  margin-left: 10px;
+}
+.ReactVirtualized__Table__sortableHeaderColumn {
+  cursor: pointer;
+}
+
+.ReactVirtualized__Table__sortableHeaderIconContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.ReactVirtualized__Table__sortableHeaderIcon {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 24px;
+          flex: 0 0 24px;
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+}
+
+/* List default theme */
+
+.ReactVirtualized__List {
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+/* Root spacing measure, treat this as our 'inch'.*/
+/* Default margin and padding.*/
+/* Colors*/
+/* TODO*/
+/* add semantic color variables*/
+/* ----*/
+/* $color-primary: $color-blue;*/
+/* $color-secondary: $color-gray-light;*/
+/* $color-tertiary: transparent;*/
+/* buttons*/
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+/* Font sizes*/
+/* Teeny text, used for tiny labels.*/
+/* Small copy, .askui-small-text, etc.*/
+/* Typical copy, <p> and similar.*/
+/* Large-ish copy, <h6> and similar.*/
+/* Large copy, <h5> and similar.*/
+/* Larger copy, <h4> and similar.*/
+/* The largest copy, <h3> and similar.*/
+/* Huge text, like <h2> and similar.*/
+/* Enormous text, like <h1> an similar.*/
+/* Really big text, for Heroes and the like.*/
+/* Line heights*/
+/* Font Families*/
+/* Mixins to enable the easy propagation of these styles across components.*/
+.askaa-template-tree__label {
+    font-size: 1.2rem;
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif;
+    display: flex;
+    min-height: 30px;
+    flex-direction: row;
+    padding: 0 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(218,218,218,1);
+    background: rgba(242,242,242,1);
+}
+
+.askaa {
+}
+
+.askaa-template-tree {
+    border: 1px solid rgba(213,219,219,1);
+    background: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.askaa-panel {
+}
+
+.askaa-panel__title {
+    flex: 1;
+}
+
+.askaa-panel__icon {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0 0 0 1.5rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.askaa-panel__icon:focus {
+    background: transparent;
+}
+
+.askaa-panel__icon--add svg {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.askaa-panel__icon--delete svg {
+    fill: #00B0E7;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.askaa-panel__icon--delete[disabled] {
+    cursor: not-allowed;
+}
+
+.askaa-panel__icon--delete[disabled] svg {
+    fill: #1F141D;
+    opacity: 0.352;
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa-separator {
+    text-align: center;
+    margin: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.askaa-separator span {
+    background: white;
+    padding: 1rem;
+}
+
+.askaa-separator::before {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: black;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+}
+
+.askaa-add-component .astro__form-field {
+    padding: 0;
+}
+
+.askaa-add-component__actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.askaa-component-option {
+    display: flex;
+    padding: 2rem;
+}
+
+.askaa-component-option input[type="radio"] {
+    display: none;
+}
+
+.askaa-component-option__content {
+    flex: 1;
+}
+
+.askaa-component-option--active {
+    background-color: #E5F7FC;
+}
+
+.astro-card {
+    min-width: 475px;
+}
+
+.astro-card .card-header {
+    text-align: center;
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+/* Root spacing measure, treat this as our 'inch'.*/
+/* Default margin and padding.*/
+/* Colors*/
+/* TODO*/
+/* add semantic color variables*/
+/* ----*/
+/* $color-primary: $color-blue;*/
+/* $color-secondary: $color-gray-light;*/
+/* $color-tertiary: transparent;*/
+/* buttons*/
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+/* Font sizes*/
+/* Teeny text, used for tiny labels.*/
+/* Small copy, .askui-small-text, etc.*/
+/* Typical copy, <p> and similar.*/
+/* Large-ish copy, <h6> and similar.*/
+/* Large copy, <h5> and similar.*/
+/* Larger copy, <h4> and similar.*/
+/* The largest copy, <h3> and similar.*/
+/* Huge text, like <h2> and similar.*/
+/* Enormous text, like <h1> an similar.*/
+/* Really big text, for Heroes and the like.*/
+/* Line heights*/
+/* Font Families*/
+/* Mixins to enable the easy propagation of these styles across components.*/
+.askaa-panel {
+    font-size: 1.2rem;
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif;
+    display: flex;
+    min-height: 30px;
+    flex-direction: row;
+    padding: 0 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(218,218,218,1);
+    background: rgba(242,242,242,1);
+}
+
+.askaa-panel:hover {
+    cursor: pointer;
+}
+
+.askaa-panel:hover .astro-icon {
+    fill: #0096c5;
+}
+
+.askaa-panel__title {
+    flex: 1;
+}
+
+.askaa-panel__title .astro-tooltip-wrapper {
+    margin-left: .5rem;
+}
+
+.askaa-panel__icon {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0 0 0 1.5rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.askaa-panel__icon:focus {
+    background: transparent;
+}
+
+.askaa-panel__icon--add svg {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.askaa-panel__icon--delete svg {
+    fill: #00B0E7;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.askaa-panel__icon--delete[disabled] {
+    cursor: not-allowed;
+}
+
+.askaa-panel__icon--delete[disabled] svg {
+    fill: #1F141D;
+    opacity: 0.352;
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__deleteComponentWarning {
+
+    margin: 2.5rem 0;
+
+    text-align: center;
+}
+
+.askaa__deleteComponentWarning button {
+
+    margin: 1.5rem;
+}
+
+.askaa__deleteComponentWarning i {
+
+    fill: white;
+
+    background-color: red;
+
+    border-radius: 50%;
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+/* Root spacing measure, treat this as our 'inch'.*/
+/* Default margin and padding.*/
+/* Colors*/
+/* TODO*/
+/* add semantic color variables*/
+/* ----*/
+/* $color-primary: $color-blue;*/
+/* $color-secondary: $color-gray-light;*/
+/* $color-tertiary: transparent;*/
+/* buttons*/
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+/* Font sizes*/
+/* Teeny text, used for tiny labels.*/
+/* Small copy, .askui-small-text, etc.*/
+/* Typical copy, <p> and similar.*/
+/* Large-ish copy, <h6> and similar.*/
+/* Large copy, <h5> and similar.*/
+/* Larger copy, <h4> and similar.*/
+/* The largest copy, <h3> and similar.*/
+/* Huge text, like <h2> and similar.*/
+/* Enormous text, like <h1> an similar.*/
+/* Really big text, for Heroes and the like.*/
+/* Line heights*/
+/* Font Families*/
+/* Mixins to enable the easy propagation of these styles across components.*/
+.askaa-expandable__label {
+    font-size: 1.2rem;
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif;
+    display: flex;
+    min-height: 30px;
+    flex-direction: row;
+    padding: 0 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(218,218,218,1);
+    background: rgba(242,242,242,1)
+}
+
+.askaa-expandable {
+    display: flex;
+    flex-direction: column
+}
+
+.askaa-expandable--expanded {
+    flex: 1
+}
+
+.askaa-expandable__label:hover {
+    cursor: pointer;
+}
+
+.askaa-expandable__label:hover .astro-icon {
+    fill: #0096c5
+}
+
+.askaa-expandable__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(218,218,218,1)
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+/* Root spacing measure, treat this as our 'inch'.*/
+/* Default margin and padding.*/
+/* Colors*/
+/* TODO*/
+/* add semantic color variables*/
+/* ----*/
+/* $color-primary: $color-blue;*/
+/* $color-secondary: $color-gray-light;*/
+/* $color-tertiary: transparent;*/
+/* buttons*/
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+/* Font sizes*/
+/* Teeny text, used for tiny labels.*/
+/* Small copy, .askui-small-text, etc.*/
+/* Typical copy, <p> and similar.*/
+/* Large-ish copy, <h6> and similar.*/
+/* Large copy, <h5> and similar.*/
+/* Larger copy, <h4> and similar.*/
+/* The largest copy, <h3> and similar.*/
+/* Huge text, like <h2> and similar.*/
+/* Enormous text, like <h1> an similar.*/
+/* Really big text, for Heroes and the like.*/
+/* Line heights*/
+/* Font Families*/
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa-gui__right-pane {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    border-width: 1px 0 1px 1px;
+
+    border-style: solid;
+
+    border-color: rgba(218,218,218,1);
+}
+
+.askaa-gui__right-pane .astro-expandable {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.askaa-gui__right-pane .astro-expandable > .content {
+
+    padding: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.askaa-gui__right-pane .astro-expandable.expanded {
+
+    flex: 1;
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__editor {
+
+    position: relative;
+
+    flex: 1;
+
+    padding: 0 0 1.5rem;
+}
+
+.askaa__editor .ace_editor {
+
+    height: auto;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    padding: 0 0 1.5rem;
+}
+
+.askaa__editor .ace_tooltip {
+
+    background: #FCF8F7;
+
+    border: 1px solid rgba(255,82,82,0.50);
+
+    font-size: 1.2rem;
+
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif;
+}
+
+.askaa__editor-wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.askaa__editor-marker {
+}
+
+.askaa__editor-marker--warning {
+
+    position: absolute;
+
+    border-bottom: 2px solid #FFB900;
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__editor-selector {
+
+    padding: 1rem 0 0;
+}
+
+.askaa__editor-selector .astro-form-group {
+
+    padding: 0 1.5rem;
+
+    margin: 0;
+}
+
+.askaa__editor-selector .is-checked > .astro-tab-label {
+
+    -webkit-text-stroke: inherit;
+}
+
+.askaa__editor-selector .astro-tab-title-invalid {
+
+    color: #CC0C39;
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__device-push {
+
+    display: flex;
+
+    position: relative;
+}
+
+.askaa__device-push .astro-spinner-container {
+
+    position: absolute;
+
+    right: 100%;
+
+    margin: 0 3rem;
+
+    align-self: center;
+}
+
+.askaa__device-push .Select {
+
+    width: 300px;
+
+    flex: 2;
+
+    margin-right: 1.5rem;
+}
+
+.askaa__device-push .Select .Select-menu-outer .Select-option {
+
+    white-space: nowrap;
+
+    overflow: hidden;
+}
+
+.askaa__device-push-selector {
+
+    display: flex;
+
+    flex-direction: row;
+}
+
+.askaa__device-push-spinner {
+}
+
+.askaa__device-push-spinner--hidden {
+
+    visibility: hidden;
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__editor-wrapper .astro-toggle {
+
+    margin: 0
+}
+
+.askaa__editor-wrapper .astro-toggle::before, .askaa__editor-wrapper .astro-toggle::after {
+
+    content: '';
+
+    display: block;
+
+    border: 1px solid #979797;
+
+    min-width: 15px;
+
+    height: 15px;
+
+    margin: 0 .5rem;
+
+    align-self: center
+}
+
+.askaa__editor-wrapper .astro-toggle::before {
+
+    position: absolute;
+
+    right: 4px;
+
+    min-width: 7px
+}
+
+.askaa__editor-wrapper .astro-toggle-label {
+
+    display: none
+}
+
+.askaa__editor-wrapper .astro-toggle-icon {
+
+    margin-top: 0;
+
+    margin-right: 0.2rem;
+
+    align-self: center;
+
+    flex: 1;
+
+    width: 4rem
+}
+
+.askaa__editor-wrapper .astro-toggle-icon::before {
+
+    content: '';
+
+    width: 15px;
+
+    height: 15px;
+
+    border: solid 1px #979797;
+
+    display: block;
+
+    position: absolute;
+
+    margin-left: -23px;
+
+    top: -3px
+}
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__export-container {
+
+    padding: 0 1.5rem;
+
+    display: flex;
+
+    align-items: center;
+}
+
+.askaa__export-container .askaa-export-desc {
+
+    font-style: italic;
+
+    padding: 0 1.5rem;
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__editorWarning {
+
+    margin: 2.5rem 0;
+
+    text-align: center;
+}
+
+.askaa__editorWarning button {
+
+    margin: 1.5rem;
+}
+
+.askaa__editorWarning i {
+
+    fill: white;
+
+    background-color: red;
+
+    border-radius: 50%;
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__device-selector {
+
+    width: 300px;
+}
+
+.askaa-device {
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 1rem 1.5rem;
+}
+
+.askaa-device .astro-radio, .askaa-device__option {
+
+    display: inline-flex;
+
+    align-items: center;
+}
+
+.askaa-device__image {
+
+    margin: 0 1.5rem 0 0;
+}
+
+.askaa-device__label {
+
+    display: inline-flex;
+
+    flex-direction: column;
+}
+
+.askaa-device__name, .askaa-device__resolution {
+
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif;
+
+    margin: 0;
+}
+
+.askaa-device__name {
+
+    font-size: 1.8rem;
+}
+
+.askaa-device__resolution {
+
+    font-size: 1.2rem;
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa-renderer {
+
+    border: 1px solid rgba(213,219,219,1);
+
+    background: white;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden
+}
+
+.askaa-renderer__wrapper #apml-renderer {
+
+    margin: 0 auto;
+
+    transform-origin: 50% 0
+}
+
+.askaa-renderer__msg {
+
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif
+}
+
+.askaa-renderer__msg--default {
+
+    background: rgba(216,216,216,1);
+
+    color: rgba(155,155,155,1);
+
+    font-size: 2.8rem;
+
+    min-height: 35vh;
+
+    display: flex;
+
+    align-items: center;
+
+    text-align: center;
+
+    justify-content: center;
+
+    padding: 0 2rem
+}
+
+.askaa-renderer__msg--warning {
+
+    font-size: 1rem;
+
+    font-style: italic;
+
+    text-align: center;
+
+    margin-top: 0.5rem
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa-templates {
+}
+
+.askaa-templates__import-input {
+
+    position: absolute !important;
+
+    height: inherit !important;
+
+    top: -2rem;
+
+    right: 0;
+
+    bottom: 0;
+
+    left: 0;
+
+    opacity: 0;
+
+    z-index: 0;
+
+    cursor: pointer !important
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa-entry {
+
+    flex: 1;
+
+    background: white;
+
+    padding: 2rem 0 2rem 2rem;
+}
+
+.askaa-entry__title {
+
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif;
+
+    margin: 0 0 2.5rem;
+}
+
+.askaa__templates {
+
+    padding: 0;
+
+    margin: 0;
+
+    display: flex;
+
+    list-style: none;
+
+    flex-wrap: wrap;
+
+    overflow: auto;
+}
+
+.askaa-templates {
+}
+
+.askaa-templates__template {
+
+    cursor: pointer;
+
+    width: 179px;
+
+    margin: 0 2rem 2rem 0;
+
+    min-height: 125px;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(213,219,219,1);
+
+    display: flex;
+
+    font-size: 1.2rem;
+
+    position: relative;
+
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.askaa-templates__template .astro-tooltip-wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.askaa-templates__template:hover {
+
+    border-color: #00B0E6;
+}
+
+.askaa-template {
+}
+
+.askaa-template__name {
+
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif;
+
+    margin-bottom: .5rem;
+
+    text-align: left;
+}
+
+h4.askaa-template__name {
+
+    font-size: 1.8rem;
+
+    align-self: center;
+}
+
+.askaa-template__tooltip {
+
+    font-size: 1.3rem;
+
+    white-space: pre-line;
+
+    margin: -0.5rem;
+}
+
+.askaa-template__content {
+
+    display: flex;
+
+    margin: 1rem;
+
+    flex: 1;
+
+    flex-direction: column;
+
+    align-items: start;
+
+    justify-content: center;
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa__choose-template {
+
+    cursor: pointer;
+
+    color: inherit;
+
+    display: inline-flex;
+
+    align-items: center
+}/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+.askaa {
+}
+
+.askaa-drawer {
+
+    height: 100%;
+
+    overflow-y: scroll;
+
+    background: #FCF8F7;
+
+    border: 1px solid rgba(255,82,82,0.50);
+}
+
+.askaa-drawer.hidden {
+
+    border: none;
+}
+
+.askaa-drawer__section {
+
+    display: flex;
+
+    flex: 1;
+
+    flex-direction: column;
+
+    margin: 0 0 1.5rem 3rem;
+}
+
+.askaa-drawer__container {
+
+    display: flex;
+
+    margin: 1rem 0 0 0;
+}
+
+.askaa-drawer__title {
+
+    display: flex;
+
+    flex: 1;
+}
+
+.askaa-drawer__title-error {
+
+    margin-right: 1.5rem;
+}
+
+.askaa-drawer__title-error > span {
+
+    margin-left: .5rem;
+}
+
+.askaa-drawer__title-warning > span {
+
+    margin-left: .5rem;
+}
+
+.askaa-drawer__title-warning > span > span {
+
+    vertical-align: top;/* hack to fix text alignment */
+}
+
+.askaa-drawer__toolbox {
+
+    justify-content: flex-end;
+}
+
+.askaa-drawer__toggle {
+
+    display: flex;
+
+    flex: 1;
+
+    cursor: pointer;
+
+    margin: 0 0 0 1rem;
+
+    padding: .5rem .5rem .5rem .5rem;
+}
+
+.askaa-drawer__row {
+
+    display: flex;
+
+    margin: 0 0 1.5rem 0;
+
+    font-size: 1.4rem;
+}
+
+.askaa-drawer__row-line {
+
+    margin: 0 0 0 1rem;
+}
+
+.askaa-drawer__row:first-of-type {
+
+    margin-top: 1.5rem;
+}
+.astro-card{display:block;padding:4rem;vertical-align:top;border:1px solid #e6e6e6;background-color:#fff;box-shadow:0 .2rem 1rem rgba(92,92,102,.2)}.astro-card .card-header{margin:-4rem -4rem 3rem;padding:4rem 4rem 0;font-family:Amazon Ember Regular,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif;color:#0f0f19}.astro-card .card-footer{color:#0f0f19;margin:1rem -4rem -4rem;padding:4rem}.astro-card.shadow{box-shadow:0 .2rem 0 rgba(92,92,102,.2)}.astro-card.inline{display:inline-block}.astro-icon{display:inline-block}.astro-icon>svg{vertical-align:middle;height:2.4rem;width:2.4rem}.astro-icon.small>svg{height:1.6rem;width:1.6rem}.astro-icon.large>svg{height:4.8rem;width:4.8rem}.astro-tabs{overflow:hidden}.astro-tabs .astro-form-group{border-bottom:.1rem solid #b6b6bf}.astro-tab{padding:1rem;border-bottom:.2rem solid transparent;margin-bottom:-.1rem;transition:border-bottom-color .2s linear}.astro-tab.is-checked{border-bottom-color:#00b0e6}.astro-tab[disabled]{opacity:.2}.astro-tab-label{-ms-flex:1 1 auto;flex:1 1 auto;cursor:pointer}.astro-tab[disabled] .astro-tab-label{cursor:not-allowed}.is-checked>.astro-tab-label{color:#000;-webkit-text-stroke:.1rem #000}.astro-tab-label:hover .astro-tab-title, input:focus~.astro-tab-label .astro-tab-title{color:#00b0e6}.astro-tab-title{font-size:1.4rem;line-height:1.4;color:#0f0f19;transition:color .15s linear}.astro-tabs-content{position:relative;margin:1rem}.tab-content-transition-enter{opacity:.01}.tab-content-transition-enter.tab-content-transition-enter-active{opacity:1;transition:opacity .25s ease-out}.tab-content-transition-leave{opacity:1;position:absolute;left:0;top:0}.tab-content-transition-leave.tab-content-transition-leave-active, .tab-content-transition-slow-enter{opacity:0}.tab-content-transition-slow-enter.tab-content-transition-enter-active{opacity:1;transition:opacity 1s ease-out}.tab-content-transition-slow-leave{opacity:0;position:absolute;left:0;top:0}.tab-content-transition-slow-leave.tab-content-transition-leave-active{opacity:1}.astro-radio{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;position:relative;cursor:pointer}.astro-radio>input{position:absolute;left:0;top:0;width:0;height:0;margin:0;opacity:0}.astro-radio[disabled]{opacity:.2;cursor:not-allowed}[disabled] .astro-radio[disabled]{opacity:1}.astro-radio-icon{-ms-flex:0 0 2rem;flex:0 0 2rem;position:relative;width:2rem;height:2rem;margin-right:1em;margin-top:0;border:1px solid #b6b6bf;border-radius:50%;transition:background-color .15s linear,border-color .15s linear}input:focus+.astro-radio-icon, input:hover+.astro-radio-icon{border-color:rgba(0,176,230,.5)}input:checked+.astro-radio-icon{background-color:#00b0e6}input:checked+.astro-radio-icon:after{animation:.3s ease-out forwards radio-icon-appear}.astro-radio-icon:after{content:'';display:block;position:absolute;top:50%;left:50%;width:100%;height:100%;border-radius:50%;opacity:0;background-color:#fff;transform:translate3d(-50%,-50%,0) scale(.1);transform-origin:50% 50%}.astro-radio-label{-ms-flex:1 1 auto;flex:1 1 auto;cursor:pointer}.astro-radio[disabled] .astro-radio-label{cursor:not-allowed}.astro-radio-title{font-size:1.4rem;line-height:1.4;color:#0f0f19;transition:color .15s linear}input:focus~.astro-radio-label .astro-radio-title{color:#00b0e6}.astro-radio-description{font-size:1.2rem;color:#5c5c66;margin:0}@keyframes radio-icon-appear{0%{opacity:0;transform:translate3d(-50%,-50%,0) scale(.1)}50%{opacity:1;transform:translate3d(-50%,-50%,0) scale(.8)}to{opacity:1;transform:translate3d(-50%,-50%,0) scale(.5)}}.astro-checkbox{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;position:relative;cursor:pointer}.astro-checkbox>input{position:absolute;left:0;top:0;width:0;height:0;margin:0;opacity:0}.astro-checkbox[disabled]{opacity:.5;cursor:not-allowed}[disabled] .astro-checkbox[disabled]{opacity:1}.astro-checkbox-icon{-ms-flex:0 0 1.96rem;flex:0 0 1.96rem;position:relative;width:1.96rem;height:1.96rem;margin-right:1em;border:1px solid #b6b6bf;border-radius:0;transition:background-color .15s linear,border-color .15s linear}input:focus+.astro-checkbox-icon, input:hover+.astro-checkbox-icon{background-color:rgba(0,176,230,.2);border-color:rgba(0,176,230,.5)}input:checked+.astro-checkbox-icon{background-color:#00b0e6;border-color:#00b0e6}input:checked+.astro-checkbox-icon:after{animation:.3s ease-out forwards checkbox-icon-appear}input:not(:checked)+.astro-checkbox-icon{background-color:#fff;border-color:#5c5c66}.astro-checkbox-icon:after{content:'';display:block;position:absolute;top:50%;left:50%;width:100%;height:100%;background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 56'%3E%3Cpath fill='%23fff' d='M23.363 56L0 32.49l11.347-11.419L23.694 33.49 56.983 0 68 11.085z'/%3E%3C/svg%3E") no-repeat 50%;background-size:80%;transform:translate3d(-50%,-50%,0) scale(.1);transform-origin:50% 50%}.astro-checkbox-label{-ms-flex:1 1 auto;flex:1 1 auto;cursor:pointer}.astro-checkbox[disabled] .astro-checkbox-label{cursor:not-allowed}.astro-checkbox-title{font-size:1.4rem;line-height:1.4;color:#0f0f19;transition:color .15s linear}input:hover:not(:disabled)~.astro-checkbox-label .astro-checkbox-title{color:#00b0e6}.astro-checkbox-description{font-size:1.2rem;color:#5c5c66;margin:0}@keyframes checkbox-icon-appear{0%{transform:translate3d(-50%,-50%,0) scale(.1)}75%{transform:translate3d(-50%,-50%,0) scale(2)}to{transform:translate3d(-50%,-50%,0) scale(1)}}.astro-radio-form-group .astro-radio{margin-bottom:1em}.astro-radio-form-group.inline .astro-radio{display:-ms-inline-flexbox;display:inline-flex;margin-right:1em}.astro-form-group{margin-bottom:2rem}.astro-form-group[disabled]{opacity:.2;cursor:not-allowed}.astro-form-group-description, .astro-form-group-title{line-height:1.4;font-size:1.4rem;color:#8a8a99;margin-bottom:1rem}.astro-form-group-description{font-size:1.2rem;color:#5c5c66;margin-top:0}.astro-form-group-fields>*+*{margin-top:1rem}.astro-form-group.inline>.astro-form-group-fields{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:-.5rem}.astro-form-group.inline>.astro-form-group-fields>*{width:auto;-ms-flex:0 0 auto;flex:0 0 auto;margin:.5rem}.astro-form-group.row>.astro-form-group-fields{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:-.5rem}.astro-form-group.row>.astro-form-group-fields>*{-ms-flex:1;flex:1;min-width:20rem;margin:.5rem}.astro-modal-dialog{background-color:rgba(0,0,0,.4);position:fixed;top:0;left:0;right:0;bottom:0;z-index:3000;display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}.astro-modal-dialog>*{position:relative}.astro-modal-dialog-close-icon{position:absolute;color:#fff;right:0;top:-6rem;font-size:5rem;font-weight:100;font-family:Amazon Ember Light,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif;cursor:pointer;z-index:5000}.modal-dialog-transition-appear{opacity:0;transition:opacity .2s ease-out}.modal-dialog-transition-appear-active{opacity:1}.modal-dialog-transition-leave{opacity:1;transition:opacity 2s ease-out}.modal-dialog-transition-leave-active{opacity:0}@media screen and (min-width:0){.astro-modal-dialog>*{max-width:90vw}}@media screen and (min-width:479px){.astro-modal-dialog>*{max-width:90vw}}@media screen and (min-width:767px){.astro-modal-dialog>*{max-width:50vw}}@media screen and (min-width:991px){.astro-modal-dialog>*{max-width:50vw}}@media screen and (min-width:1400px){.astro-modal-dialog>*{max-width:30vw}}.astro-table-container{width:100%}.astro-table-container{width:100%}.astro-table-container th:hover{cursor:pointer}.astro-table-container td, .astro-table-container th{vertical-align:middle}.astro-table-container .astro-table-header{color:gray}.astro-table-container .astro-table-header .astro-table-sort-icon{fill:grey}.astro-table-container .astro-table-active-header{color:#000}.astro-table-container .astro-table-active-header .astro-table-sort-icon{fill:#000}.astro__button{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-flow:row nowrap;flex-flow:row;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;min-height:4rem;min-width:12rem;padding:1rem 3rem;border:none;border-radius:0;font-family:Amazon Ember Regular,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif;font-size:1.4rem;transition:background-color .2s linear,border-color .2s linear,color .2s linear;outline:none;cursor:pointer}.astro__button .astro-icon{margin-right:1rem;vertical-align:middle}.astro__button .astro-icon svg{fill:#fff;vertical-align:inherit}.astro__button>*{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-align:center;align-items:center;text-align:left}.astro__button>* .astro-icon{-ms-flex:0 0 auto;flex:0 0 auto;-ms-flex-item-align:center;align-self:center}.astro__button.astro__button--primary{color:#fff;background-color:#00b0e6;border-bottom:2px solid #0096c4}.astro__button.astro__button--primary .astro-icon svg{fill:#fff}.astro__button.astro__button--primary:disabled{cursor:not-allowed;color:hsla(0,0%,100%,.88);background-color:rgba(0,176,230,.4);border-bottom-color:rgba(0,150,196,.4)}.astro__button.astro__button--primary:disabled svg{opacity:.4}.astro__button.astro__button--primary:not([disabled]):focus, .astro__button.astro__button--primary:not([disabled]):hover{background-color:#0096c4;border-bottom-color:#007ba1}.astro__button.astro__button--primary:not([disabled]):active{background-color:#00b0e6;border-bottom:2px solid #0096c4}.astro__button.astro__button--primary.astro__button--hollow{color:#00b0e6;background-color:#fff;border:1px solid #00b0e6}.astro__button.astro__button--primary.astro__button--hollow .astro-icon svg{fill:#00b0e6}.astro__button.astro__button--primary.astro__button--hollow:disabled{color:rgba(0,176,230,.4);border-color:rgba(0,176,230,.4)}.astro__button.astro__button--primary.astro__button--hollow:not([disabled]):focus, .astro__button.astro__button--primary.astro__button--hollow:not([disabled]):hover{color:#0096c4;border-color:#0096c4;background-color:#fff}.astro__button.astro__button--primary.astro__button--hollow:not([disabled]):active{background-color:#00b0e6;border-bottom:2px solid #0096c4}.astro__button.astro__button--critical{color:#fff;background-color:#ff4848;border-bottom:2px solid #c02626}.astro__button.astro__button--critical .astro-icon svg{fill:#fff}.astro__button.astro__button--critical:disabled{cursor:not-allowed;color:hsla(0,0%,100%,.88);background-color:rgba(255,72,72,.4);border-bottom-color:rgba(192,38,38,.2)}.astro__button.astro__button--critical:disabled svg{opacity:.4}.astro__button.astro__button--critical:not([disabled]):focus, .astro__button.astro__button--critical:not([disabled]):hover{background-color:#c02626;border-bottom-color:#b33232}.astro__button.astro__button--critical:not([disabled]):active{background-color:#ff4848;border-bottom:2px solid #c02626}.astro__button.astro__button--critical.astro__button--hollow{color:#ff4848;background-color:#fff;border:1px solid #ff4848}.astro__button.astro__button--critical.astro__button--hollow .astro-icon svg{fill:#ff4848}.astro__button.astro__button--critical.astro__button--hollow:disabled{color:rgba(255,72,72,.4);border-color:rgba(255,72,72,.4)}.astro__button.astro__button--critical.astro__button--hollow:not([disabled]):focus, .astro__button.astro__button--critical.astro__button--hollow:not([disabled]):hover{color:#c02626;border-color:#c02626;background-color:#fff}.astro__button.astro__button--critical.astro__button--hollow:not([disabled]):active{background-color:#ff4848;border-bottom:2px solid #c02626}.astro__button.astro__button--secondary{color:#00b0e6;background-color:#f5f9fa;border-bottom:2px solid #d0d4d5}.astro__button.astro__button--secondary .astro-icon svg{fill:#00b0e6}.astro__button.astro__button--secondary:disabled{cursor:not-allowed;color:rgba(64,193,232,.88);background-color:rgba(245,249,250,.4);border-bottom-color:hsla(180,8%,85%,.4)}.astro__button.astro__button--secondary:disabled svg{opacity:.4}.astro__button.astro__button--secondary:not([disabled]):focus, .astro__button.astro__button--secondary:not([disabled]):hover{background-color:#ebf8fa;border-bottom-color:#acaeaf}.astro__button.astro__button--secondary:not([disabled]):active{background-color:#f5f9fa;border-bottom:2px solid #d0d4d5}.astro__button.astro__button--secondary.astro__button--hollow{color:#f5f9fa;background-color:#fff;border:1px solid #f5f9fa}.astro__button.astro__button--secondary.astro__button--hollow .astro-icon svg{fill:#f5f9fa}.astro__button.astro__button--secondary.astro__button--hollow:disabled{color:rgba(245,249,250,.4);border-color:rgba(245,249,250,.4)}.astro__button.astro__button--secondary.astro__button--hollow:not([disabled]):focus, .astro__button.astro__button--secondary.astro__button--hollow:not([disabled]):hover{color:#ebf8fa;border-color:#ebf8fa;background-color:#fff}.astro__button.astro__button--secondary.astro__button--hollow:not([disabled]):active{background-color:#f5f9fa;border-bottom:2px solid #d0d4d5}.astro__button--link{min-width:0;min-height:0;padding:0;color:#00b0e6;border:none;background-color:transparent}.astro__button--link .astro-icon svg{fill:#00b0e6}.astro__button--link:disabled{background-color:transparent;border:none;opacity:1;color:#aab7b8}.astro__button--link:disabled .astro-icon svg{fill:#aab7b8}.astro__button--link:not([disabled]):focus, .astro__button--link:not([disabled]):hover{color:#0096c5;background-color:transparent}.astro__button--link:not([disabled]):focus .astro-icon svg, .astro__button--link:not([disabled]):hover .astro-icon svg{fill:#0096c5}.astro-toggle{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;position:relative;cursor:pointer;margin-bottom:1rem}.astro-toggle>input{position:absolute;left:0;top:0;width:0;height:0;margin:0;opacity:0}.astro-toggle[disabled]{opacity:.2;cursor:not-allowed}[disabled] .astro-toggle[disabled]{opacity:1}.astro-toggle-icon{-ms-flex:0 0 4rem;flex:0 0 4rem;position:relative;background-color:#b6b6bf;height:1.33333rem;margin-right:1em;margin-top:.4rem;border:1px solid #b6b6bf;border-radius:1rem;transition:background-color .15s linear,border-color .15s linear}input:focus+.astro-toggle-icon, input:hover+.astro-toggle-icon{background-color:rgba(0,176,230,.1);border-color:rgba(0,176,230,.5)}input:focus+.astro-toggle-icon:after, input:hover+.astro-toggle-icon:after{border-color:#00b0e6}input:checked+.astro-toggle-icon{border-color:#00b0e6;background-color:#00b0e6}input:checked+.astro-toggle-icon:after{animation:.3s ease-out forwards toggle-icon-on}.astro-toggle-icon:after{content:'';display:block;position:absolute;top:50%;left:0;width:2rem;height:2rem;border:1px solid #b6b6bf;border-radius:50%;margin-left:-.1rem;box-shadow:0 .1rem .3rem rgba(0,0,0,.25);background-color:#fff;transform:translate3d(0,-50%,0);transform-origin:50% 50%;animation:.3s ease-out forwards toggle-icon-off}.astro-toggle-label{-ms-flex:1 1 auto;flex:1 1 auto;cursor:pointer}.astro-toggle[disabled] .astro-toggle-label{cursor:not-allowed}.astro-toggle-title{font-size:1.4rem;line-height:1.4;color:#0f0f19}input:focus~.astro-toggle-label .astro-toggle-title{color:#00b0e6}.astro-toggle-description{font-size:1.2rem;color:#5c5c66;margin:0}@keyframes toggle-icon-off{0%{transform:translate3d(2rem,-50%,0)}50%{transform:translate3d(-.4rem,-50%,0)}to{transform:translate3d(0,-50%,0)}}@keyframes toggle-icon-on{0%{transform:translate3d(0,-50%,0)}50%{transform:translate3d(2.4rem,-50%,0)}to{transform:translate3d(2rem,-50%,0)}}.Select{position:relative;font-size:1.4rem}.Select, .Select div, .Select input, .Select span{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.Select.is-disabled{cursor:not-allowed;opacity:.5}.Select.is-disabled>*{cursor:not-allowed}.Select.is-disabled>.Select-control{background-color:#f4f6f6}.Select.is-disabled>.Select-control:hover{box-shadow:none}.Select.is-disabled .Select-arrow-zone{cursor:not-allowed;pointer-events:none}.Select-control{background-color:#fff;border-color:#aebbbc #aab7b8 #99a5a6;border-radius:0;border:.1rem solid;color:#373e3e;cursor:default;display:table;border-spacing:0;border-collapse:separate;height:4.4rem;outline:none;overflow:hidden;position:relative;width:100%}.Select-control .Select-input:focus{outline:none}.is-searchable.is-open>.Select-control{cursor:text}.is-open>.Select-control{border-bottom-right-radius:0;border-bottom-left-radius:0;background:#fff;border-color:#99a5a6 #aab7b8 #aebbbc}.is-open>.Select-control .Select-arrow{top:-2px;border-color:transparent transparent #0f0f19;border-width:0 5px 5px}.is-searchable.is-focused:not(.is-open)>.Select-control{cursor:text}.is-focused:not(.is-open)>.Select-control{border-color:#00b0e6 #0db4e7 #0db4e7}.Select--single>.Select-control .Select-value, .Select-placeholder{bottom:0;color:#aab7b8;left:0;line-height:4.2rem;padding-left:1.5rem;padding-right:1.5rem;position:absolute;right:0;top:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.has-value.is-pseudo-focused.Select--single>.Select-control .Select-value .Select-value-label, .has-value.Select--single>.Select-control .Select-value .Select-value-label{color:#373e3e}.has-value.is-pseudo-focused.Select--single>.Select-control .Select-value a.Select-value-label, .has-value.Select--single>.Select-control .Select-value a.Select-value-label{cursor:pointer;text-decoration:none}.has-value.is-pseudo-focused.Select--single>.Select-control .Select-value a.Select-value-label:focus, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value a.Select-value-label:hover, .has-value.Select--single>.Select-control .Select-value a.Select-value-label:focus, .has-value.Select--single>.Select-control .Select-value a.Select-value-label:hover{color:#00b0e6;outline:none;text-decoration:underline}.Select-input{height:4.2rem;padding-left:1.5rem;padding-right:1.5rem;vertical-align:middle}.Select-input>input:not([type=radio]):not([type=checkbox]){background:none transparent;border:0 none;box-shadow:none;cursor:default;display:inline-block;font-family:inherit;font-size:1.4rem;height:1em;margin:0;outline:none;line-height:14px;padding:1.2rem 0 1.6rem;-webkit-appearance:none}.is-focused .Select-input>input:not([type=radio]):not([type=checkbox]){cursor:text}.has-value.is-pseudo-focused .Select-input{opacity:0}.Select-control:not(.is-searchable)>.Select-input{outline:none}.Select-loading-zone{cursor:pointer;display:table-cell;text-align:center}.Select-loading, .Select-loading-zone{position:relative;vertical-align:middle;width:16px}.Select-loading{-webkit-animation:Select-animation-spin;-o-animation:Select-animation-spin;animation:Select-animation-spin;height:16px;box-sizing:border-box;border-radius:50%;border:2px solid #aab7b8;border-right-color:#373e3e;display:inline-block}.Select-clear-zone{-webkit-animation:Select-animation-fadeIn;-o-animation:Select-animation-fadeIn;animation:Select-animation-fadeIn;color:#0f0f19;cursor:pointer;display:table-cell;position:relative;text-align:center;vertical-align:middle;width:2.1rem}.Select-clear-zone:hover{color:#00c4ff}.Select-clear{display:inline-block;font-size:2.2rem;line-height:1}.Select--multi .Select-clear-zone{width:2.1rem}.Select--multi .Select-multi-value-wrapper{display:inline-block}.Select .Select-aria-only{display:inline-block;height:1px;width:1px;margin:-1px;clip:rect(0,0,0,0);overflow:hidden}.Select-arrow-zone{cursor:pointer;display:table-cell;position:relative;text-align:center;vertical-align:middle;width:25px;padding-right:5px}.Select-arrow{border-color:#0f0f19 transparent transparent;border-style:solid;border-width:5px 5px 2.5px;position:relative}.Select-arrow, .Select-arrow:after{display:inline-block;height:0;width:0}.Select-arrow:after{border:4px solid transparent;content:' ';top:-5px;left:-4px;position:absolute}.Select:not(.is-open) .Select-arrow-zone .Select-arrow{border-top-color:#0f0f19}.Select:not(.is-open) .Select-arrow-zone .Select-arrow:after{border-top-color:#fff;top:-5px}.Select:not(.is-open) .Select-arrow-zone:hover .Select-arrow{border-top-color:#00c4ff}.Select.is-open .Select-arrow-zone .Select-arrow{border-top-color:transparent;border-bottom-color:#0f0f19}.Select.is-open .Select-arrow-zone .Select-arrow:after{top:-3px;border-bottom-color:#fff}.Select.is-open .Select-arrow-zone:hover .Select-arrow{border-bottom-color:#00c4ff}@-webkit-keyframes Select-animation-fadeIn{0%{opacity:0}to{opacity:1}}@keyframes Select-animation-fadeIn{0%{opacity:0}to{opacity:1}}.Select-menu-outer{border-bottom-right-radius:0;border-bottom-left-radius:0;background-color:#fff;border:1px solid #aab7b8;border-top-color:#d5dbdc;box-sizing:border-box;margin-top:-1px;max-height:200px;position:absolute;top:100%;width:100%;z-index:100;-webkit-overflow-scrolling:touch}.Select-menu{max-height:198px;overflow-y:auto}.Select-option{box-sizing:border-box;background-color:#fff;color:#373e3e;cursor:pointer;display:block;padding:1.5rem}.Select-option:last-child{border-bottom-right-radius:0;border-bottom-left-radius:0}.Select-option.is-selected{background-color:#00c4ff;color:#fff}.Select-option.is-focused{background-color:#fafafa;color:#00b0e6}.Select-option.is-disabled{color:#b6b6bf;cursor:not-allowed}.Select-noresults{box-sizing:border-box;color:#5f6565;cursor:default;display:block;padding:.5rem 1.5rem}.Select--multi .Select-input{vertical-align:middle;margin-left:1.5rem;padding:0}.Select--multi .Select-value{background-color:transparent;border-radius:0;border:1px solid transparent;color:#0f0f19;display:inline-block;font-size:1.4rem;margin-left:1rem;margin-top:1rem;height:2.7rem;vertical-align:top}.Select--multi .Select-value-icon, .Select--multi .Select-value-label{display:inline-block;vertical-align:middle}.Select--multi .Select-value-label{border-radius:0 0 0 0;cursor:default;padding:.25rem 1rem}.Select--multi a.Select-value-label{color:#0f0f19;cursor:pointer;text-decoration:none}.Select--multi a.Select-value-label:hover{text-decoration:underline}.Select--multi .Select-value-icon{cursor:pointer;border-radius:0 0 0 0;border-right:1px solid transparent;height:2.5rem;padding:.75rem 1rem .35rem}.Select--multi .Select-value-icon:focus, .Select--multi .Select-value-icon:hover{background-color:#80d8f3;color:#00b0e6}.Select--multi .Select-value-icon:active{background-color:transparent}.Select--multi.has-value .Select-input{margin-left:1rem}.Select--multi.is-disabled .Select-value{background-color:#b6b6bf;border:1px solid #a4a4ac;color:#fff}.Select--multi.is-disabled .Select-value-icon{cursor:not-allowed;border-right:1px solid #a4a4ac}.Select--multi.is-disabled .Select-value-icon:active, .Select--multi.is-disabled .Select-value-icon:focus, .Select--multi.is-disabled .Select-value-icon:hover{background-color:#b6b6bf}@keyframes Select-animation-spin{to{transform:rotate(1turn)}}@-webkit-keyframes Select-animation-spin{to{-webkit-transform:rotate(1turn)}}.astro-spinner-container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center;margin:2rem}.astro-spinner-container .message{color:#8a8a99;text-align:center;margin:0}.astro-spinner-container .balls{-ms-flex:0 0 3rem;flex:0 0 3rem;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:center;justify-content:center}.astro-spinner-container .ball{display:inline-block;width:2rem;height:2rem;border-radius:50%;mix-blend-mode:multiply;animation:astro-spinner-shuffle 2s ease-in-out infinite backwards}.astro-spinner-container .ball:nth-child(1){background-color:#78e5ff;margin-right:-2rem}.astro-spinner-container .ball:nth-child(2){margin-right:-2rem;background-color:#00b0e6;animation-delay:.333s}.astro-spinner-container .ball:nth-child(3){background-color:#0096c5;animation-delay:.666s}@media screen and (min-width:767px){.astro-spinner-container{-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:center;justify-content:center}.astro-spinner-container .balls{-ms-flex:0 0 8rem;flex:0 0 8rem}.astro-spinner-container .message{text-align:left;margin-left:2rem}}@keyframes astro-spinner-shuffle{0%{transform:translate3d(-2.5rem,0,0)}50%{transform:translate3d(2.5rem,0,0)}to{transform:translate3d(-2.5rem,0,0)}}.astro-tooltip-wrapper{display:inline-block;position:relative}.astro-tooltip-wrapper>:first-child{cursor:pointer}.astro-tooltip{background-color:#fff;border:1px solid #b6b6bf;border-radius:0;padding:2rem;position:absolute;display:-ms-flexbox;display:flex;box-shadow:0 2px 10px rgba(0,0,0,.2);min-width:20rem;z-index:3000;pointer-events:none;opacity:0;transition:opacity .15s linear}.astro-tooltip.is-open{opacity:1;pointer-events:all}.astro-tooltip:before{background-color:#fff;border:.1rem solid #b6b6bf;border-bottom-color:transparent;border-left-color:transparent;content:'';height:10px;width:10px;position:absolute;pointer-events:none;transform-origin:center}.astro-tooltip.align-top{transform:translate3d(-50%,-100%,0)}.astro-tooltip.align-top:before{bottom:0;left:50%;transform:translate3d(-50%,50%,0) rotate(135deg)}.astro-tooltip.align-right{transform:translateY(-50%)}.astro-tooltip.align-right:before{left:0;top:50%;transform:translate3d(-50%,-50%,0) rotate(225deg)}.astro-tooltip.align-bottom{transform:translate3d(-50%,0,0)}.astro-tooltip.align-bottom:before{top:0;left:50%;transform:translate3d(-50%,-50%,0) rotate(315deg)}.astro-tooltip.align-left{transform:translate3d(-100%,-50%,0)}.astro-tooltip.align-left:before{right:0;top:50%;transform:translate3d(50%,-50%,0) rotate(45deg)}.absolute{top:0;left:0;position:absolute}.astro-expandable .arrow-wrapper{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-flow:row nowrap;flex-flow:row;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;position:relative;width:3rem;margin-right:.5rem}.astro-expandable .arrow-wrapper+*{margin-top:0}.astro-expandable .arrow{width:1rem;height:1rem;background-color:transparent;border-top:.2rem solid #000;border-right:.2rem solid #000;transform:rotate(45deg);transition:transform .15s linear}.astro-expandable>.content{overflow:hidden;padding-left:3.6rem;padding-right:2rem;transition:height .25s ease-out,opacity .25s linear}.astro-expandable>.content>:first-child{padding-top:2rem}.astro-expandable>.content>:last-child{padding-bottom:2rem}.astro-expandable>.label{font-size:1.4rem;padding:1rem 0;text-decoration:none;color:inherit;display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row;-ms-flex-align:center;align-items:center;cursor:pointer;outline:none}.astro-expandable>.label>*{display:-ms-inline-flexbox;display:inline-flex;margin-bottom:0}.astro-expandable>.label:focus .arrow, .astro-expandable>.label:hover .arrow{border-top-color:#00c4ff;border-right-color:#00c4ff}.astro-expandable>.label:visited{color:inherit}.astro-expandable.collapsed>.content{opacity:0}.astro-expandable.expanded>.content{opacity:1}.astro-expandable.expanded .arrow{transform:rotate(135deg)}.astro-text-smallest{font-size:1rem}.astro-text-small{font-size:1.2rem}.astro-text-medium{font-size:1.4rem}.astro-text-plus{font-size:1.5rem}.astro-text-large{font-size:1.6rem}.astro-text-larger{font-size:1.8rem}.astro-text-largest{font-size:2rem}.astro-text-huge{font-size:2.4rem}.astro-text-enormous{font-size:2.8rem}.astro-text-super{font-size:3.6rem}.astro-text-light{font-family:Amazon Ember Light,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif;font-weight:300}.astro-text-bold{font-family:Amazon Ember Regular,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif;font-weight:700}.astro-text-monospaced{font-family:monaco,Consolas,monospace;font-weight:700}.astro-text-left{text-align:left}.astro-text-center{text-align:center}.astro-text-right{text-align:right}.astro-text-nowrap{white-space:nowrap}.astro-left-nav-container .nav-item__text, .astro-text-truncate, .astro__text--truncate{max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.astro-text-caps{text-transform:uppercase}.astro-left-nav-container{width:100%;background-color:#f5f9fa;overflow:auto;padding:2rem}.astro-left-nav-container .nav>.nav-list{margin-right:-2rem;margin-left:-2rem}.astro-left-nav-container .nav>*+.nav-list{margin-top:2rem}.astro-left-nav-container .nav-list{list-style:none;padding:0;margin-top:0}.astro-left-nav-container .nav-list>header{line-height:2rem;font-size:1.2rem;padding:.75rem 1.5rem}.astro-left-nav-container .nav-list .nav-list .nav-item .nav-link{padding-left:3.5rem}.astro-left-nav-container .nav-list .astro-expandable{margin:2rem 0}.astro-left-nav-container .nav-list .astro-expandable .label{-ms-flex-direction:row-reverse;flex-direction:row-reverse;-ms-flex-pack:justify;justify-content:space-between;line-height:2rem;color:#a5acbb;font-size:1.2rem;padding-left:2rem;padding-top:1rem;padding-bottom:1rem;font-weight:700}.astro-left-nav-container .nav-list .astro-expandable .label>.nav-list-title{margin-top:0}.astro-left-nav-container .nav-list .astro-expandable .content, .astro-left-nav-container .nav-list .astro-expandable .content>:first-child, .astro-left-nav-container .nav-list .astro-expandable .content>:last-child{padding:0;margin:0}.astro-left-nav-container .nav-list-title{margin-top:2rem;padding-right:2rem;text-transform:uppercase;color:#a5acbb;font-weight:700}.astro-left-nav-container .nav-item{margin-top:0}.astro-left-nav-container .nav-link, .astro-left-nav-container .nav-link:visited{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;color:#373e3e;line-height:2rem;height:4rem;padding:0 2rem;text-decoration:none;cursor:pointer}.astro-left-nav-container .nav-link:focus, .astro-left-nav-container .nav-link:hover, .astro-left-nav-container .nav-link:visited:focus, .astro-left-nav-container .nav-link:visited:hover{background-color:rgba(92,92,102,.05)}.astro-left-nav-container .nav-link.is-selected, .astro-left-nav-container .nav-link:visited.is-selected{background-color:#00b0e6;color:#fff}.astro-left-nav-container .nav-link.is-selected:focus .nav-icon, .astro-left-nav-container .nav-link.is-selected:hover .nav-icon, .astro-left-nav-container .nav-link:visited.is-selected:focus .nav-icon, .astro-left-nav-container .nav-link:visited.is-selected:hover .nav-icon{border-color:transparent}.astro-left-nav-container .nav-icon{background-color:rgba(92,92,102,.2);margin-right:1rem;border-radius:50%;height:2.4rem;min-width:2.4rem;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center}.astro-left-nav-container .nav-icon svg{display:block;fill:#fff}.astro-left-nav-container .is-active>.nav-icon, .astro-left-nav-container .is-active>.nav-list-title>.nav-icon{background-color:#00b0e6}.astro-left-nav-container .is-selected>.nav-icon, .astro-left-nav-container .is-selected>.nav-list-title>.nav-icon{background-color:#008db8}.astro-left-nav-container .is-selected>.nav-icon svg, .astro-left-nav-container .is-selected>.nav-list-title>.nav-icon svg{fill:#00b0e6}.astro-left-nav-container .is-selected.is-active>.nav-icon, .astro-left-nav-container .is-selected.is-active>.nav-list-title>.nav-icon{background-color:#fff}.astro-left-nav-container .is-selected.is-active>.nav-icon svg, .astro-left-nav-container .is-selected.is-active>.nav-list-title>.nav-icon svg{fill:#00b0e6}.astro-left-nav-container .has-error>.nav-icon, .astro-left-nav-container .has-error>.nav-list-title>.nav-icon{background-color:#cc0c39}.astro-left-nav-container .has-error>.nav-icon svg, .astro-left-nav-container .has-error>.nav-list-title>.nav-icon svg{fill:#fff}.astro-page-wrapper{position:relative}.astro-page-layout{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;overflow-x:hidden}@media (min-width:767px){.astro-page-wrapper{height:100vh;overflow:hidden}.astro-left-nav-container{width:22.5rem}.astro-page-layout{-ms-flex-direction:row;flex-direction:row;position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden}.astro-page-layout>.astro-left-nav-container{-ms-flex:0 0 22.5rem;flex:0 0 22.5rem}.astro-page-layout>.astro-page-main-content{-ms-flex:1;flex:1;overflow-y:auto}}.astro-card{display:block;padding:4rem;vertical-align:top;border:1px solid #e6e6e6;background-color:#fff;box-shadow:0 .2rem 1rem rgba(92,92,102,.2)}.astro-card .card-header{margin:-4rem -4rem 3rem;padding:4rem 4rem 0;font-family:Amazon Ember Regular,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif;color:#0f0f19}.astro-card .card-footer{color:#0f0f19;margin:1rem -4rem -4rem;padding:4rem}.astro-card.shadow{box-shadow:0 .2rem 0 rgba(92,92,102,.2)}.astro-card.inline{display:inline-block}.astro-accordion{border:.1rem solid #e6e6e6;border-radius:0}.astro-accordion *+.astro-expandable{border-top:.1rem solid #e6e6e6}.astro-pagination-container{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-align:center;align-items:center;-ms-flex-pack:end;justify-content:flex-end;margin:2rem}.astro-pagination-container .item-type:before{content:' '}.astro-pagination-container .button-arrow-next, .astro-pagination-container .button-arrow-prev{padding:1rem}.astro-pagination-container .button-arrow-next .arrow-left, .astro-pagination-container .button-arrow-next .arrow-right, .astro-pagination-container .button-arrow-prev .arrow-left, .astro-pagination-container .button-arrow-prev .arrow-right{display:inline-block;width:1rem;height:1rem;border-top:.3rem solid #8a8a99;border-left:.3rem solid #8a8a99}.astro-pagination-container .button-arrow-next .arrow-left, .astro-pagination-container .button-arrow-prev .arrow-left{transform:rotate(-45deg)}.astro-pagination-container .button-arrow-next .arrow-right, .astro-pagination-container .button-arrow-prev .arrow-right{transform:rotate(135deg)}.astro-pagination-container .button-arrow-next[disabled], .astro-pagination-container .button-arrow-prev[disabled]{opacity:.25}.astro-pagination-container .button-arrow-next:focus:not([disabled]) .arrow-left, .astro-pagination-container .button-arrow-next:focus:not([disabled]) .arrow-right, .astro-pagination-container .button-arrow-next:hover:not([disabled]) .arrow-left, .astro-pagination-container .button-arrow-next:hover:not([disabled]) .arrow-right, .astro-pagination-container .button-arrow-prev:focus:not([disabled]) .arrow-left, .astro-pagination-container .button-arrow-prev:focus:not([disabled]) .arrow-right, .astro-pagination-container .button-arrow-prev:hover:not([disabled]) .arrow-left, .astro-pagination-container .button-arrow-prev:hover:not([disabled]) .arrow-right{border-color:#00b0e6}.astro-form-field-container{-ms-flex:1;flex:1}.astro-form-field-container input:not([type=radio]):not([type=checkbox]), .astro-form-field-container select, .astro-form-field-container textarea{transition:border-color .15s linear,color .15s linear}.astro-form-field-container .error-message{color:#cc0c39;margin-top:.5rem;animation:astro-form-field-error-message-fade-in .15s linear 1 both}.astro-form-field-container.has-error input:not([type=radio]):not([type=checkbox]), .astro-form-field-container.has-error select, .astro-form-field-container.has-error textarea{border-color:#cc0c39;color:#cc0c39}.astro__form-field{-ms-flex:1;flex:1;padding-bottom:1.7rem}.astro__form-field .astro__input, .astro__form-field .astro__input:not([type=radio]):not([type=checkbox]), .astro__form-field .astro__textarea{transition:border-color .15s linear,color .15s linear}.astro__form-field+.astro__form-field{margin-top:1.5rem}.astro__form-field--error{padding-bottom:0}.astro__form-field--error .astro__input, .astro__form-field--error .astro__input:not([type=radio]):not([type=checkbox]), .astro__form-field--error .astro__textarea{border-color:#cc0c39;color:#cc0c39}.astro__error{font-size:1.2rem;color:#cc0c39;margin-top:.5rem;animation:astro-form-field-error-message-fade-in .15s linear 1 both}@keyframes astro-form-field-error-message-fade-in{0%{opacity:0}to{opacity:1}}.astro-notification-container, .astro__notification, .astro__toast{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;margin:2rem 0;color:#373e3e}.astro-notification-container .notification-actions, .astro-notification-container .notification-message, .astro-notification-container .notification__actions, .astro-notification-container .notification__message, .astro__notification .notification-actions, .astro__notification .notification-message, .astro__notification .notification__actions, .astro__notification .notification__message, .astro__toast .notification-actions, .astro__toast .notification-message, .astro__toast .notification__actions, .astro__toast .notification__message{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;padding:1rem}.astro-notification-container .notification-icon, .astro-notification-container .notification__icon, .astro__notification .notification-icon, .astro__notification .notification__icon, .astro__toast .notification-icon, .astro__toast .notification__icon{display:-ms-flexbox;display:flex;-ms-flex:0 0 3rem;flex:0 0 3rem;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;width:3rem;height:3rem;border-radius:50%;margin:1rem}.astro-notification-container--info, .astro-notification-container.info, .astro__notification--info, .astro__notification.info, .astro__toast--info, .astro__toast.info{background-color:#f2fcff}.astro-notification-container--info .notification-icon, .astro-notification-container--info .notification__icon, .astro-notification-container.info .notification-icon, .astro-notification-container.info .notification__icon, .astro__notification--info .notification-icon, .astro__notification--info .notification__icon, .astro__notification.info .notification-icon, .astro__notification.info .notification__icon, .astro__toast--info .notification-icon, .astro__toast--info .notification__icon, .astro__toast.info .notification-icon, .astro__toast.info .notification__icon{background-color:#00b0e6}.astro-notification-container--info .notification-icon svg, .astro-notification-container--info .notification__icon svg, .astro-notification-container.info .notification-icon svg, .astro-notification-container.info .notification__icon svg, .astro__notification--info .notification-icon svg, .astro__notification--info .notification__icon svg, .astro__notification.info .notification-icon svg, .astro__notification.info .notification__icon svg, .astro__toast--info .notification-icon svg, .astro__toast--info .notification__icon svg, .astro__toast.info .notification-icon svg, .astro__toast.info .notification__icon svg{fill:#fff}.astro-notification-container--success, .astro-notification-container.success, .astro__notification--success, .astro__notification.success, .astro__toast--success, .astro__toast.success{background-color:#edfaf5}.astro-notification-container--success .notification-icon, .astro-notification-container--success .notification__icon, .astro-notification-container.success .notification-icon, .astro-notification-container.success .notification__icon, .astro__notification--success .notification-icon, .astro__notification--success .notification__icon, .astro__notification.success .notification-icon, .astro__notification.success .notification__icon, .astro__toast--success .notification-icon, .astro__toast--success .notification__icon, .astro__toast.success .notification-icon, .astro__toast.success .notification__icon{background-color:#008577}.astro-notification-container--success .notification-icon svg, .astro-notification-container--success .notification__icon svg, .astro-notification-container.success .notification-icon svg, .astro-notification-container.success .notification__icon svg, .astro__notification--success .notification-icon svg, .astro__notification--success .notification__icon svg, .astro__notification.success .notification-icon svg, .astro__notification.success .notification__icon svg, .astro__toast--success .notification-icon svg, .astro__toast--success .notification__icon svg, .astro__toast.success .notification-icon svg, .astro__toast.success .notification__icon svg{fill:#fff}.astro-notification-container--warning, .astro-notification-container.warning, .astro__notification--warning, .astro__notification.warning, .astro__toast--warning, .astro__toast.warning{background-color:#fff5e7}.astro-notification-container--warning .notification-icon, .astro-notification-container--warning .notification__icon, .astro-notification-container.warning .notification-icon, .astro-notification-container.warning .notification__icon, .astro__notification--warning .notification-icon, .astro__notification--warning .notification__icon, .astro__notification.warning .notification-icon, .astro__notification.warning .notification__icon, .astro__toast--warning .notification-icon, .astro__toast--warning .notification__icon, .astro__toast.warning .notification-icon, .astro__toast.warning .notification__icon{background-color:transparent;border-color:transparent transparent #ffa801;border-width:0 15px 26px;border-style:solid;max-width:0;max-height:0;width:0;height:0;border-radius:0}.astro-notification-container--warning .notification-icon .astro-icon, .astro-notification-container--warning .notification__icon .astro-icon, .astro-notification-container.warning .notification-icon .astro-icon, .astro-notification-container.warning .notification__icon .astro-icon, .astro__notification--warning .notification-icon .astro-icon, .astro__notification--warning .notification__icon .astro-icon, .astro__notification.warning .notification-icon .astro-icon, .astro__notification.warning .notification__icon .astro-icon, .astro__toast--warning .notification-icon .astro-icon, .astro__toast--warning .notification__icon .astro-icon, .astro__toast.warning .notification-icon .astro-icon, .astro__toast.warning .notification__icon .astro-icon{margin-top:32px}.astro-notification-container--warning .notification-icon svg, .astro-notification-container--warning .notification__icon svg, .astro-notification-container.warning .notification-icon svg, .astro-notification-container.warning .notification__icon svg, .astro__notification--warning .notification-icon svg, .astro__notification--warning .notification__icon svg, .astro__notification.warning .notification-icon svg, .astro__notification.warning .notification__icon svg, .astro__toast--warning .notification-icon svg, .astro__toast--warning .notification__icon svg, .astro__toast.warning .notification-icon svg, .astro__toast.warning .notification__icon svg{fill:#fff}.astro-notification-container--error, .astro-notification-container.error, .astro__notification--error, .astro__notification.error, .astro__toast--error, .astro__toast.error{background-color:#fcf8f7}.astro-notification-container--error .notification-icon, .astro-notification-container--error .notification__icon, .astro-notification-container.error .notification-icon, .astro-notification-container.error .notification__icon, .astro__notification--error .notification-icon, .astro__notification--error .notification__icon, .astro__notification.error .notification-icon, .astro__notification.error .notification__icon, .astro__toast--error .notification-icon, .astro__toast--error .notification__icon, .astro__toast.error .notification-icon, .astro__toast.error .notification__icon{background-color:#cc1a3d}.astro-notification-container--error .notification-icon svg, .astro-notification-container--error .notification__icon svg, .astro-notification-container.error .notification-icon svg, .astro-notification-container.error .notification__icon svg, .astro__notification--error .notification-icon svg, .astro__notification--error .notification__icon svg, .astro__notification.error .notification-icon svg, .astro__notification.error .notification__icon svg, .astro__toast--error .notification-icon svg, .astro__toast--error .notification__icon svg, .astro__toast.error .notification-icon svg, .astro__toast.error .notification__icon svg{fill:#fff}.astro-notification-container .notification-actions, .astro-notification-container .notification__actions, .astro__notification .notification-actions, .astro__notification .notification__actions{float:right;-ms-flex:0 0 auto;flex:0 0 auto;max-width:50%}.astro-notification-container .notification-actions a, .astro-notification-container .notification__actions a, .astro__notification .notification-actions a, .astro__notification .notification__actions a{color:inherit}.astro__toast{width:45rem}.astro__toast .notification__heading{margin-bottom:1rem}.astro__toast .notification__message{padding:1.5rem;font-size:1.3rem}.astro__toast .notification__message>p{font-size:1.3rem;margin:0;width:35rem;word-wrap:break-word}.astro__toast .notification__message em{font-style:italic}.astro__toast .notification__actions{display:block;margin-top:.5rem;padding:0}.astro__toast .notification__icon{margin:1.5rem 0 0 1.5rem}.astro__toast .notification__dismiss{margin:1.5rem 1.5rem 0 0}.astro__toast .notification__dismiss .astro-icon{cursor:pointer}.astro__toast--error .notification__actions a{color:#cc1a3d}.astro__toast--warning .notification__actions a{color:#ffa801}.astro__toast--success .notification__actions a{color:#008577}.astro__toast--info .notification__actions a{color:#00b0e6}.astro-checkbox-form-group .astro-checkbox{margin-bottom:1em}.astro-checkbox-form-group.inline .astro-checkbox{display:-ms-inline-flexbox;display:inline-flex;margin-right:1em}.astro-rich-text{-ms-flex-pack:center;-ms-flex-line-pack:center;align-content:center}.astro-rich-text, .astro-rich-text .rich-text-icon{display:-ms-flexbox;display:flex;justify-content:center;-ms-flex-align:center;align-items:center}.astro-rich-text .rich-text-icon{-ms-flex-pack:center;height:4.4rem;background-color:#fff;border-radius:0;border:.1rem #b6b6bf}.astro-rich-text.pre .rich-text-icon{border-right:0;border-top-right-radius:0;border-bottom-right-radius:0}.astro-rich-text.post .rich-text-icon, .astro-rich-text.pre input{border-top-left-radius:0;border-bottom-left-radius:0;border-left:0}.astro-rich-text.post input{border-top-right-radius:0;border-bottom-right-radius:0;border-right:0}a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display:block}body{line-height:1}ol, ul{list-style:none}blockquote, q{quotes:none}blockquote:after, blockquote:before, q:after, q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}*{box-sizing:border-box}.astro-intent-success{color:#008577;border-color:#008577}.astro-intent-warning{color:#ffb900;border-color:#ffb900}.astro-intent-error{color:#cc0c39;border-color:#cc0c39}.astro-block{display:block}.astro-inline{display:inline}.astro-inline-block{display:inline-block}.astro-float-left{float:left}.astro-float-right{float:right}.astro-center-block{display:block;margin-left:auto;margin-right:auto}.astro-list-unstyled{list-style:none;padding:0}.astro-list-inline>*{display:inline}.astro-list-inline>*+:before{content:' '}.m-a-0{margin:0!important}.m-t-0{margin-top:0!important}.m-r-0{margin-right:0!important}.m-b-0{margin-bottom:0!important}.m-l-0, .m-x-0{margin-left:0!important}.m-x-0{margin-right:0!important}.m-y-0{margin-top:0!important;margin-bottom:0!important}.p-a-0{padding:0!important}.p-t-0{padding-top:0!important}.p-r-0{padding-right:0!important}.p-b-0{padding-bottom:0!important}.p-l-0, .p-x-0{padding-left:0!important}.p-x-0{padding-right:0!important}.p-y-0{padding-top:0!important;padding-bottom:0!important}.m-a-xs{margin:.5rem!important}.m-t-xs{margin-top:.5rem!important}.m-r-xs{margin-right:.5rem!important}.m-b-xs{margin-bottom:.5rem!important}.m-l-xs, .m-x-xs{margin-left:.5rem!important}.m-x-xs{margin-right:.5rem!important}.m-y-xs{margin-top:.5rem!important;margin-bottom:.5rem!important}.p-a-xs{padding:.5rem!important}.p-t-xs{padding-top:.5rem!important}.p-r-xs{padding-right:.5rem!important}.p-b-xs{padding-bottom:.5rem!important}.p-l-xs, .p-x-xs{padding-left:.5rem!important}.p-x-xs{padding-right:.5rem!important}.p-y-xs{padding-top:.5rem!important;padding-bottom:.5rem!important}.m-a-sm{margin:1rem!important}.m-t-sm{margin-top:1rem!important}.m-r-sm{margin-right:1rem!important}.m-b-sm{margin-bottom:1rem!important}.m-l-sm, .m-x-sm{margin-left:1rem!important}.m-x-sm{margin-right:1rem!important}.m-y-sm{margin-top:1rem!important;margin-bottom:1rem!important}.p-a-sm{padding:1rem!important}.p-t-sm{padding-top:1rem!important}.p-r-sm{padding-right:1rem!important}.p-b-sm{padding-bottom:1rem!important}.p-l-sm, .p-x-sm{padding-left:1rem!important}.p-x-sm{padding-right:1rem!important}.p-y-sm{padding-top:1rem!important;padding-bottom:1rem!important}.m-a-md{margin:1.5rem!important}.m-t-md{margin-top:1.5rem!important}.m-r-md{margin-right:1.5rem!important}.m-b-md{margin-bottom:1.5rem!important}.m-l-md, .m-x-md{margin-left:1.5rem!important}.m-x-md{margin-right:1.5rem!important}.m-y-md{margin-top:1.5rem!important;margin-bottom:1.5rem!important}.p-a-md{padding:1.5rem!important}.p-t-md{padding-top:1.5rem!important}.p-r-md{padding-right:1.5rem!important}.p-b-md{padding-bottom:1.5rem!important}.p-l-md, .p-x-md{padding-left:1.5rem!important}.p-x-md{padding-right:1.5rem!important}.p-y-md{padding-top:1.5rem!important;padding-bottom:1.5rem!important}.m-a-lg{margin:2rem!important}.m-t-lg{margin-top:2rem!important}.m-r-lg{margin-right:2rem!important}.m-b-lg{margin-bottom:2rem!important}.m-l-lg, .m-x-lg{margin-left:2rem!important}.m-x-lg{margin-right:2rem!important}.m-y-lg{margin-top:2rem!important;margin-bottom:2rem!important}.p-a-lg{padding:2rem!important}.p-t-lg{padding-top:2rem!important}.p-r-lg{padding-right:2rem!important}.p-b-lg{padding-bottom:2rem!important}.p-l-lg, .p-x-lg{padding-left:2rem!important}.p-x-lg{padding-right:2rem!important}.p-y-lg{padding-top:2rem!important;padding-bottom:2rem!important}.m-a-xl{margin:2.5rem!important}.m-t-xl{margin-top:2.5rem!important}.m-r-xl{margin-right:2.5rem!important}.m-b-xl{margin-bottom:2.5rem!important}.m-l-xl, .m-x-xl{margin-left:2.5rem!important}.m-x-xl{margin-right:2.5rem!important}.m-y-xl{margin-top:2.5rem!important;margin-bottom:2.5rem!important}.p-a-xl{padding:2.5rem!important}.p-t-xl{padding-top:2.5rem!important}.p-r-xl{padding-right:2.5rem!important}.p-b-xl{padding-bottom:2.5rem!important}.p-l-xl, .p-x-xl{padding-left:2.5rem!important}.p-x-xl{padding-right:2.5rem!important}.p-y-xl{padding-top:2.5rem!important;padding-bottom:2.5rem!important}.m-a-xxl{margin:3rem!important}.m-t-xxl{margin-top:3rem!important}.m-r-xxl{margin-right:3rem!important}.m-b-xxl{margin-bottom:3rem!important}.m-l-xxl, .m-x-xxl{margin-left:3rem!important}.m-x-xxl{margin-right:3rem!important}.m-y-xxl{margin-top:3rem!important;margin-bottom:3rem!important}.p-a-xxl{padding:3rem!important}.p-t-xxl{padding-top:3rem!important}.p-r-xxl{padding-right:3rem!important}.p-b-xxl{padding-bottom:3rem!important}.p-l-xxl, .p-x-xxl{padding-left:3rem!important}.p-x-xxl{padding-right:3rem!important}.p-y-xxl{padding-top:3rem!important;padding-bottom:3rem!important}.astro-text-smallest{font-size:1rem}.astro-text-small{font-size:1.2rem}.astro-text-medium{font-size:1.4rem}.astro-text-plus{font-size:1.5rem}.astro-text-large{font-size:1.6rem}.astro-text-larger{font-size:1.8rem}.astro-text-largest{font-size:2rem}.astro-text-huge{font-size:2.4rem}.astro-text-enormous{font-size:2.8rem}.astro-text-super{font-size:3.6rem}.astro-text-light{font-family:Amazon Ember Light,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif;font-weight:300}.astro-text-bold{font-family:Amazon Ember Regular,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif;font-weight:700}.astro-text-monospaced{font-family:monaco,Consolas,monospace;font-weight:700}.astro-text-left{text-align:left}.astro-text-center{text-align:center}.astro-text-right{text-align:right}.astro-text-nowrap{white-space:nowrap}.astro-text-truncate, .astro__text--truncate{max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.astro-text-caps{text-transform:uppercase}.astro-hidden{visibility:hidden!important}.astro-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.astro-show{display:initial!important}.astro-hide{display:none!important}@media screen and (min-width:479px){.astro-sm-hidden{visibility:hidden!important}.astro-sm-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.astro-sm-show{display:initial!important}.astro-sm-hide{display:none!important}}@media screen and (min-width:767px){.astro-md-hidden{visibility:hidden!important}.astro-md-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.astro-md-show{display:initial!important}.astro-md-hide{display:none!important}}@media screen and (min-width:991px){.astro-lg-hidden{visibility:hidden!important}.astro-lg-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.astro-lg-show{display:initial!important}.astro-lg-hide{display:none!important}}@media screen and (min-width:1400px){.astro-xl-hidden{visibility:hidden!important}.astro-xl-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.astro-xl-show{display:initial!important}.astro-xl-hide{display:none!important}}html{font-size:10px;font-family:Amazon Ember Regular,Helvetica Neue,Arial,Helvetica,Roboto,sans-serif}body{line-height:1;font-size:1.4rem}strong{font-weight:700}h1, h2, h3, h4, h5, h6{margin-bottom:1em}*+h1, *+h2, *+h3, *+h4, *+h5, *+h6{margin-top:1em}h1{font-size:2.8rem}h2{font-size:2.4rem}h3{font-size:2rem}h4{font-size:1.8rem}h5{font-size:1.6rem}h6{font-size:1.5rem}blockquote, dd, dl, dt, label, li, ol, p, q, ul{font-size:1.4rem;line-height:1.4}dt{font-weight:700}input, select, textarea{font-size:1.4rem;line-height:1.4}hr{margin:2rem 0;border:none;border-top:.1rem solid #5c5c66}audio, canvas, embed, img, object, table, video{max-width:100%}*+blockquote, *+dl, *+ol, *+p, *+table, *+ul{margin-top:2rem}ol, ul{list-style-position:outside;padding-left:4rem}ol *+li, ul *+li{margin-top:2rem}ul{list-style-type:disc}ul ul{margin-top:2rem;list-style-type:circle}ul ul ul{list-style-type:square}ol{list-style-type:decimal}ol ol{margin-top:2rem;list-style-type:lower-roman}ol ol ol{list-style-type:lower-latin}dl dd{padding-left:2rem}dl *+dt{margin-top:2rem}q:before{content:'\201C'}q:after{content:'\201D'}blockquote{border-left:.5rem solid #00c4ff;padding-left:2rem}code{font-family:monaco,Consolas,monospace}sup{font-size:.7em;vertical-align:top}.astro-table-wrapper{max-width:100%;overflow-x:auto}table{border-bottom:.1rem solid #b6b6bf}table.align-cell-middle>td, table.align-cell-middle>th{vertical-align:middle}td, th{padding:2rem;border-top:.1rem solid #b6b6bf;vertical-align:top}th{text-transform:uppercase;text-align:left}.astro--error, .astro__drag-drop.astro-error, .astro__input.astro-error, .astro__textarea.astro-error, input:not([type=radio]):not([type=checkbox]).astro-error, select.astro-error, textarea.astro-error{border-color:#cc0c39;color:#cc0c39}.astro__drag-drop, .astro__input, .astro__textarea, input:not([type=radio]):not([type=checkbox]), select, textarea{max-width:100%;height:4.4rem;position:relative;background-color:#fff;padding:.5rem 1.5rem;border-radius:0;border:.1rem solid #aab7b8;color:#373e3e;cursor:default;outline:none;overflow:hidden;width:100%}.astro__drag-drop:focus, .astro__input:focus, .astro__textarea:focus, input:not([type=radio]):not([type=checkbox]):focus, select:focus, textarea:focus{border-color:#00b0e6}.astro__drag-drop::-webkit-input-placeholder, .astro__input::-webkit-input-placeholder, .astro__textarea::-webkit-input-placeholder, input:not([type=radio]):not([type=checkbox])::-webkit-input-placeholder, select::-webkit-input-placeholder, textarea::-webkit-input-placeholder{color:#aab7b8}.astro__drag-drop::-moz-placeholder, .astro__input::-moz-placeholder, .astro__textarea::-moz-placeholder, input:not([type=radio]):not([type=checkbox])::-moz-placeholder, select::-moz-placeholder, textarea::-moz-placeholder{color:#aab7b8}.astro__drag-drop:-ms-input-placeholder, .astro__input:-ms-input-placeholder, .astro__textarea:-ms-input-placeholder, input:not([type=radio]):not([type=checkbox]):-ms-input-placeholder, select:-ms-input-placeholder, textarea:-ms-input-placeholder{color:#aab7b8}:disabled input:not([type=radio]):not([type=checkbox]), :disabled select, :disabled textarea, [disabled] input:not([type=radio]):not([type=checkbox]), [disabled] select, [disabled] textarea, [readonly] input:not([type=radio]):not([type=checkbox]), [readonly] select, [readonly] textarea, input:not([type=radio]):not([type=checkbox]):disabled, input:not([type=radio]):not([type=checkbox])[disabled], input:not([type=radio]):not([type=checkbox])[readonly], select:disabled, select[disabled], select[readonly], textarea:disabled, textarea[disabled], textarea[readonly]{color:#d5dbdb;background-color:#f4f6f6;border:none;cursor:not-allowed}.astro__input:disabled, .astro__input[disabled], .astro__input[readonly], .astro__textarea:disabled, .astro__textarea[disabled], .astro__textarea[readonly], :disabled .astro__input, :disabled .astro__textarea, [disabled] .astro__input, [disabled] .astro__textarea, [readonly] .astro__input, [readonly] .astro__textarea{color:#d5dbdb;background-color:#f4f6f6;border:none;cursor:not-allowed}.astro__textarea, textarea{height:10rem;overflow:auto;padding-top:1.5rem;padding-bottom:1.5rem}.astro__label, label{color:#5c5c66}.astro__label+.astro__input, .astro__label+.astro__input:not([type=radio]):not([type=checkbox]), .astro__label+.astro__select, .astro__label+.astro__textarea, .astro__label+input:not([type=radio]):not([type=checkbox]), .astro__label+select, .astro__label+textarea, label+.astro__input, label+.astro__input:not([type=radio]):not([type=checkbox]), label+.astro__select, label+.astro__textarea, label+input:not([type=radio]):not([type=checkbox]), label+select, label+textarea{margin-top:.5rem}.astro__drag-drop{border-style:dashed;height:8.8rem;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center}.astro__drag-drop .drag-drop__message{color:#00b0e6}.astro__drag-drop:hover{cursor:pointer;border-color:#00b0e6}.astro-link, .astro__link, a[href]{line-height:1.7rem;color:#00b0e6;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;text-decoration:none}.astro-link .astro-icon>svg, .astro__link .astro-icon>svg, a[href] .astro-icon>svg{fill:currentColor}.astro-link .astro-icon:first-child, .astro__link .astro-icon:first-child, a[href] .astro-icon:first-child{margin-right:1rem}.astro-link .astro-icon:not(:first-child), .astro__link .astro-icon:not(:first-child), a[href] .astro-icon:not(:first-child){margin-left:1rem}.astro-link:visited, .astro__link:visited, a[href]:visited{color:#00b0e6}.astro-link:active, .astro-link:focus, .astro__link:active, .astro__link:focus, a[href]:active, a[href]:focus{color:#00c4ff}.astro-link:hover, .astro__link:hover, a[href]:hover{color:#0096c5;cursor:pointer}.astro-link.disabled, .astro-link:disabled, .astro-link[disabled], .astro__link.disabled, .astro__link:disabled, .astro__link[disabled], a[href].disabled, a[href]:disabled, a[href][disabled]{color:#aab7b8;cursor:not-allowed}@font-face{font-family:Amazon Ember Light;src:local('Amazon Ember Light'),local('AmazonEmberLight'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_lt-019e0ec3f9b521056e66e31fdcbc8323e5cd1938._V299195751_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_lt-bc9ed0fce860a46f3cb061034280c23400e6e8b6._V299195751_.woff') format('woff')}@font-face{font-family:Amazon Ember Light;font-weight:700;src:local('Amazon Ember Light'),local('AmazonEmberLight-Bold'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rg-fd81bacb6a659a8c8c95828226b74594ab985060._V299195749_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rg-0acf3bc8b64d470d8888d84741a19533394654c6._V299195749_.woff') format('woff')}@font-face{font-family:Amazon Ember Light;font-style:italic;src:local('Amazon Ember Light'),local('AmazonEmberLight-Italic'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_ltit-96be47a559388a2b219577124589435c09a361fe._V299195751_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_ltit-b561f11b5c8be92ac17f6b713dd9d4b6e2f00c8d._V299195751_.woff') format('woff')}@font-face{font-family:Amazon Ember Light;font-style:italic;font-weight:700;src:local('Amazon Ember Light'),local('AmazonEmberLight-BoldItalic'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rgit-af980fe9c64fc17ece72cba4e3e7fdf54babeea6._V299195748_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rgit-4fae4842b3446774d86579b9b024858a848644e8._V299195748_.woff') format('woff')}@font-face{font-family:Amazon Ember Regular;src:local('Amazon Ember Regular'),local('AmazonEmberRegular'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rg-fd81bacb6a659a8c8c95828226b74594ab985060._V299195749_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rg-0acf3bc8b64d470d8888d84741a19533394654c6._V299195749_.woff') format('woff')}@font-face{font-family:Amazon Ember Regular;font-weight:100;src:local('Amazon Ember Light'),local('AmazonEmberLight'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_lt-019e0ec3f9b521056e66e31fdcbc8323e5cd1938._V299195751_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_lt-bc9ed0fce860a46f3cb061034280c23400e6e8b6._V299195751_.woff') format('woff')}@font-face{font-family:Amazon Ember Regular;font-weight:100;font-style:italic;src:local('Amazon Ember Light'),local('AmazonEmberLight-Italic'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_ltit-96be47a559388a2b219577124589435c09a361fe._V299195751_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_ltit-b561f11b5c8be92ac17f6b713dd9d4b6e2f00c8d._V299195751_.woff') format('woff')}@font-face{font-family:Amazon Ember Regular;font-weight:700;src:local('Amazon Ember Regular'),local('AmazonEmberRegular-Bold'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-46b91bda68161c14e554a779643ef4957431987b._V2_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bd-b605252f87b8b3df5ae206596dac0938fc5888bc._V2_.woff') format('woff')}@font-face{font-family:Amazon Ember Regular;font-style:italic;src:local('Amazon Ember Regular'),local('AmazonEmberRegular-Italic'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rgit-af980fe9c64fc17ece72cba4e3e7fdf54babeea6._V299195748_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_rgit-4fae4842b3446774d86579b9b024858a848644e8._V299195748_.woff') format('woff')}@font-face{font-family:Amazon Ember Regular;font-style:italic;font-weight:700;src:local('Amazon Ember Regular'),local('AmazonEmberRegular-BoldItalic'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-80ff7aba37dd1ff5a6b90233a19e3a780a96dc2f._V2_.woff2') format('woff2'),url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-amazonember_bdit-57598ce426a612be5a1d15eee08252668fca5e7a._V2_.woff') format('woff')}.astro-grid-container{padding:1rem}.astro-lg-row, .astro-md-row, .astro-row, .astro-sm-row, .astro-xl-row{margin-top:-2rem;margin-left:-1rem;margin-right:-1rem}.astro-lg-row+.astro-lg-row, .astro-lg-row+.astro-md-row, .astro-lg-row+.astro-row, .astro-lg-row+.astro-sm-row, .astro-lg-row+.astro-xl-row, .astro-md-row+.astro-lg-row, .astro-md-row+.astro-md-row, .astro-md-row+.astro-row, .astro-md-row+.astro-sm-row, .astro-md-row+.astro-xl-row, .astro-row+.astro-lg-row, .astro-row+.astro-md-row, .astro-row+.astro-row, .astro-row+.astro-sm-row, .astro-row+.astro-xl-row, .astro-sm-row+.astro-lg-row, .astro-sm-row+.astro-md-row, .astro-sm-row+.astro-row, .astro-sm-row+.astro-sm-row, .astro-sm-row+.astro-xl-row, .astro-xl-row+.astro-lg-row, .astro-xl-row+.astro-md-row, .astro-xl-row+.astro-row, .astro-xl-row+.astro-sm-row, .astro-xl-row+.astro-xl-row{padding-top:2rem}.astro-lg-row>.astro-column, .astro-lg-row>.astro-lg-column, .astro-lg-row>.astro-md-column, .astro-lg-row>.astro-sm-column, .astro-lg-row>.astro-xl-column, .astro-md-row>.astro-column, .astro-md-row>.astro-lg-column, .astro-md-row>.astro-md-column, .astro-md-row>.astro-sm-column, .astro-md-row>.astro-xl-column, .astro-row>.astro-column, .astro-row>.astro-lg-column, .astro-row>.astro-md-column, .astro-row>.astro-sm-column, .astro-row>.astro-xl-column, .astro-sm-row>.astro-column, .astro-sm-row>.astro-lg-column, .astro-sm-row>.astro-md-column, .astro-sm-row>.astro-sm-column, .astro-sm-row>.astro-xl-column, .astro-xl-row>.astro-column, .astro-xl-row>.astro-lg-column, .astro-xl-row>.astro-md-column, .astro-xl-row>.astro-sm-column, .astro-xl-row>.astro-xl-column{padding-top:2rem;padding-left:1rem;padding-right:1rem}.astro-row{-ms-flex-direction:row;flex-direction:row;min-width:100%}.astro-column, .astro-row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.astro-column{-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:100%;flex-basis:100%;-ms-flex-direction:column;flex-direction:column}@media screen and (min-width:0){.astro-xs-row{-ms-flex-direction:row;flex-direction:row;min-width:100%}.astro-xs-column, .astro-xs-row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.astro-xs-column{-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:100%;flex-basis:100%;-ms-flex-direction:column;flex-direction:column}}@media screen and (min-width:479px){.astro-sm-row{-ms-flex-direction:row;flex-direction:row;min-width:100%}.astro-sm-column, .astro-sm-row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.astro-sm-column{-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:100%;flex-basis:100%;-ms-flex-direction:column;flex-direction:column}}@media screen and (min-width:767px){.astro-md-row{-ms-flex-direction:row;flex-direction:row;min-width:100%}.astro-md-column, .astro-md-row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.astro-md-column{-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:100%;flex-basis:100%;-ms-flex-direction:column;flex-direction:column}}@media screen and (min-width:991px){.astro-lg-row{-ms-flex-direction:row;flex-direction:row;min-width:100%}.astro-lg-column, .astro-lg-row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.astro-lg-column{-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:100%;flex-basis:100%;-ms-flex-direction:column;flex-direction:column}}@media screen and (min-width:1400px){.astro-xl-row{-ms-flex-direction:row;flex-direction:row;min-width:100%}.astro-xl-column, .astro-xl-row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.astro-xl-column{-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:100%;flex-basis:100%;-ms-flex-direction:column;flex-direction:column}}.astro-column>.basis-0, .astro-row>.basis-0{-ms-flex:0 0 0;flex:0 0 0}.astro-column>.basis-1, .astro-row>.basis-1{-ms-flex:0 0 8.33333%;flex:0 0 8.33333%}.astro-column>.basis-2, .astro-row>.basis-2{-ms-flex:0 0 16.66667%;flex:0 0 16.66667%}.astro-column>.basis-3, .astro-row>.basis-3{-ms-flex:0 0 25%;flex:0 0 25%}.astro-column>.basis-4, .astro-row>.basis-4{-ms-flex:0 0 33.33333%;flex:0 0 33.33333%}.astro-column>.basis-5, .astro-row>.basis-5{-ms-flex:0 0 41.66667%;flex:0 0 41.66667%}.astro-column>.basis-6, .astro-row>.basis-6{-ms-flex:0 0 50%;flex:0 0 50%}.astro-column>.basis-7, .astro-row>.basis-7{-ms-flex:0 0 58.33333%;flex:0 0 58.33333%}.astro-column>.basis-8, .astro-row>.basis-8{-ms-flex:0 0 66.66667%;flex:0 0 66.66667%}.astro-column>.basis-9, .astro-row>.basis-9{-ms-flex:0 0 75%;flex:0 0 75%}.astro-column>.basis-10, .astro-row>.basis-10{-ms-flex:0 0 83.33333%;flex:0 0 83.33333%}.astro-column>.basis-11, .astro-row>.basis-11{-ms-flex:0 0 91.66667%;flex:0 0 91.66667%}.astro-column>.basis-12, .astro-row>.basis-12{-ms-flex:0 0 100%;flex:0 0 100%}.astro-column>.flex-0, .astro-row>.flex-0{-ms-flex:0;flex:0}.astro-column>.flex-1, .astro-row>.flex-1{-ms-flex:1;flex:1}.astro-column>.flex-2, .astro-row>.flex-2{-ms-flex:2;flex:2}.astro-column>.flex-3, .astro-row>.flex-3{-ms-flex:3;flex:3}.astro-column>.flex-4, .astro-row>.flex-4{-ms-flex:4;flex:4}.astro-column>.flex-5, .astro-row>.flex-5{-ms-flex:5;flex:5}.astro-column>.flex-6, .astro-row>.flex-6{-ms-flex:6;flex:6}.astro-column>.flex-7, .astro-row>.flex-7{-ms-flex:7;flex:7}.astro-column>.flex-8, .astro-row>.flex-8{-ms-flex:8;flex:8}.astro-column>.flex-9, .astro-row>.flex-9{-ms-flex:9;flex:9}.astro-column>.flex-10, .astro-row>.flex-10{-ms-flex:10;flex:10}.astro-column>.flex-11, .astro-row>.flex-11{-ms-flex:11;flex:11}.astro-column>.flex-12, .astro-row>.flex-12{-ms-flex:12;flex:12}.astro-column>.flex-auto, .astro-row>.flex-auto{-ms-flex:0 0 auto;flex:0 0 auto}.astro-column>.grow-0, .astro-row>.grow-0{-ms-flex-positive:0;flex-grow:0}.astro-column>.grow-1, .astro-row>.grow-1{-ms-flex-positive:1;flex-grow:1}.astro-column>.grow-2, .astro-row>.grow-2{-ms-flex-positive:2;flex-grow:2}.astro-column>.grow-3, .astro-row>.grow-3{-ms-flex-positive:3;flex-grow:3}.astro-column>.grow-4, .astro-row>.grow-4{-ms-flex-positive:4;flex-grow:4}.astro-column>.grow-5, .astro-row>.grow-5{-ms-flex-positive:5;flex-grow:5}.astro-column>.grow-6, .astro-row>.grow-6{-ms-flex-positive:6;flex-grow:6}.astro-column>.grow-7, .astro-row>.grow-7{-ms-flex-positive:7;flex-grow:7}.astro-column>.grow-8, .astro-row>.grow-8{-ms-flex-positive:8;flex-grow:8}.astro-column>.grow-9, .astro-row>.grow-9{-ms-flex-positive:9;flex-grow:9}.astro-column>.grow-10, .astro-row>.grow-10{-ms-flex-positive:10;flex-grow:10}.astro-column>.grow-11, .astro-row>.grow-11{-ms-flex-positive:11;flex-grow:11}.astro-column>.grow-12, .astro-row>.grow-12{-ms-flex-positive:12;flex-grow:12}.astro-column>.shrink-0, .astro-row>.shrink-0{-ms-flex-negative:0;flex-shrink:0}.astro-column>.shrink-1, .astro-row>.shrink-1{-ms-flex-negative:1;flex-shrink:1}.astro-column>.shrink-2, .astro-row>.shrink-2{-ms-flex-negative:2;flex-shrink:2}.astro-column>.shrink-3, .astro-row>.shrink-3{-ms-flex-negative:3;flex-shrink:3}.astro-column>.shrink-4, .astro-row>.shrink-4{-ms-flex-negative:4;flex-shrink:4}.astro-column>.shrink-5, .astro-row>.shrink-5{-ms-flex-negative:5;flex-shrink:5}.astro-column>.shrink-6, .astro-row>.shrink-6{-ms-flex-negative:6;flex-shrink:6}.astro-column>.shrink-7, .astro-row>.shrink-7{-ms-flex-negative:7;flex-shrink:7}.astro-column>.shrink-8, .astro-row>.shrink-8{-ms-flex-negative:8;flex-shrink:8}.astro-column>.shrink-9, .astro-row>.shrink-9{-ms-flex-negative:9;flex-shrink:9}.astro-column>.shrink-10, .astro-row>.shrink-10{-ms-flex-negative:10;flex-shrink:10}.astro-column>.shrink-11, .astro-row>.shrink-11{-ms-flex-negative:11;flex-shrink:11}.astro-column>.shrink-12, .astro-row>.shrink-12{-ms-flex-negative:12;flex-shrink:12}.astro-column>.order-0, .astro-row>.order-0{-ms-flex-order:0;order:0}.astro-column>.order-1, .astro-row>.order-1{-ms-flex-order:1;order:1}.astro-column>.order-2, .astro-row>.order-2{-ms-flex-order:2;order:2}.astro-column>.order-3, .astro-row>.order-3{-ms-flex-order:3;order:3}.astro-column>.order-4, .astro-row>.order-4{-ms-flex-order:4;order:4}.astro-column>.order-5, .astro-row>.order-5{-ms-flex-order:5;order:5}.astro-column>.order-6, .astro-row>.order-6{-ms-flex-order:6;order:6}.astro-column>.order-7, .astro-row>.order-7{-ms-flex-order:7;order:7}.astro-column>.order-8, .astro-row>.order-8{-ms-flex-order:8;order:8}.astro-column>.order-9, .astro-row>.order-9{-ms-flex-order:9;order:9}.astro-column>.order-10, .astro-row>.order-10{-ms-flex-order:10;order:10}.astro-column>.order-11, .astro-row>.order-11{-ms-flex-order:11;order:11}.astro-column>.order-12, .astro-row>.order-12{-ms-flex-order:12;order:12}.astro-column>.as-center, .astro-row>.as-center{-ms-flex-item-align:center;align-self:center}.astro-column>.as-start, .astro-row>.as-start{-ms-flex-item-align:start;align-self:flex-start}.astro-column>.as-end, .astro-row>.as-end{-ms-flex-item-align:end;align-self:flex-end}.astro-column>.as-stretch, .astro-row>.as-stretch{-ms-flex-item-align:stretch;align-self:stretch}.astro-column.nowrap, .astro-row.nowrap{-ms-flex-wrap:nowrap;flex-wrap:nowrap}.astro-column.reverse, .astro-row.reverse{-ms-flex-direction:row-reverse;flex-direction:row-reverse}@media screen and (min-width:479px){.astro-column>.sm-basis-0, .astro-row>.sm-basis-0{-ms-flex:0 0 0;flex:0 0 0}.astro-column>.sm-basis-1, .astro-row>.sm-basis-1{-ms-flex:0 0 8.33333%;flex:0 0 8.33333%}.astro-column>.sm-basis-2, .astro-row>.sm-basis-2{-ms-flex:0 0 16.66667%;flex:0 0 16.66667%}.astro-column>.sm-basis-3, .astro-row>.sm-basis-3{-ms-flex:0 0 25%;flex:0 0 25%}.astro-column>.sm-basis-4, .astro-row>.sm-basis-4{-ms-flex:0 0 33.33333%;flex:0 0 33.33333%}.astro-column>.sm-basis-5, .astro-row>.sm-basis-5{-ms-flex:0 0 41.66667%;flex:0 0 41.66667%}.astro-column>.sm-basis-6, .astro-row>.sm-basis-6{-ms-flex:0 0 50%;flex:0 0 50%}.astro-column>.sm-basis-7, .astro-row>.sm-basis-7{-ms-flex:0 0 58.33333%;flex:0 0 58.33333%}.astro-column>.sm-basis-8, .astro-row>.sm-basis-8{-ms-flex:0 0 66.66667%;flex:0 0 66.66667%}.astro-column>.sm-basis-9, .astro-row>.sm-basis-9{-ms-flex:0 0 75%;flex:0 0 75%}.astro-column>.sm-basis-10, .astro-row>.sm-basis-10{-ms-flex:0 0 83.33333%;flex:0 0 83.33333%}.astro-column>.sm-basis-11, .astro-row>.sm-basis-11{-ms-flex:0 0 91.66667%;flex:0 0 91.66667%}.astro-column>.sm-basis-12, .astro-row>.sm-basis-12{-ms-flex:0 0 100%;flex:0 0 100%}.astro-column>.sm-flex-0, .astro-row>.sm-flex-0{-ms-flex:0;flex:0}.astro-column>.sm-flex-1, .astro-row>.sm-flex-1{-ms-flex:1;flex:1}.astro-column>.sm-flex-2, .astro-row>.sm-flex-2{-ms-flex:2;flex:2}.astro-column>.sm-flex-3, .astro-row>.sm-flex-3{-ms-flex:3;flex:3}.astro-column>.sm-flex-4, .astro-row>.sm-flex-4{-ms-flex:4;flex:4}.astro-column>.sm-flex-5, .astro-row>.sm-flex-5{-ms-flex:5;flex:5}.astro-column>.sm-flex-6, .astro-row>.sm-flex-6{-ms-flex:6;flex:6}.astro-column>.sm-flex-7, .astro-row>.sm-flex-7{-ms-flex:7;flex:7}.astro-column>.sm-flex-8, .astro-row>.sm-flex-8{-ms-flex:8;flex:8}.astro-column>.sm-flex-9, .astro-row>.sm-flex-9{-ms-flex:9;flex:9}.astro-column>.sm-flex-10, .astro-row>.sm-flex-10{-ms-flex:10;flex:10}.astro-column>.sm-flex-11, .astro-row>.sm-flex-11{-ms-flex:11;flex:11}.astro-column>.sm-flex-12, .astro-row>.sm-flex-12{-ms-flex:12;flex:12}.astro-column>.sm-flex-auto, .astro-row>.sm-flex-auto{-ms-flex:0 0 auto;flex:0 0 auto}.astro-column>.sm-grow-0, .astro-row>.sm-grow-0{-ms-flex-positive:0;flex-grow:0}.astro-column>.sm-grow-1, .astro-row>.sm-grow-1{-ms-flex-positive:1;flex-grow:1}.astro-column>.sm-grow-2, .astro-row>.sm-grow-2{-ms-flex-positive:2;flex-grow:2}.astro-column>.sm-grow-3, .astro-row>.sm-grow-3{-ms-flex-positive:3;flex-grow:3}.astro-column>.sm-grow-4, .astro-row>.sm-grow-4{-ms-flex-positive:4;flex-grow:4}.astro-column>.sm-grow-5, .astro-row>.sm-grow-5{-ms-flex-positive:5;flex-grow:5}.astro-column>.sm-grow-6, .astro-row>.sm-grow-6{-ms-flex-positive:6;flex-grow:6}.astro-column>.sm-grow-7, .astro-row>.sm-grow-7{-ms-flex-positive:7;flex-grow:7}.astro-column>.sm-grow-8, .astro-row>.sm-grow-8{-ms-flex-positive:8;flex-grow:8}.astro-column>.sm-grow-9, .astro-row>.sm-grow-9{-ms-flex-positive:9;flex-grow:9}.astro-column>.sm-grow-10, .astro-row>.sm-grow-10{-ms-flex-positive:10;flex-grow:10}.astro-column>.sm-grow-11, .astro-row>.sm-grow-11{-ms-flex-positive:11;flex-grow:11}.astro-column>.sm-grow-12, .astro-row>.sm-grow-12{-ms-flex-positive:12;flex-grow:12}.astro-column>.sm-shrink-0, .astro-row>.sm-shrink-0{-ms-flex-negative:0;flex-shrink:0}.astro-column>.sm-shrink-1, .astro-row>.sm-shrink-1{-ms-flex-negative:1;flex-shrink:1}.astro-column>.sm-shrink-2, .astro-row>.sm-shrink-2{-ms-flex-negative:2;flex-shrink:2}.astro-column>.sm-shrink-3, .astro-row>.sm-shrink-3{-ms-flex-negative:3;flex-shrink:3}.astro-column>.sm-shrink-4, .astro-row>.sm-shrink-4{-ms-flex-negative:4;flex-shrink:4}.astro-column>.sm-shrink-5, .astro-row>.sm-shrink-5{-ms-flex-negative:5;flex-shrink:5}.astro-column>.sm-shrink-6, .astro-row>.sm-shrink-6{-ms-flex-negative:6;flex-shrink:6}.astro-column>.sm-shrink-7, .astro-row>.sm-shrink-7{-ms-flex-negative:7;flex-shrink:7}.astro-column>.sm-shrink-8, .astro-row>.sm-shrink-8{-ms-flex-negative:8;flex-shrink:8}.astro-column>.sm-shrink-9, .astro-row>.sm-shrink-9{-ms-flex-negative:9;flex-shrink:9}.astro-column>.sm-shrink-10, .astro-row>.sm-shrink-10{-ms-flex-negative:10;flex-shrink:10}.astro-column>.sm-shrink-11, .astro-row>.sm-shrink-11{-ms-flex-negative:11;flex-shrink:11}.astro-column>.sm-shrink-12, .astro-row>.sm-shrink-12{-ms-flex-negative:12;flex-shrink:12}.astro-column>.sm-order-0, .astro-row>.sm-order-0{-ms-flex-order:0;order:0}.astro-column>.sm-order-1, .astro-row>.sm-order-1{-ms-flex-order:1;order:1}.astro-column>.sm-order-2, .astro-row>.sm-order-2{-ms-flex-order:2;order:2}.astro-column>.sm-order-3, .astro-row>.sm-order-3{-ms-flex-order:3;order:3}.astro-column>.sm-order-4, .astro-row>.sm-order-4{-ms-flex-order:4;order:4}.astro-column>.sm-order-5, .astro-row>.sm-order-5{-ms-flex-order:5;order:5}.astro-column>.sm-order-6, .astro-row>.sm-order-6{-ms-flex-order:6;order:6}.astro-column>.sm-order-7, .astro-row>.sm-order-7{-ms-flex-order:7;order:7}.astro-column>.sm-order-8, .astro-row>.sm-order-8{-ms-flex-order:8;order:8}.astro-column>.sm-order-9, .astro-row>.sm-order-9{-ms-flex-order:9;order:9}.astro-column>.sm-order-10, .astro-row>.sm-order-10{-ms-flex-order:10;order:10}.astro-column>.sm-order-11, .astro-row>.sm-order-11{-ms-flex-order:11;order:11}.astro-column>.sm-order-12, .astro-row>.sm-order-12{-ms-flex-order:12;order:12}.astro-column.sm-nowrap, .astro-row.sm-nowrap{-ms-flex-wrap:nowrap;flex-wrap:nowrap}.astro-column.sm-reverse, .astro-row.sm-reverse{-ms-flex-direction:row-reverse;flex-direction:row-reverse}}@media screen and (min-width:767px){.astro-column>.md-basis-0, .astro-row>.md-basis-0{-ms-flex:0 0 0;flex:0 0 0}.astro-column>.md-basis-1, .astro-row>.md-basis-1{-ms-flex:0 0 8.33333%;flex:0 0 8.33333%}.astro-column>.md-basis-2, .astro-row>.md-basis-2{-ms-flex:0 0 16.66667%;flex:0 0 16.66667%}.astro-column>.md-basis-3, .astro-row>.md-basis-3{-ms-flex:0 0 25%;flex:0 0 25%}.astro-column>.md-basis-4, .astro-row>.md-basis-4{-ms-flex:0 0 33.33333%;flex:0 0 33.33333%}.astro-column>.md-basis-5, .astro-row>.md-basis-5{-ms-flex:0 0 41.66667%;flex:0 0 41.66667%}.astro-column>.md-basis-6, .astro-row>.md-basis-6{-ms-flex:0 0 50%;flex:0 0 50%}.astro-column>.md-basis-7, .astro-row>.md-basis-7{-ms-flex:0 0 58.33333%;flex:0 0 58.33333%}.astro-column>.md-basis-8, .astro-row>.md-basis-8{-ms-flex:0 0 66.66667%;flex:0 0 66.66667%}.astro-column>.md-basis-9, .astro-row>.md-basis-9{-ms-flex:0 0 75%;flex:0 0 75%}.astro-column>.md-basis-10, .astro-row>.md-basis-10{-ms-flex:0 0 83.33333%;flex:0 0 83.33333%}.astro-column>.md-basis-11, .astro-row>.md-basis-11{-ms-flex:0 0 91.66667%;flex:0 0 91.66667%}.astro-column>.md-basis-12, .astro-row>.md-basis-12{-ms-flex:0 0 100%;flex:0 0 100%}.astro-column>.md-flex-0, .astro-row>.md-flex-0{-ms-flex:0;flex:0}.astro-column>.md-flex-1, .astro-row>.md-flex-1{-ms-flex:1;flex:1}.astro-column>.md-flex-2, .astro-row>.md-flex-2{-ms-flex:2;flex:2}.astro-column>.md-flex-3, .astro-row>.md-flex-3{-ms-flex:3;flex:3}.astro-column>.md-flex-4, .astro-row>.md-flex-4{-ms-flex:4;flex:4}.astro-column>.md-flex-5, .astro-row>.md-flex-5{-ms-flex:5;flex:5}.astro-column>.md-flex-6, .astro-row>.md-flex-6{-ms-flex:6;flex:6}.astro-column>.md-flex-7, .astro-row>.md-flex-7{-ms-flex:7;flex:7}.astro-column>.md-flex-8, .astro-row>.md-flex-8{-ms-flex:8;flex:8}.astro-column>.md-flex-9, .astro-row>.md-flex-9{-ms-flex:9;flex:9}.astro-column>.md-flex-10, .astro-row>.md-flex-10{-ms-flex:10;flex:10}.astro-column>.md-flex-11, .astro-row>.md-flex-11{-ms-flex:11;flex:11}.astro-column>.md-flex-12, .astro-row>.md-flex-12{-ms-flex:12;flex:12}.astro-column>.md-flex-auto, .astro-row>.md-flex-auto{-ms-flex:0 0 auto;flex:0 0 auto}.astro-column>.md-grow-0, .astro-row>.md-grow-0{-ms-flex-positive:0;flex-grow:0}.astro-column>.md-grow-1, .astro-row>.md-grow-1{-ms-flex-positive:1;flex-grow:1}.astro-column>.md-grow-2, .astro-row>.md-grow-2{-ms-flex-positive:2;flex-grow:2}.astro-column>.md-grow-3, .astro-row>.md-grow-3{-ms-flex-positive:3;flex-grow:3}.astro-column>.md-grow-4, .astro-row>.md-grow-4{-ms-flex-positive:4;flex-grow:4}.astro-column>.md-grow-5, .astro-row>.md-grow-5{-ms-flex-positive:5;flex-grow:5}.astro-column>.md-grow-6, .astro-row>.md-grow-6{-ms-flex-positive:6;flex-grow:6}.astro-column>.md-grow-7, .astro-row>.md-grow-7{-ms-flex-positive:7;flex-grow:7}.astro-column>.md-grow-8, .astro-row>.md-grow-8{-ms-flex-positive:8;flex-grow:8}.astro-column>.md-grow-9, .astro-row>.md-grow-9{-ms-flex-positive:9;flex-grow:9}.astro-column>.md-grow-10, .astro-row>.md-grow-10{-ms-flex-positive:10;flex-grow:10}.astro-column>.md-grow-11, .astro-row>.md-grow-11{-ms-flex-positive:11;flex-grow:11}.astro-column>.md-grow-12, .astro-row>.md-grow-12{-ms-flex-positive:12;flex-grow:12}.astro-column>.md-shrink-0, .astro-row>.md-shrink-0{-ms-flex-negative:0;flex-shrink:0}.astro-column>.md-shrink-1, .astro-row>.md-shrink-1{-ms-flex-negative:1;flex-shrink:1}.astro-column>.md-shrink-2, .astro-row>.md-shrink-2{-ms-flex-negative:2;flex-shrink:2}.astro-column>.md-shrink-3, .astro-row>.md-shrink-3{-ms-flex-negative:3;flex-shrink:3}.astro-column>.md-shrink-4, .astro-row>.md-shrink-4{-ms-flex-negative:4;flex-shrink:4}.astro-column>.md-shrink-5, .astro-row>.md-shrink-5{-ms-flex-negative:5;flex-shrink:5}.astro-column>.md-shrink-6, .astro-row>.md-shrink-6{-ms-flex-negative:6;flex-shrink:6}.astro-column>.md-shrink-7, .astro-row>.md-shrink-7{-ms-flex-negative:7;flex-shrink:7}.astro-column>.md-shrink-8, .astro-row>.md-shrink-8{-ms-flex-negative:8;flex-shrink:8}.astro-column>.md-shrink-9, .astro-row>.md-shrink-9{-ms-flex-negative:9;flex-shrink:9}.astro-column>.md-shrink-10, .astro-row>.md-shrink-10{-ms-flex-negative:10;flex-shrink:10}.astro-column>.md-shrink-11, .astro-row>.md-shrink-11{-ms-flex-negative:11;flex-shrink:11}.astro-column>.md-shrink-12, .astro-row>.md-shrink-12{-ms-flex-negative:12;flex-shrink:12}.astro-column>.md-order-0, .astro-row>.md-order-0{-ms-flex-order:0;order:0}.astro-column>.md-order-1, .astro-row>.md-order-1{-ms-flex-order:1;order:1}.astro-column>.md-order-2, .astro-row>.md-order-2{-ms-flex-order:2;order:2}.astro-column>.md-order-3, .astro-row>.md-order-3{-ms-flex-order:3;order:3}.astro-column>.md-order-4, .astro-row>.md-order-4{-ms-flex-order:4;order:4}.astro-column>.md-order-5, .astro-row>.md-order-5{-ms-flex-order:5;order:5}.astro-column>.md-order-6, .astro-row>.md-order-6{-ms-flex-order:6;order:6}.astro-column>.md-order-7, .astro-row>.md-order-7{-ms-flex-order:7;order:7}.astro-column>.md-order-8, .astro-row>.md-order-8{-ms-flex-order:8;order:8}.astro-column>.md-order-9, .astro-row>.md-order-9{-ms-flex-order:9;order:9}.astro-column>.md-order-10, .astro-row>.md-order-10{-ms-flex-order:10;order:10}.astro-column>.md-order-11, .astro-row>.md-order-11{-ms-flex-order:11;order:11}.astro-column>.md-order-12, .astro-row>.md-order-12{-ms-flex-order:12;order:12}.astro-column.md-nowrap, .astro-row.md-nowrap{-ms-flex-wrap:nowrap;flex-wrap:nowrap}.astro-column.md-reverse, .astro-row.md-reverse{-ms-flex-direction:row-reverse;flex-direction:row-reverse}}@media screen and (min-width:991px){.astro-column>.lg-basis-0, .astro-row>.lg-basis-0{-ms-flex:0 0 0;flex:0 0 0}.astro-column>.lg-basis-1, .astro-row>.lg-basis-1{-ms-flex:0 0 8.33333%;flex:0 0 8.33333%}.astro-column>.lg-basis-2, .astro-row>.lg-basis-2{-ms-flex:0 0 16.66667%;flex:0 0 16.66667%}.astro-column>.lg-basis-3, .astro-row>.lg-basis-3{-ms-flex:0 0 25%;flex:0 0 25%}.astro-column>.lg-basis-4, .astro-row>.lg-basis-4{-ms-flex:0 0 33.33333%;flex:0 0 33.33333%}.astro-column>.lg-basis-5, .astro-row>.lg-basis-5{-ms-flex:0 0 41.66667%;flex:0 0 41.66667%}.astro-column>.lg-basis-6, .astro-row>.lg-basis-6{-ms-flex:0 0 50%;flex:0 0 50%}.astro-column>.lg-basis-7, .astro-row>.lg-basis-7{-ms-flex:0 0 58.33333%;flex:0 0 58.33333%}.astro-column>.lg-basis-8, .astro-row>.lg-basis-8{-ms-flex:0 0 66.66667%;flex:0 0 66.66667%}.astro-column>.lg-basis-9, .astro-row>.lg-basis-9{-ms-flex:0 0 75%;flex:0 0 75%}.astro-column>.lg-basis-10, .astro-row>.lg-basis-10{-ms-flex:0 0 83.33333%;flex:0 0 83.33333%}.astro-column>.lg-basis-11, .astro-row>.lg-basis-11{-ms-flex:0 0 91.66667%;flex:0 0 91.66667%}.astro-column>.lg-basis-12, .astro-row>.lg-basis-12{-ms-flex:0 0 100%;flex:0 0 100%}.astro-column>.lg-flex-0, .astro-row>.lg-flex-0{-ms-flex:0;flex:0}.astro-column>.lg-flex-1, .astro-row>.lg-flex-1{-ms-flex:1;flex:1}.astro-column>.lg-flex-2, .astro-row>.lg-flex-2{-ms-flex:2;flex:2}.astro-column>.lg-flex-3, .astro-row>.lg-flex-3{-ms-flex:3;flex:3}.astro-column>.lg-flex-4, .astro-row>.lg-flex-4{-ms-flex:4;flex:4}.astro-column>.lg-flex-5, .astro-row>.lg-flex-5{-ms-flex:5;flex:5}.astro-column>.lg-flex-6, .astro-row>.lg-flex-6{-ms-flex:6;flex:6}.astro-column>.lg-flex-7, .astro-row>.lg-flex-7{-ms-flex:7;flex:7}.astro-column>.lg-flex-8, .astro-row>.lg-flex-8{-ms-flex:8;flex:8}.astro-column>.lg-flex-9, .astro-row>.lg-flex-9{-ms-flex:9;flex:9}.astro-column>.lg-flex-10, .astro-row>.lg-flex-10{-ms-flex:10;flex:10}.astro-column>.lg-flex-11, .astro-row>.lg-flex-11{-ms-flex:11;flex:11}.astro-column>.lg-flex-12, .astro-row>.lg-flex-12{-ms-flex:12;flex:12}.astro-column>.lg-flex-auto, .astro-row>.lg-flex-auto{-ms-flex:0 0 auto;flex:0 0 auto}.astro-column>.lg-grow-0, .astro-row>.lg-grow-0{-ms-flex-positive:0;flex-grow:0}.astro-column>.lg-grow-1, .astro-row>.lg-grow-1{-ms-flex-positive:1;flex-grow:1}.astro-column>.lg-grow-2, .astro-row>.lg-grow-2{-ms-flex-positive:2;flex-grow:2}.astro-column>.lg-grow-3, .astro-row>.lg-grow-3{-ms-flex-positive:3;flex-grow:3}.astro-column>.lg-grow-4, .astro-row>.lg-grow-4{-ms-flex-positive:4;flex-grow:4}.astro-column>.lg-grow-5, .astro-row>.lg-grow-5{-ms-flex-positive:5;flex-grow:5}.astro-column>.lg-grow-6, .astro-row>.lg-grow-6{-ms-flex-positive:6;flex-grow:6}.astro-column>.lg-grow-7, .astro-row>.lg-grow-7{-ms-flex-positive:7;flex-grow:7}.astro-column>.lg-grow-8, .astro-row>.lg-grow-8{-ms-flex-positive:8;flex-grow:8}.astro-column>.lg-grow-9, .astro-row>.lg-grow-9{-ms-flex-positive:9;flex-grow:9}.astro-column>.lg-grow-10, .astro-row>.lg-grow-10{-ms-flex-positive:10;flex-grow:10}.astro-column>.lg-grow-11, .astro-row>.lg-grow-11{-ms-flex-positive:11;flex-grow:11}.astro-column>.lg-grow-12, .astro-row>.lg-grow-12{-ms-flex-positive:12;flex-grow:12}.astro-column>.lg-shrink-0, .astro-row>.lg-shrink-0{-ms-flex-negative:0;flex-shrink:0}.astro-column>.lg-shrink-1, .astro-row>.lg-shrink-1{-ms-flex-negative:1;flex-shrink:1}.astro-column>.lg-shrink-2, .astro-row>.lg-shrink-2{-ms-flex-negative:2;flex-shrink:2}.astro-column>.lg-shrink-3, .astro-row>.lg-shrink-3{-ms-flex-negative:3;flex-shrink:3}.astro-column>.lg-shrink-4, .astro-row>.lg-shrink-4{-ms-flex-negative:4;flex-shrink:4}.astro-column>.lg-shrink-5, .astro-row>.lg-shrink-5{-ms-flex-negative:5;flex-shrink:5}.astro-column>.lg-shrink-6, .astro-row>.lg-shrink-6{-ms-flex-negative:6;flex-shrink:6}.astro-column>.lg-shrink-7, .astro-row>.lg-shrink-7{-ms-flex-negative:7;flex-shrink:7}.astro-column>.lg-shrink-8, .astro-row>.lg-shrink-8{-ms-flex-negative:8;flex-shrink:8}.astro-column>.lg-shrink-9, .astro-row>.lg-shrink-9{-ms-flex-negative:9;flex-shrink:9}.astro-column>.lg-shrink-10, .astro-row>.lg-shrink-10{-ms-flex-negative:10;flex-shrink:10}.astro-column>.lg-shrink-11, .astro-row>.lg-shrink-11{-ms-flex-negative:11;flex-shrink:11}.astro-column>.lg-shrink-12, .astro-row>.lg-shrink-12{-ms-flex-negative:12;flex-shrink:12}.astro-column>.lg-order-0, .astro-row>.lg-order-0{-ms-flex-order:0;order:0}.astro-column>.lg-order-1, .astro-row>.lg-order-1{-ms-flex-order:1;order:1}.astro-column>.lg-order-2, .astro-row>.lg-order-2{-ms-flex-order:2;order:2}.astro-column>.lg-order-3, .astro-row>.lg-order-3{-ms-flex-order:3;order:3}.astro-column>.lg-order-4, .astro-row>.lg-order-4{-ms-flex-order:4;order:4}.astro-column>.lg-order-5, .astro-row>.lg-order-5{-ms-flex-order:5;order:5}.astro-column>.lg-order-6, .astro-row>.lg-order-6{-ms-flex-order:6;order:6}.astro-column>.lg-order-7, .astro-row>.lg-order-7{-ms-flex-order:7;order:7}.astro-column>.lg-order-8, .astro-row>.lg-order-8{-ms-flex-order:8;order:8}.astro-column>.lg-order-9, .astro-row>.lg-order-9{-ms-flex-order:9;order:9}.astro-column>.lg-order-10, .astro-row>.lg-order-10{-ms-flex-order:10;order:10}.astro-column>.lg-order-11, .astro-row>.lg-order-11{-ms-flex-order:11;order:11}.astro-column>.lg-order-12, .astro-row>.lg-order-12{-ms-flex-order:12;order:12}.astro-column.lg-nowrap, .astro-row.lg-nowrap{-ms-flex-wrap:nowrap;flex-wrap:nowrap}.astro-column.lg-reverse, .astro-row.lg-reverse{-ms-flex-direction:row-reverse;flex-direction:row-reverse}}@media screen and (min-width:1400px){.astro-column>.xl-basis-0, .astro-row>.xl-basis-0{-ms-flex:0 0 0;flex:0 0 0}.astro-column>.xl-basis-1, .astro-row>.xl-basis-1{-ms-flex:0 0 8.33333%;flex:0 0 8.33333%}.astro-column>.xl-basis-2, .astro-row>.xl-basis-2{-ms-flex:0 0 16.66667%;flex:0 0 16.66667%}.astro-column>.xl-basis-3, .astro-row>.xl-basis-3{-ms-flex:0 0 25%;flex:0 0 25%}.astro-column>.xl-basis-4, .astro-row>.xl-basis-4{-ms-flex:0 0 33.33333%;flex:0 0 33.33333%}.astro-column>.xl-basis-5, .astro-row>.xl-basis-5{-ms-flex:0 0 41.66667%;flex:0 0 41.66667%}.astro-column>.xl-basis-6, .astro-row>.xl-basis-6{-ms-flex:0 0 50%;flex:0 0 50%}.astro-column>.xl-basis-7, .astro-row>.xl-basis-7{-ms-flex:0 0 58.33333%;flex:0 0 58.33333%}.astro-column>.xl-basis-8, .astro-row>.xl-basis-8{-ms-flex:0 0 66.66667%;flex:0 0 66.66667%}.astro-column>.xl-basis-9, .astro-row>.xl-basis-9{-ms-flex:0 0 75%;flex:0 0 75%}.astro-column>.xl-basis-10, .astro-row>.xl-basis-10{-ms-flex:0 0 83.33333%;flex:0 0 83.33333%}.astro-column>.xl-basis-11, .astro-row>.xl-basis-11{-ms-flex:0 0 91.66667%;flex:0 0 91.66667%}.astro-column>.xl-basis-12, .astro-row>.xl-basis-12{-ms-flex:0 0 100%;flex:0 0 100%}.astro-column>.xl-flex-0, .astro-row>.xl-flex-0{-ms-flex:0;flex:0}.astro-column>.xl-flex-1, .astro-row>.xl-flex-1{-ms-flex:1;flex:1}.astro-column>.xl-flex-2, .astro-row>.xl-flex-2{-ms-flex:2;flex:2}.astro-column>.xl-flex-3, .astro-row>.xl-flex-3{-ms-flex:3;flex:3}.astro-column>.xl-flex-4, .astro-row>.xl-flex-4{-ms-flex:4;flex:4}.astro-column>.xl-flex-5, .astro-row>.xl-flex-5{-ms-flex:5;flex:5}.astro-column>.xl-flex-6, .astro-row>.xl-flex-6{-ms-flex:6;flex:6}.astro-column>.xl-flex-7, .astro-row>.xl-flex-7{-ms-flex:7;flex:7}.astro-column>.xl-flex-8, .astro-row>.xl-flex-8{-ms-flex:8;flex:8}.astro-column>.xl-flex-9, .astro-row>.xl-flex-9{-ms-flex:9;flex:9}.astro-column>.xl-flex-10, .astro-row>.xl-flex-10{-ms-flex:10;flex:10}.astro-column>.xl-flex-11, .astro-row>.xl-flex-11{-ms-flex:11;flex:11}.astro-column>.xl-flex-12, .astro-row>.xl-flex-12{-ms-flex:12;flex:12}.astro-column>.xl-flex-auto, .astro-row>.xl-flex-auto{-ms-flex:0 0 auto;flex:0 0 auto}.astro-column>.xl-grow-0, .astro-row>.xl-grow-0{-ms-flex-positive:0;flex-grow:0}.astro-column>.xl-grow-1, .astro-row>.xl-grow-1{-ms-flex-positive:1;flex-grow:1}.astro-column>.xl-grow-2, .astro-row>.xl-grow-2{-ms-flex-positive:2;flex-grow:2}.astro-column>.xl-grow-3, .astro-row>.xl-grow-3{-ms-flex-positive:3;flex-grow:3}.astro-column>.xl-grow-4, .astro-row>.xl-grow-4{-ms-flex-positive:4;flex-grow:4}.astro-column>.xl-grow-5, .astro-row>.xl-grow-5{-ms-flex-positive:5;flex-grow:5}.astro-column>.xl-grow-6, .astro-row>.xl-grow-6{-ms-flex-positive:6;flex-grow:6}.astro-column>.xl-grow-7, .astro-row>.xl-grow-7{-ms-flex-positive:7;flex-grow:7}.astro-column>.xl-grow-8, .astro-row>.xl-grow-8{-ms-flex-positive:8;flex-grow:8}.astro-column>.xl-grow-9, .astro-row>.xl-grow-9{-ms-flex-positive:9;flex-grow:9}.astro-column>.xl-grow-10, .astro-row>.xl-grow-10{-ms-flex-positive:10;flex-grow:10}.astro-column>.xl-grow-11, .astro-row>.xl-grow-11{-ms-flex-positive:11;flex-grow:11}.astro-column>.xl-grow-12, .astro-row>.xl-grow-12{-ms-flex-positive:12;flex-grow:12}.astro-column>.xl-shrink-0, .astro-row>.xl-shrink-0{-ms-flex-negative:0;flex-shrink:0}.astro-column>.xl-shrink-1, .astro-row>.xl-shrink-1{-ms-flex-negative:1;flex-shrink:1}.astro-column>.xl-shrink-2, .astro-row>.xl-shrink-2{-ms-flex-negative:2;flex-shrink:2}.astro-column>.xl-shrink-3, .astro-row>.xl-shrink-3{-ms-flex-negative:3;flex-shrink:3}.astro-column>.xl-shrink-4, .astro-row>.xl-shrink-4{-ms-flex-negative:4;flex-shrink:4}.astro-column>.xl-shrink-5, .astro-row>.xl-shrink-5{-ms-flex-negative:5;flex-shrink:5}.astro-column>.xl-shrink-6, .astro-row>.xl-shrink-6{-ms-flex-negative:6;flex-shrink:6}.astro-column>.xl-shrink-7, .astro-row>.xl-shrink-7{-ms-flex-negative:7;flex-shrink:7}.astro-column>.xl-shrink-8, .astro-row>.xl-shrink-8{-ms-flex-negative:8;flex-shrink:8}.astro-column>.xl-shrink-9, .astro-row>.xl-shrink-9{-ms-flex-negative:9;flex-shrink:9}.astro-column>.xl-shrink-10, .astro-row>.xl-shrink-10{-ms-flex-negative:10;flex-shrink:10}.astro-column>.xl-shrink-11, .astro-row>.xl-shrink-11{-ms-flex-negative:11;flex-shrink:11}.astro-column>.xl-shrink-12, .astro-row>.xl-shrink-12{-ms-flex-negative:12;flex-shrink:12}.astro-column>.xl-order-0, .astro-row>.xl-order-0{-ms-flex-order:0;order:0}.astro-column>.xl-order-1, .astro-row>.xl-order-1{-ms-flex-order:1;order:1}.astro-column>.xl-order-2, .astro-row>.xl-order-2{-ms-flex-order:2;order:2}.astro-column>.xl-order-3, .astro-row>.xl-order-3{-ms-flex-order:3;order:3}.astro-column>.xl-order-4, .astro-row>.xl-order-4{-ms-flex-order:4;order:4}.astro-column>.xl-order-5, .astro-row>.xl-order-5{-ms-flex-order:5;order:5}.astro-column>.xl-order-6, .astro-row>.xl-order-6{-ms-flex-order:6;order:6}.astro-column>.xl-order-7, .astro-row>.xl-order-7{-ms-flex-order:7;order:7}.astro-column>.xl-order-8, .astro-row>.xl-order-8{-ms-flex-order:8;order:8}.astro-column>.xl-order-9, .astro-row>.xl-order-9{-ms-flex-order:9;order:9}.astro-column>.xl-order-10, .astro-row>.xl-order-10{-ms-flex-order:10;order:10}.astro-column>.xl-order-11, .astro-row>.xl-order-11{-ms-flex-order:11;order:11}.astro-column>.xl-order-12, .astro-row>.xl-order-12{-ms-flex-order:12;order:12}.astro-column.xl-nowrap, .astro-row.xl-nowrap{-ms-flex-wrap:nowrap;flex-wrap:nowrap}.astro-column.xl-reverse, .astro-row.xl-reverse{-ms-flex-direction:row-reverse;flex-direction:row-reverse}}.astro-column.jc-center, .astro-row.jc-center{-ms-flex-pack:center;justify-content:center}.astro-column.jc-space-between, .astro-row.jc-space-between{-ms-flex-pack:justify;justify-content:space-between}.astro-column.jc-space-around, .astro-row.jc-space-around{-ms-flex-pack:distribute;justify-content:space-around}.astro-column.jc-space-evenly, .astro-row.jc-space-evenly{-ms-flex-pack:space-evenly;justify-content:space-evenly}.astro-column.jc-start, .astro-row.jc-start{-ms-flex-pack:start;justify-content:flex-start}.astro-column.jc-end, .astro-row.jc-end{-ms-flex-pack:end;justify-content:flex-end}.astro-column.ac-center, .astro-row.ac-center{-ms-flex-line-pack:center;align-content:center}.astro-column.ac-space-between, .astro-row.ac-space-between{-ms-flex-line-pack:justify;align-content:space-between}.astro-column.ac-space-around, .astro-row.ac-space-around{-ms-flex-line-pack:distribute;align-content:space-around}.astro-column.ac-space-evenly, .astro-row.ac-space-evenly{-ms-flex-line-pack:space-evenly;align-content:space-evenly}.astro-column.ac-start, .astro-row.ac-start{-ms-flex-line-pack:start;align-content:flex-start}.astro-column.ac-end, .astro-row.ac-end{-ms-flex-line-pack:end;align-content:flex-end}.astro-column.ac-stretch, .astro-row.ac-stretch{-ms-flex-line-pack:stretch;align-content:stretch}.astro-column.ai-center, .astro-row.ai-center{-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}.astro-column.ai-start, .astro-row.ai-start{-ms-flex-align:start;-ms-grid-row-align:flex-start;align-items:flex-start}.astro-column.ai-end, .astro-row.ai-end{-ms-flex-align:end;-ms-grid-row-align:flex-end;align-items:flex-end}.astro-column.ai-stretch, .astro-row.ai-stretch{-ms-flex-align:stretch;-ms-grid-row-align:stretch;align-items:stretch}.astro-column.ai-baseline, .astro-row.ai-baseline{-ms-flex-align:baseline;-ms-grid-row-align:baseline;align-items:baseline}.reflex-layout.reflex-container {
+  justify-content: flex-start;
+  /* align items in Main Axis */
+  align-items: stretch;
+  /* align items in Cross Axis */
+  align-content: stretch;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%; }
+
+.reflex-layout.reflex-container.horizontal {
+  flex-direction: column; }
+
+.reflex-layout.reflex-container.vertical {
+  flex-direction: row; }
+
+.reflex-layout > .reflex-element {
+  position: relative;
+  overflow: auto;
+  height: 100%;
+  width: 100%; }
+
+.reflex-layout > .reflex-splitter {
+  background-color: #eeeeee;
+  z-index: 100; }
+
+.reflex-layout > .reflex-splitter.active, .reflex-layout > .reflex-splitter:hover {
+  background-color: #c6c6c6;
+  transition: all 1s ease; }
+
+.reflex-layout.horizontal > .reflex-splitter {
+  border-bottom: 1px solid #c6c6c6;
+  border-top: 1px solid #c6c6c6;
+  cursor: row-resize;
+  width: 100%;
+  height: 2px; }
+
+.reflex-layout.horizontal .reflex-handle {
+  cursor: row-resize; }
+
+.reflex-layout.horizontal > .reflex-splitter:hover, .reflex-layout.horizontal > .reflex-splitter.active {
+  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee; }
+
+.reflex-layout.vertical > .reflex-splitter {
+  border-right: 1px solid #c6c6c6;
+  border-left: 1px solid #c6c6c6;
+  cursor: col-resize;
+  height: 100%;
+  width: 2px; }
+
+.reflex-layout.vertical .reflex-handle {
+  cursor: col-resize; }
+
+.reflex-layout.vertical > .reflex-splitter:hover, .reflex-layout.vertical > .reflex-splitter.active {
+  border-right: 1px solid #eeeeee;
+  border-left: 1px solid #eeeeee; }
+
+.reflex-layout > .reflex-splitter.reflex-thin {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #000;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  opacity: 0.2;
+  z-index: 100; }
+
+.reflex-layout > .reflex-splitter.reflex-thin.active
+.reflex-layout > .reflex-splitter.reflex-thin:hover {
+  transition: all 1.5s ease;
+  opacity: 0.5; }
+
+.reflex-layout.horizontal > .reflex-splitter.reflex-thin {
+  border-bottom: 8px solid rgba(255, 255, 255, 0);
+  border-top: 8px solid rgba(255, 255, 255, 0);
+  height: 17px !important;
+  cursor: row-resize;
+  margin: -8px 0;
+  width: 100%; }
+
+.reflex-layout.horizontal > .reflex-splitter.reflex-thin.active, .reflex-layout.horizontal > .reflex-splitter.reflex-thin:hover {
+  border-bottom: 8px solid #e4e4e4;
+  border-top: 8px solid #e4e4e4; }
+
+.reflex-layout.vertical > .reflex-splitter.reflex-thin {
+  border-right: 8px solid rgba(255, 255, 255, 0);
+  border-left: 8px solid rgba(255, 255, 255, 0);
+  width: 17px !important;
+  cursor: col-resize;
+  margin: 0 -8px;
+  height: 100%; }
+
+.reflex-layout.vertical > .reflex-splitter.reflex-thin.active, .reflex-layout.vertical > .reflex-splitter.reflex-thin:hover {
+  border-right: 8px solid #e4e4e4;
+  border-left: 8px solid #e4e4e4; }
+/*
+ * Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ */
+
+/* Root spacing measure, treat this as our 'inch'.*/
+
+/* Default margin and padding.*/
+
+/* Colors*/
+
+/* TODO*/
+
+/* add semantic color variables*/
+
+/* ----*/
+
+/* $color-primary: $color-blue;*/
+
+/* $color-secondary: $color-gray-light;*/
+
+/* $color-tertiary: transparent;*/
+
+/* buttons*/
+
+/* If anything changes here, you will need to update `/src/styles/utils/_spacing.pcss`*/
+
+/* Set on the HTML element such that all subsequent REMs are in base ten.*/
+
+/* Font sizes*/
+
+/* Teeny text, used for tiny labels.*/
+
+/* Small copy, .askui-small-text, etc.*/
+
+/* Typical copy, <p> and similar.*/
+
+/* Large-ish copy, <h6> and similar.*/
+
+/* Large copy, <h5> and similar.*/
+
+/* Larger copy, <h4> and similar.*/
+
+/* The largest copy, <h3> and similar.*/
+
+/* Huge text, like <h2> and similar.*/
+
+/* Enormous text, like <h1> an similar.*/
+
+/* Really big text, for Heroes and the like.*/
+
+/* Line heights*/
+
+/* Font Families*/
+
+/* Mixins to enable the easy propagation of these styles across components.*/
+
+html, body {
+    height: 100%;
+    min-height: 100%
+}
+
+body, #a-page, .rosie-section, .dante-content-wrapper, .dante-content, .dante-container-fluid, .dante-row, .dpc-tenant-content, .dante-content > .row, .tenant-content, #app, div[data-reactroot], .askaa__container, .askaa__section-container, .askaa__section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* hack for firefox */
+    min-height: 0;
+}
+
+/* temporary until GA */
+#adc-header, .dpLangSwitcher.dpsfFlyout {
+    display: none;
+}
+
+/* astro hack/fix */
+.astro-tooltip {
+    z-index: 40000;
+}
+
+.askaa {
+}
+
+.askaa__header {
+    padding: 1rem 2rem;
+    background: rgba(20, 42, 56, 1)
+}
+
+.askaa__header-msg {
+    color: white;
+    font-size: 1.6rem;
+    font-family: 'Amazon Ember Light','Helvetica Neue',Arial,Helvetica,Roboto,sans-serif
+}
+
+.askaa__header-url {
+    color: white;
+    float: right;
+    font-weight: 300
+}
+
+.askaa__header-url:visited {
+    color: white !important/* override astro to match dex */
+}
+
+.askaa__container {
+    background: rgba(242,242,242,1)
+}
+
+.askaa__control-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.3rem
+}
+
+.askaa__control-container .askaa__section--top {
+    padding: .5rem 1.5rem
+}
+
+.askaa__section-container {
+    flex-direction: column
+}
+
+.askaa__icon {
+}
+
+.askaa__icon--error {
+    background: #CC0C39;
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.askaa__icon--error svg {
+    width: 1.2em;
+    height: 1.2em;
+    fill: #fff
+}
+
+.askaa__icon--warning {
+    position: relative;
+    border-left: 0.70em solid transparent;
+    border-right: 0.70em solid transparent;
+    border-bottom: 1em solid #FFB900;
+}
+
+.askaa__icon--warning svg {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 0.07em;
+    left: -0.49em;
+    fill: #fff;
+    line-height: 1em
+}
+
+.askaa__section {
+    border-style: solid;
+    border-color: rgba(213, 219, 219, 1);
+    overflow: hidden;
+    height: 100%
+}
+
+.askaa__section--bottom {
+    flex: 3;
+    border-width: 1px 1px 0 0;
+}
+
+.askaa__section--bottom .askaa__section-header {
+    padding: 1.5rem .5rem 0 1.5rem;
+    border-width: 1px 1px 0 0
+}
+
+.askaa__section--bottom .askaa__section-content {
+    padding: 1.5rem .5rem 1.5rem 1.5rem
+}
+
+.askaa__section--top {
+    flex: 2;
+    border-width: 1px 0 0 0;
+}
+
+.askaa__section--top .askaa__section-header {
+    padding: 0 1.5rem 0 .5rem;
+    border-width: 1px 0 0 0
+}
+
+.askaa__section--drawer {
+    width: 100%;
+    flex: 0 1 auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(213, 219, 219, 1);
+    overflow: hidden;
+    background-color: rgb(252, 248, 247)
+}

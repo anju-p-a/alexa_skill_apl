@@ -1,0 +1,19 @@
+.dante-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dante-container-fluid {
+  display: flex;
+  flex-direction: column;
+}
+
+.dante-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.dpc-tenant-content {
+  display: flex;
+  flex-direction: column;
+}
