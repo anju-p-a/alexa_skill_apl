@@ -25,6 +25,39 @@ const StartGameIntentHandler = {
         return handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
+            .addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.0',
+                document: require('./colorAPL.json'),
+                datasources: {}
+            })
+            .getResponse();
+    }
+};
+
+const ValidateAnswerHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+            && handlerInput.requestEnvelope.request.intent.name === 'colorIntent';
+    },
+    handle(handlerInput) {
+        var speechText;
+
+        if(handlerInput.requestEnvelope.request.intent.slots.color.value === colorWords[colorIndex]){
+            score++;
+            speechText = 'Score is '+ score;
+        } else{
+            speechText = "OOPS ! You Lost";
+        }
+
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.0',
+                document: require('./colorAPL.json'),
+                datasources: {}
+            })
             .getResponse();
     }
 };
@@ -34,7 +67,7 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = 'You should tell the name of the color you see, not the actual name you see on the screen!';
+        const speechText = 'You can say hello to me! How can I help?';
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -107,8 +140,11 @@ const START_MESSAGE = 'Each time you see a word, you must tell the color of the 
 const GET_LAUNCH_MSG = 'This is trick color game. In this game you will see a word in a certain color. \
                         You need to tell the color of the word without getting tricked by what the word is.  Sounds simple?,\
                         Are you Ready ?';
-const colorWords = ['BLUE', 'BLACK'];
+const colorWords = ['blue', 'black'];
 const colorCodes = ['#5A9FD9','#000000'];
+var colorIndex = 0;
+var wordIndex = 0;
+var score = 0;
 
 // This handler acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
@@ -117,6 +153,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         StartGameIntentHandler,
+        ValidateAnswerHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
