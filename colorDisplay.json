@@ -2,6 +2,7 @@
     "type": "APL",
     "version": "1.0",
     "theme": "light",
+
     "import": [
         {
             "name": "alexa-layouts",
@@ -119,6 +120,9 @@
     },
     "layouts": {},
     "mainTemplate": {
+        "parameters":[
+        "datasource"
+        ],
         "items":[
             {
            "type": "Container",
@@ -127,11 +131,11 @@
             "items":[
                 {
                 "type": "Text",
-                "text":"BLUE",
+                "text":"${datasource.colordata.properties.colortext}",
                 "paddingTop":"45vh",
                  "textAlign": "center",
                  "fontSize" : "100",
-                 "color":"#5A9FD9"
+                 "color":"${datasource.colordata.properties.color}"
                 }
                 ]
 
