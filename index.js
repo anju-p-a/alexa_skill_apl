@@ -29,12 +29,22 @@ const StartGameIntentHandler = {
                 type: 'Alexa.Presentation.APL.RenderDocument',
                 version: '1.0',
                 document: require('./colorAPL.json'),
-                datasources: {}
+                datasources: {
+                    "colordata":{
+                        "type" : "object",
+                        "properties":{
+                            "colortext": colorWords[wordIndex].toUpperCase(),
+                            "color":colorCodes[colorIndex],
+                             "backgroundColor": backgroundColor[backgroundColorIndex]
+                        }
+                    }
+
+                }
             })
             .getResponse();
     }
 };
-
+// write a stopHandler
 const ValidateAnswerHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -46,19 +56,39 @@ const ValidateAnswerHandler = {
         if(handlerInput.requestEnvelope.request.intent.slots.color.value === colorWords[colorIndex]){
             score++;
             speechText = 'Score is '+ score;
-        } else{
-            speechText = "OOPS ! You Lost";
-        }
-
-        return handlerInput.responseBuilder
+            colorIndex = Math.floor(Math.random() * colorCodes.length);
+            wordIndex =  Math.floor(Math.random() * colorWords.length);
+              if(backgroundColorIndex === 0){
+                 backgroundColorIndex = 1;
+                 }else{
+                  backgroundColorIndex = 0;
+                }
+            return handlerInput.responseBuilder
             .speak(speechText)
+            .reprompt()
             .addDirective({
                 type: 'Alexa.Presentation.APL.RenderDocument',
                 version: '1.0',
                 document: require('./colorAPL.json'),
-                datasources: {}
+                datasources:{
+                    "colordata":{
+                        "type" : "object",
+                        "properties":{
+                           "colortext": colorWords[wordIndex].toUpperCase(),
+                            "color":colorCodes[colorIndex],
+                            "backgroundColor": backgroundColor[backgroundColorIndex]
+                        }
+                    }
+                }
             })
             .getResponse();
+        } else{
+            speechText = "OOPS ! You Lost";
+            return handlerInput.responseBuilder
+            .speak(speechText)
+            .getResponse();
+        }
+
     }
 };
 const HelpIntentHandler = {
@@ -142,10 +172,11 @@ const GET_LAUNCH_MSG = 'This is trick color game. In this game you will see a wo
                         Are you Ready ?';
 const colorWords = ['blue', 'black'];
 const colorCodes = ['#5A9FD9','#000000'];
+const backgroundColor = ['#FFFFFF','#f2f2ed']
 var colorIndex = 0;
 var wordIndex = 0;
 var score = 0;
-
+var backgroundColorIndex = 0;
 // This handler acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
